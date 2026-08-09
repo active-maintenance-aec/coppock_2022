@@ -406,7 +406,9 @@ dispersion_of <- function(float_id, quantity_label) {
 # not the archive at all: every chapter 6 sentence that misses the band names a quantity
 # the book's own table prints differently, and the table is inside the band. That is the
 # article disagreeing with itself, and a default would have filed all five as the deposit's
-# fault.
+# fault. Each of those five is errata entry 2, corrected to the figure its own table prints:
+# the unseeded estimator is why the sentence cannot be re-derived, and no reason at all not
+# to quote the table.
 unseeded_claim <- function(claim_id, value_rewrite, float_id, quantity_label, scale = 1,
                            outside_locus, extra_note = NA_character_) {
   band <- dispersion_of(float_id, quantity_label)
@@ -439,7 +441,8 @@ unseeded_claim("c6_persistence_weaker", ratio_of("Prediction: weaker persistence
                extra_note = str_glue(
                  "The sentence cites table 6.2, which prints ",
                  "{maintext_cell('table_6.2', 'estimate', 'Prediction: weaker persistence', 'All')} ",
-                 "for this quantity, inside the band. The text and the table it cites disagree."
+                 "for this quantity, inside the band. The text and the table it cites ",
+                 "disagree, and the errata corrects the sentence to the table's figure."
                ))
 
 table_6.4 <- out("table_6.4_all_persistence.csv")
@@ -495,7 +498,8 @@ unseeded_claim("c6_oped_ten_days", oped_of("Overall", "w2_est"), "table_6.3",
                  "Table 6.3 prints ",
                  "{maintext_cell('table_6.3', '10 days', 'Overall', 'All')} for this same ",
                  "quantity, inside the band, so the sentence and the table it describes ",
-                 "disagree on a quantity neither run can pin down."
+                 "disagree on a quantity neither run can pin down. The errata corrects the ",
+                 "sentence to the table's figure."
                ))
 claim("c6_oped_ten_days_se", oped_se_of("Overall", "w2_est"), unseeded = TRUE, holds = 1L,
       note = "Unseeded bootstrap; the standard error rounds to the published 5 per cent.")
@@ -504,7 +508,7 @@ unseeded_claim("c6_oped_thirty_days", oped_of("Overall", "w3_est"), "table_6.3",
                extra_note = str_glue(
                  "Table 6.3 prints ",
                  "{maintext_cell('table_6.3', '30 days', 'Overall', 'All')} for this same ",
-                 "quantity, inside the band."
+                 "quantity, inside the band, and the errata corrects the sentence to it."
                ))
 claim("c6_oped_thirty_days_se", oped_se_of("Overall", "w3_est"), unseeded = TRUE, holds = 1L,
       note = "Unseeded bootstrap; the standard error rounds to the published 6 per cent.")
@@ -515,7 +519,8 @@ unseeded_claim("c6_oped_rep_ten_days", oped_of("Republican", "w2_est"), "table_6
                  "{maintext_cell('table_6.3', '10 days', 'Republican', 'All')} for the ",
                  "Republican ten-day estimate, inside the band, and ",
                  "{maintext_cell('table_6.3', '30 days', 'Republican', 'All')} for the ",
-                 "thirty-day one, which is the figure the sentence gives."
+                 "thirty-day one, which is the figure the sentence gives. The errata corrects ",
+                 "the sentence to the ten-day figure."
                ))
 unseeded_claim("c6_oped_dem_ten_days", oped_of("Democrat", "w2_est"), "table_6.3",
                "Democrat, 10 days", scale = 100, outside_locus = "paper_internal",
@@ -523,7 +528,7 @@ unseeded_claim("c6_oped_dem_ten_days", oped_of("Democrat", "w2_est"), "table_6.3
                  "Table 6.3 prints ",
                  "{maintext_cell('table_6.3', '10 days', 'Democrat', 'All')} for this ",
                  "quantity, inside the band, and no cell of the table is the figure the ",
-                 "sentence gives."
+                 "sentence gives. The errata corrects the sentence to the table's figure."
                ))
 
 rep_row <- table_6.3 |> filter(pid_3 == "Republican")

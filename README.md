@@ -87,12 +87,17 @@ read “Appendix 000” and “Notes to Pages 000-000” where the final page
 numbers had not been resolved. Published values in the ground truth are
 therefore transcribed from that proof rather than from the printed book.
 
-The four discrepancies the pipeline found are properties of the analysis
+The discrepancies the pipeline found are properties of the analysis
 rather than of the typesetting, so they do not depend on which copy is
 read, and `errata.qmd` states them with their corrected values computed
-at render time. Each of the four was checked against the printed
-edition, so none of them is an artifact of the proof or of the way a
-PDF’s text layer is read.
+at render time. Four of the five were checked against the printed
+edition, so none of those is an artifact of the proof or of the way a
+PDF’s text layer is read. The fifth, errata entry 2, is the set of
+chapter 6 sentences that disagree with the chapter 6 tables; it has not
+had that check, and the errata says so on its face. Both sides of that
+disagreement are read from the same copy, so the disagreement is
+internal to whichever copy is read, but whether the printed edition
+carries the same five figures is open.
 
 No errata page for the book exists on the publisher’s site or on the
 author’s own page.
@@ -360,11 +365,12 @@ the small-capital T of “Table” is dropped from table A.10’s caption.
 
 ## Errata
 
-Four sentences, labels or cells in the book do not survive the
-reanalysis. They are set out in `errata.qmd`, rendered to
-`coppock_2022_errata.pdf` at the repository root, with every corrected
-value computed at render time from `maintained/output/`. Each was
-checked against the printed edition. Summarized here:
+Nine sentences, labels or cells in the book do not survive the
+reanalysis, in five entries. They are set out in `errata.qmd`, rendered
+to `coppock_2022_errata.pdf` at the repository root, with every
+corrected value computed at render time: from `maintained/output/` where
+the reanalysis settles it, and from the book’s own transcribed tables
+where the estimator behind it is unseeded. Summarized here:
 
 **1. Table 2.2’s two study rows carry each other’s labels, in both
 panels.** The cells printed under “After pro-capital punishment study”
@@ -378,7 +384,36 @@ are printed in the order the analysis produces them; the “Combined” rows
 are sums and are unaffected, which is why the reading the surrounding
 text draws from the table is unchanged.
 
-**2. Page 114 attributes a persistence estimate to a sample that is not
+**2. Four sentences in chapter 6 report persistence figures that the
+chapter’s own tables print differently.** Page 114 gives the weaker
+persistence group as 20 per cent where table 6.2 prints 0.21; page 117
+gives the op-ed effects as 46 per cent after ten days and 44 after
+thirty where table 6.3 prints 0.48 and 0.46; page 118 gives 57 per cent
+for Republicans and 43 for Democrats after ten days where table 6.3
+prints 0.53 and 0.48. Every persistence figure in the chapter comes from
+a bootstrap the deposit runs without a seed, so no rerun settles what
+the sentences should say. The tables do, and they are also the side the
+estimator supports: every figure the tables print is inside the range
+its quantity takes across seeds, and every figure the prose gives is
+outside it.
+
+| Sentence | In the text | In its own table | Across seeds |
+|:---|:---|:---|:---|
+| p. 114, weaker persistence group | 20% | 21% | 21% to 21% |
+| p. 117, op-eds after ten days | 46% | 48% | 47% to 48% |
+| p. 117, op-eds after thirty days | 44% | 46% | 45% to 46% |
+| p. 118, Republicans after ten days | 57% | 53% | 51% to 53% |
+| p. 118, Democrats after ten days | 43% | 48% | 47% to 50% |
+
+Chapter 6 prose against the chapter 6 tables
+
+The “In its own table” column is the correction the errata prints. It is
+not recomputed, which is the one thing the unseeded estimator forbids;
+it is the figure the book’s own table already carries, and it comes from
+the transcription in `ground_truth/published_maintext_tables.csv` rather
+than from a run.
+
+**3. Page 114 attributes a persistence estimate to a sample that is not
 in the analysis.** The sentence reads “the different replications of the
 Hiscox (2006) ‘expert’ treatment generated very different persistence
 estimates: 49 percent on MTurk but 0 percent on Lucid.” No Lucid sample
@@ -387,14 +422,14 @@ panel experiments and the Hiscox rows of table 6.4 are Mechanical Turk
 and GfK. The book’s own table 6.4 gives the zero to GfK, and the
 pipeline reproduces it there.
 
-**3. Table 2.3 contradicts itself.** In the lower half, the mean rating
+**4. Table 2.3 contradicts itself.** In the lower half, the mean rating
 of how convincing the two studies were is 3.4 for the pro-capital
 punishment study and 0.1 for the anti-capital punishment study among
 proponents, and the table prints both. It prints their difference as
 3.0, where the two cells differ by 3.3. Every other cell of that half
 reproduces.
 
-**4. Page 101 disagrees with appendix table A.5.** The sentence gives
+**5. Page 101 disagrees with appendix table A.5.** The sentence gives
 the standard error of the two-sided message’s effect on capital
 punishment support among opponents as 0.11. Table A.5 gives 0.12 for the
 same quantity, and the pipeline reproduces the appendix.
@@ -421,28 +456,6 @@ own table 6.4 and 39 per cent here. The sentence holds on Mechanical
 Turk, where all three treatments were run, so what is wrong is not a
 number but the absence of one word, and the ground truth records it as
 unresolved.
-
-Five sentences in chapter 6 are not errata either, and they are the
-clearest thing the unseeded bootstrap costs. Each gives a persistence
-figure that the book’s own table gives differently, and in every case
-the table’s figure is inside the range the estimator takes across seeds
-while the sentence’s is not:
-
-| Sentence | In the text | In its own table | Across seeds |
-|:---|:---|:---|:---|
-| p. 114, weaker persistence group | 20% | 21% | 21% to 21% |
-| p. 117, op-eds after ten days | 46% | 48% | 47% to 48% |
-| p. 117, op-eds after thirty days | 44% | 46% | 45% to 46% |
-| p. 118, Republicans after ten days | 57% | 53% | 51% to 53% |
-| p. 118, Democrats after ten days | 43% | 48% | 47% to 50% |
-
-Chapter 6 prose against the chapter 6 tables
-
-Nothing here is correctable. The estimator has no seed, so each
-corrected figure moves with the draw, and picking one would claim a
-precision the procedure does not have. What can be said is that the
-tables reproduce and the sentences describing them do not, which is what
-the ground truth records.
 
 ## The maintained rewrite
 

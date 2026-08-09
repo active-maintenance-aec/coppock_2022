@@ -35,7 +35,37 @@ lrl_cell <- function(content_label, panel, group) {
 pro_study <- function(panel, group) lrl_cell("After pro capital punishment study", panel, group)
 anti_study <- function(panel, group) lrl_cell("After anti capital punishment study", panel, group)
 
-# Entry 2: the Hiscox expert cue persistence estimates.
+# Entry 2: chapter 6's prose against the chapter 6 tables it describes. The corrected
+# figures are the book's own printed cells, read from the transcription rather than from a
+# run, because the estimator behind them has no seed.
+published_maintext <- read_csv(here::here("ground_truth", "published_maintext_tables.csv"),
+                               show_col_types = FALSE)
+seed_dispersion <- read_csv(here::here("ground_truth", "seed_dispersion.csv"),
+                            show_col_types = FALSE)
+printed_pct <- function(float, panel_label, row) {
+  cell <- published_maintext |>
+    filter(table == float, panel == panel_label, row_label == row)
+  stopifnot(nrow(cell) == 1)
+  sprintf("%.0f", 100 * as.numeric(cell$value_paper))
+}
+c6 <- tribble(
+  ~float,      ~panel,     ~row_label,                       ~quantity,                        ~in_prose,
+  "table_6.2", "estimate", "Prediction: weaker persistence", "Prediction: weaker persistence", 0.20,
+  "table_6.3", "10 days",  "Overall",                        "Overall, 10 days",               0.46,
+  "table_6.3", "30 days",  "Overall",                        "Overall, 30 days",               0.44,
+  "table_6.3", "10 days",  "Republican",                     "Republican, 10 days",            0.57,
+  "table_6.3", "10 days",  "Democrat",                       "Democrat, 10 days",              0.43
+) |>
+  left_join(published_maintext |> select(float = table, panel, row_label, in_table = value_paper),
+            by = c("float", "panel", "row_label")) |>
+  left_join(seed_dispersion, by = c("float", "quantity")) |>
+  mutate(table_inside = in_table >= minimum - 1e-9 & in_table <= maximum + 1e-9,
+         prose_inside = in_prose >= minimum - 1e-9 & in_prose <= maximum + 1e-9)
+stopifnot(nrow(c6) == 5, !any(is.na(c6$in_table)), !any(is.na(c6$minimum)),
+          all(c6$table_inside), !any(c6$prose_inside), n_distinct(c6$n_seeds) == 1)
+c6_seeds <- unique(c6$n_seeds)
+
+# Entry 3: the Hiscox expert cue persistence estimates.
 table_6.4 <- out("table_6.4_all_persistence.csv")
 hiscox <- function(sample_label) {
   row <- table_6.4 |>
@@ -47,13 +77,13 @@ hiscox <- function(sample_label) {
 hiscox_mturk <- round(hiscox("MTurk"))
 hiscox_gfk <- round(hiscox("GfK"))
 
-# Entry 3: the convincingness ratings in the lower half of table 2.3.
+# Entry 4: the convincingness ratings in the lower half of table 2.3.
 convincing <-
   out("table_2.3_gc_replication.csv") |>
   filter(rating == "convincing", str_detect(predisposition, "Proponents"))
 stopifnot(nrow(convincing) == 1)
 
-# Entry 4: the standard error of the two-sided effect on support among opponents.
+# Entry 5: the standard error of the two-sided effect on support among opponents.
 two_sided_se <-
   out("figure_5.17_gc_pro_con_effects.csv") |>
   filter(dv == "support_recode_change", term == "Pro Con",
@@ -61,15 +91,20 @@ two_sided_se <-
 stopifnot(nrow(two_sided_se) == 1)
 ```
 
-Four errata in *Persuasion in Parallel: How Information Changes Minds about Politics*
+Five errata in *Persuasion in Parallel: How Information Changes Minds about Politics*
 (University of Chicago Press, 2022), <https://doi.org/10.7208/chicago/9780226821832.001.0001>.
-None of the four changes any conclusion the book draws. Every corrected value below is
-computed at render time from the maintained reanalysis in `active-maintenance-aec/coppock_2022`.
+None of the five changes any conclusion the book draws. Every corrected value below is
+computed at render time rather than typed: four of the five from the maintained reanalysis in
+`active-maintenance-aec/coppock_2022`, and entry 2 from the book's own printed tables, held in
+that repository's transcription of them.
 
-**Provenance.** Each correction below was checked against the printed edition. The
+**Provenance.** Entries 1, 3, 4 and 5 were each checked against the printed edition. The
 reanalysis itself reads an uncorrected proof dated 26 May 2022, so the quoted wording was
-verified against the published book rather than taken from that file, and the four
-discrepancies are properties of the analysis rather than of any one rendering.
+verified against the published book rather than taken from that file, and those four
+discrepancies are properties of the analysis rather than of any one rendering. Entry 2 is
+quoted from the proof and awaits the same check; the sentences it corrects disagree with tables
+printed a few pages away in the same copy, so the discrepancy is internal to whichever copy is
+read, but whether the printed edition still carries these five figures has not been confirmed.
 
 ---
 
@@ -118,7 +153,72 @@ unaffected, as is the reading of the table that the surrounding text draws from 
 
 ---
 
-**2.** Page 114 attributes a persistence estimate to a sample that is not in the
+**2.** Four sentences in chapter 6 report persistence figures that the chapter's own tables
+print differently.
+
+Every persistence figure in chapter 6 comes from a bootstrap the deposited code runs without
+a seed, so no rerun can settle what these sentences should say. The tables can, and each
+corrected figure below is the number the book's own table 6.2 or table 6.3 prints for the same
+quantity. The tables are also the side the estimator supports: run at `r c6_seeds` seeds, all
+five of the figures the tables print fall inside the range their quantity takes across seeds,
+and none of the five figures the prose gives does.
+
+*Page 114.*
+
+> Across all 12 studies, the average persistence ratio was about one-third, or 34 percent;
+> that figure is 50 percent in the stronger persistence group and **20** percent in the
+> weaker persistence group (see table 6.2).
+
+*Corrected:*
+
+> Across all 12 studies, the average persistence ratio was about one-third, or 34 percent;
+> that figure is 50 percent in the stronger persistence group and
+> **`r printed_pct("table_6.2", "estimate", "Prediction: weaker persistence")`** percent in
+> the weaker persistence group (see table 6.2).
+
+*Page 117.*
+
+> After ten days treatment effects decay to **46** percent (SE = 5 percent) of their original
+> magnitudes.
+
+*Corrected:*
+
+> After ten days treatment effects decay to
+> **`r printed_pct("table_6.3", "10 days", "Overall")`** percent (SE = 5 percent) of their
+> original magnitudes.
+
+> After thirty days, average persistence declines to **44** percent (SE = 6 percent).
+
+*Corrected:*
+
+> After thirty days, average persistence declines to
+> **`r printed_pct("table_6.3", "30 days", "Overall")`** percent (SE = 6 percent).
+
+*Page 118.*
+
+> For Republicans, persistence after ten days averaged **57** percent; this figure was **43**
+> percent for Democrats.
+
+*Corrected:*
+
+> For Republicans, persistence after ten days averaged
+> **`r printed_pct("table_6.3", "10 days", "Republican")`** percent; this figure was
+> **`r printed_pct("table_6.3", "10 days", "Democrat")`** percent for Democrats.
+
+The page 118 sentence is the one that moves furthest, and the two halves fail differently. Its
+57 percent is table 6.3's Republican estimate after *thirty* days, read one column across from
+the ten-day estimate the sentence describes; its 43 percent is no cell of the table at all. The
+sentence that follows, that the Republican and Democratic estimates are not statistically
+significantly different, is unaffected and holds on the corrected figures, which are closer
+together than the published pair. The standard errors on page 117 are left as printed. The
+ten-day one agrees with table 6.3; the thirty-day one says 6 percent where the table prints
+0.05, but the reanalysis returns 6 percent as well, so that figure sits inside the bootstrap's
+noise in a way none of the five estimates above does. Tables 6.2 and 6.3 are otherwise correct
+as printed and are not reprinted here.
+
+---
+
+**3.** Page 114 attributes a persistence estimate to a sample that is not in the
 persistence analysis.
 
 > Curiously, the different replications of the Hiscox (2006) "expert" treatment generated
@@ -139,7 +239,7 @@ the estimator does not have.
 
 ---
 
-**3.** In the lower half of table 2.3, the difference between the two convincingness
+**4.** In the lower half of table 2.3, the difference between the two convincingness
 ratings for proponents does not equal the difference between the two cells printed above
 it.
 
@@ -150,7 +250,7 @@ artifact is that single cell; every other cell in both halves of the table repro
 
 ---
 
-**4.** Page 101 gives a standard error that disagrees with the book's own appendix
+**5.** Page 101 gives a standard error that disagrees with the book's own appendix
 table A.5.
 
 > As shown in the left facet, the average effect of the two-sided message on support for
