@@ -72,6 +72,17 @@ print(timings |> arrange(desc(seconds)), n = Inf)
 print(str_glue("Total: {round(sum(timings$seconds) / 60, 1)} minutes across ",
                "{nrow(timings)} scripts."))
 
+# Figure timestamps ----
+# R's pdf() device stamps a wall-clock /CreationDate and /ModDate into every figure it
+# writes, and those two fields are the only reason two runs of this pipeline produce
+# differing files. Blanking them lets the determinism check cover every file the
+# pipeline writes rather than all but the figures.
+source(here::here("maintained", "helpers.R"))
+walk(
+  list.files(here::here("maintained", "output"), pattern = "\\.pdf$", full.names = TRUE),
+  blank_pdf_timestamps
+)
+
 # Ground truth ----
 # build_ground_truth.R also sources in_text_claims.R under capture.output() and runs the
 # coverage gate over what it printed, so the gate is checked here as well as by the
