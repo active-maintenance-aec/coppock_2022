@@ -1,0 +1,294 @@
+cell_id,table,pdf_page,row_label,estimate,std_error,conf_low,conf_high
+A.1_row1,A.1,165,Mechanical Turk Sample Flat tax Overall,0.85,0.11,0.64,1.06
+A.1_row2,A.1,165,Mechanical Turk Sample Flat tax Democrat,0.52,0.14,0.25,0.79
+A.1_row3,A.1,165,Mechanical Turk Sample Flat tax Republican,1.09,0.19,0.73,1.46
+A.1_row4,A.1,165,Mechanical Turk Sample Amtrak Overall,0.44,0.09,0.27,0.61
+A.1_row5,A.1,165,Mechanical Turk Sample Amtrak Democrat,0.31,0.10,0.12,0.50
+A.1_row6,A.1,165,Mechanical Turk Sample Amtrak Republican,0.81,0.17,0.47,1.14
+A.1_row7,A.1,165,Mechanical Turk Sample Climate Overall,0.43,0.10,0.23,0.62
+A.1_row8,A.1,165,Mechanical Turk Sample Climate Democrat,0.40,0.10,0.21,0.59
+A.1_row9,A.1,165,Mechanical Turk Sample Climate Republican,0.49,0.21,0.09,0.90
+A.1_row10,A.1,165,Mechanical Turk Sample Veterans Overall,16.89,1.32,14.29,19.48
+A.1_row11,A.1,165,Mechanical Turk Sample Veterans Democrat,16.96,1.65,13.72,20.20
+A.1_row12,A.1,165,Mechanical Turk Sample Veterans Republican,19.76,2.74,14.36,25.16
+A.1_row13,A.1,165,Mechanical Turk Sample Wall Street Overall,12.40,1.35,9.74,15.05
+A.1_row14,A.1,165,Mechanical Turk Sample Wall Street Democrat,11.44,1.62,8.25,14.63
+A.1_row15,A.1,165,Mechanical Turk Sample Wall Street Republican,16.20,2.78,10.73,21.66
+A.1_row16,A.1,165,Policy Professional Sample Flat tax Overall,0.42,0.14,0.13,0.70
+A.1_row17,A.1,165,Policy Professional Sample Flat tax Democrat,0.43,0.16,0.11,0.75
+A.1_row18,A.1,165,Policy Professional Sample Flat tax Republican,0.64,0.19,0.27,1.01
+A.1_row19,A.1,165,Policy Professional Sample Amtrak Overall,0.44,0.11,0.22,0.65
+A.1_row20,A.1,165,Policy Professional Sample Amtrak Democrat,0.34,0.09,0.16,0.51
+A.1_row21,A.1,165,Policy Professional Sample Amtrak Republican,0.59,0.21,0.17,1.00
+A.1_row22,A.1,165,Policy Professional Sample Veterans Overall,4.08,1.50,1.14,7.02
+A.1_row23,A.1,165,Policy Professional Sample Veterans Democrat,3.36,1.84,-0.26,6.99
+A.1_row24,A.1,165,Policy Professional Sample Veterans Republican,6.36,2.80,0.86,11.87
+A.1_row25,A.1,165,Policy Professional Sample Wall Street Overall,14.06,1.54,11.04,17.08
+A.1_row26,A.1,165,Policy Professional Sample Wall Street Democrat,12.38,1.80,8.85,15.92
+A.1_row27,A.1,165,Policy Professional Sample Wall Street Republican,12.00,2.62,6.86,17.15
+A.2_row1,A.2,167,Anti-Gun Control Study Gun control opponents,-0.01,0.04,-0.08,0.07
+A.2_row2,A.2,167,Anti-Gun Control Study Gun control proponents,-0.07,0.02,-0.12,-0.03
+A.2_row3,A.2,167,Anti-Gun Control Study Overall,-0.06,0.03,-0.11,-0.01
+A.2_row4,A.2,167,Pro-Gun Control Study Gun control opponents,0.03,0.04,-0.05,0.11
+A.2_row5,A.2,167,Pro-Gun Control Study Gun control proponents,0.00,0.02,-0.03,0.04
+A.2_row6,A.2,167,Pro-Gun Control Study Overall,0.03,0.03,-0.03,0.08
+A.4_row1,A.4,169,Amount Two Anti-M inimum Wage Videos Opponents,-0.50,0.66,-1.81,0.82
+A.4_row2,A.4,169,Amount Two Anti-M inimum Wage Videos Overall,-0.61,0.49,-1.58,0.36
+A.4_row3,A.4,169,Amount Two Anti-M inimum Wage Videos Proponents,-1.14,0.45,-2.03,-0.25
+A.4_row4,A.4,169,Amount Two Pro-M inimum Wage Videos Opponents,0.55,0.67,-0.77,1.87
+A.4_row5,A.4,169,Amount Two Pro-M inimum Wage Videos Overall,1.48,0.54,0.41,2.55
+A.4_row6,A.4,169,Amount Two Pro-M inimum Wage Videos Proponents,2.10,0.49,1.14,3.07
+A.4_row7,A.4,169,Favor Two Anti-M inimum Wage Videos Opponents,-0.72,0.33,-1.38,-0.05
+A.4_row8,A.4,169,Favor Two Anti-M inimum Wage Videos Overall,-0.43,0.29,-1.01,0.14
+A.4_row9,A.4,169,Favor Two Anti-M inimum Wage Videos Proponents,-0.56,0.26,-1.07,-0.06
+A.4_row10,A.4,169,Favor Two Pro-M inimum Wage Videos Opponents,0.16,0.34,-0.51,0.83
+A.4_row11,A.4,169,Favor Two Pro-M inimum Wage Videos Overall,0.24,0.27,-0.30,0.78
+A.4_row12,A.4,169,Favor Two Pro-M inimum Wage Videos Proponents,0.28,0.20,-0.12,0.67
+A.5_row1,A.5,173,Change in support for capital punishment Con Con Overall,-0.19,0.10,-0.40,0.01
+A.5_row2,A.5,173,Change in support for capital punishment Con Con Opponents,0.01,0.12,-0.22,0.24
+A.5_row3,A.5,173,Change in support for capital punishment Con Con Proponents,-0.39,0.17,-0.73,-0.05
+A.5_row4,A.5,173,Change in support for capital punishment Con Null Overall,-0.12,0.12,-0.35,0.12
+A.5_row5,A.5,173,Change in support for capital punishment Con Null Opponents,0.12,0.13,-0.15,0.38
+A.5_row6,A.5,173,Change in support for capital punishment Con Null Proponents,-0.45,0.20,-0.85,-0.05
+A.5_row7,A.5,173,Change in support for capital punishment Pro Con Overall,0.17,0.10,-0.03,0.36
+A.5_row8,A.5,173,Change in support for capital punishment Pro Con Opponents,0.10,0.12,-0.12,0.33
+A.5_row9,A.5,173,Change in support for capital punishment Pro Con Proponents,0.28,0.18,-0.06,0.63
+A.5_row10,A.5,173,Change in support for capital punishment Pro Null Overall,0.10,0.10,-0.10,0.30
+A.5_row11,A.5,173,Change in support for capital punishment Pro Null Opponents,0.09,0.13,-0.17,0.34
+A.5_row12,A.5,173,Change in support for capital punishment Pro Null Proponents,0.15,0.16,-0.18,0.47
+A.5_row13,A.5,173,Change in support for capital punishment Pro Pro Overall,0.26,0.11,0.03,0.48
+A.5_row14,A.5,173,Change in support for capital punishment Pro Pro Opponents,0.36,0.14,0.08,0.64
+A.5_row15,A.5,173,Change in support for capital punishment Pro Pro Proponents,0.15,0.18,-0.20,0.51
+A.5_row16,A.5,173,Change in belief in deterrent efficacy Con Con Overall,-0.24,0.16,-0.55,0.07
+A.5_row17,A.5,173,Change in belief in deterrent efficacy Con Con Opponents,-0.01,0.18,-0.36,0.34
+A.5_row18,A.5,173,Change in belief in deterrent efficacy Con Con Proponents,-0.27,0.21,-0.68,0.14
+A.5_row19,A.5,173,Change in belief in deterrent efficacy Con Null Overall,-0.20,0.15,-0.50,0.10
+A.5_row20,A.5,173,Change in belief in deterrent efficacy Con Null Opponents,-0.06,0.15,-0.36,0.24
+A.5_row21,A.5,173,Change in belief in deterrent efficacy Con Null Proponents,-0.31,0.24,-0.78,0.15
+A.5_row22,A.5,173,Change in belief in deterrent efficacy Pro Con Overall,0.32,0.14,0.04,0.59
+A.5_row23,A.5,173,Change in belief in deterrent efficacy Pro Con Opponents,0.30,0.17,-0.04,0.65
+A.5_row24,A.5,173,Change in belief in deterrent efficacy Pro Con Proponents,0.50,0.18,0.14,0.86
+A.5_row25,A.5,173,Change in belief in deterrent efficacy Pro Null Overall,0.37,0.16,0.06,0.68
+A.5_row26,A.5,173,Change in belief in deterrent efficacy Pro Null Opponents,0.59,0.17,0.26,0.92
+A.5_row27,A.5,173,Change in belief in deterrent efficacy Pro Null Proponents,0.22,0.23,-0.22,0.67
+A.5_row28,A.5,173,Change in belief in deterrent efficacy Pro Pro Overall,0.61,0.16,0.29,0.93
+A.5_row29,A.5,173,Change in belief in deterrent efficacy Pro Pro Opponents,0.81,0.20,0.41,1.20
+A.5_row30,A.5,173,Change in belief in deterrent efficacy Pro Pro Proponents,0.53,0.20,0.13,0.92
+A.6_row1,A.6,175,Original Study Both Overall,-0.08,0.21,-0.49,0.33
+A.6_row2,A.6,175,Original Study Both Democrat,-0.21,0.29,-0.78,0.36
+A.6_row3,A.6,175,Original Study Both Republican,0.09,0.33,-0.57,0.74
+A.6_row4,A.6,175,Original Study Con Overall,-0.74,0.20,-1.13,-0.35
+A.6_row5,A.6,175,Original Study Con Democrat,-0.61,0.26,-1.13,-0.09
+A.6_row6,A.6,175,Original Study Con Republican,-0.84,0.32,-1.46,-0.22
+A.6_row7,A.6,175,Original Study Pro Overall,0.65,0.19,0.27,1.03
+A.6_row8,A.6,175,Original Study Pro Democrat,0.69,0.27,0.17,1.21
+A.6_row9,A.6,175,Original Study Pro Republican,0.57,0.30,-0.03,1.16
+A.6_row10,A.6,175,Mechanical Turk Replication Both Overall,-0.14,0.18,-0.50,0.22
+A.6_row11,A.6,175,Mechanical Turk Replication Both Democrat,-0.07,0.23,-0.52,0.38
+A.6_row12,A.6,175,Mechanical Turk Replication Both Republican,-0.12,0.37,-0.85,0.60
+A.6_row13,A.6,175,Mechanical Turk Replication Con Overall,-0.58,0.17,-0.91,-0.24
+A.6_row14,A.6,175,Mechanical Turk Replication Con Democrat,-0.43,0.22,-0.85,-0.01
+A.6_row15,A.6,175,Mechanical Turk Replication Con Republican,-0.65,0.35,-1.34,0.04
+A.6_row16,A.6,175,Mechanical Turk Replication Pro Overall,0.47,0.17,0.13,0.81
+A.6_row17,A.6,175,Mechanical Turk Replication Pro Democrat,0.53,0.22,0.11,0.96
+A.6_row18,A.6,175,Mechanical Turk Replication Pro Republican,0.55,0.35,-0.13,1.23
+A.7_row1,A.7,179,Original Study Negative Democrat,-0.66,0.37,-1.40,0.08
+A.7_row2,A.7,179,Original Study Negative Overall,-0.61,0.20,-1.00,-0.22
+A.7_row3,A.7,179,Original Study Negative Republican,-0.43,0.23,-0.88,0.01
+A.7_row4,A.7,179,Original Study Positive Democrat,-0.14,0.43,-0.98,0.70
+A.7_row5,A.7,179,Original Study Positive Overall,-0.17,0.22,-0.61,0.28
+A.7_row6,A.7,179,Original Study Positive Republican,0.09,0.29,-0.49,0.67
+A.7_row7,A.7,179,Mechanical Turk Replication Negative Democrat,-0.24,0.08,-0.39,-0.08
+A.7_row8,A.7,179,Mechanical Turk Replication Negative Overall,-0.12,0.07,-0.25,0.02
+A.7_row9,A.7,179,Mechanical Turk Replication Negative Republican,0.01,0.14,-0.25,0.28
+A.7_row10,A.7,179,Mechanical Turk Replication Positive Democrat,0.05,0.07,-0.09,0.20
+A.7_row11,A.7,179,Mechanical Turk Replication Positive Overall,0.18,0.07,0.05,0.31
+A.7_row12,A.7,179,Mechanical Turk Replication Positive Republican,0.26,0.13,-0.00,0.52
+A.8_row1,A.8,180,Original Study Expert treatment Overall,0.11,0.02,0.06,0.16
+A.8_row2,A.8,180,Original Study Expert treatment Democrat,0.08,0.04,0.01,0.15
+A.8_row3,A.8,180,Original Study Expert treatment Republican,0.13,0.04,0.06,0.21
+A.8_row4,A.8,180,Original Study Positive treatment Overall,-0.06,0.03,-0.12,0.00
+A.8_row5,A.8,180,Original Study Positive treatment Democrat,-0.01,0.05,-0.10,0.09
+A.8_row6,A.8,180,Original Study Positive treatment Republican,-0.07,0.05,-0.17,0.02
+A.8_row7,A.8,180,Original Study Negative treatment Overall,-0.13,0.03,-0.19,-0.06
+A.8_row8,A.8,180,Original Study Negative treatment Democrat,-0.12,0.05,-0.22,-0.02
+A.8_row9,A.8,180,Original Study Negative treatment Republican,-0.12,0.06,-0.23,-0.01
+A.8_row10,A.8,180,Original Study Positive and negative Overall,-0.18,0.03,-0.24,-0.11
+A.8_row11,A.8,180,Original Study Positive and negative Democrat,-0.21,0.05,-0.32,-0.11
+A.8_row12,A.8,180,Original Study Positive and negative Republican,-0.13,0.05,-0.24,-0.03
+A.8_row13,A.8,180,Mechanical Turk Replication Expert treatment Overall,0.12,0.02,0.09,0.15
+A.8_row14,A.8,180,Mechanical Turk Replication Expert treatment Democrat,0.11,0.02,0.07,0.15
+A.8_row15,A.8,180,Mechanical Turk Replication Expert treatment Republican,0.13,0.03,0.07,0.20
+A.8_row16,A.8,180,Mechanical Turk Replication Positive treatment Overall,-0.04,0.02,-0.08,0.00
+A.8_row17,A.8,180,Mechanical Turk Replication Positive treatment Democrat,-0.04,0.02,-0.08,0.01
+A.8_row18,A.8,180,Mechanical Turk Replication Positive treatment Republican,-0.03,0.04,-0.12,0.05
+A.8_row19,A.8,180,Mechanical Turk Replication Negative treatment Overall,-0.14,0.02,-0.19,-0.10
+A.8_row20,A.8,180,Mechanical Turk Replication Negative treatment Democrat,-0.14,0.03,-0.19,-0.08
+A.8_row21,A.8,180,Mechanical Turk Replication Negative treatment Republican,-0.13,0.05,-0.22,-0.04
+A.8_row22,A.8,180,Mechanical Turk Replication Positive and negative Overall,-0.15,0.02,-0.19,-0.11
+A.8_row23,A.8,180,Mechanical Turk Replication Positive and negative Democrat,-0.16,0.03,-0.22,-0.11
+A.8_row24,A.8,180,Mechanical Turk Replication Positive and negative Republican,-0.10,0.05,-0.19,-0.02
+A.8_row25,A.8,180,GfK Replication Expert treatment Overall,0.09,0.02,0.05,0.13
+A.8_row26,A.8,180,GfK Replication Expert treatment Democrat,0.09,0.03,0.03,0.15
+A.8_row27,A.8,180,GfK Replication Expert treatment Republican,0.09,0.03,0.03,0.14
+A.8_row28,A.8,180,GfK Replication Positive treatment Overall,-0.02,0.03,-0.07,0.03
+A.8_row29,A.8,180,GfK Replication Positive treatment Democrat,-0.01,0.04,-0.09,0.07
+A.8_row30,A.8,180,GfK Replication Positive treatment Republican,-0.02,0.04,-0.09,0.05
+A.8_row31,A.8,180,GfK Replication Negative treatment Overall,-0.17,0.03,-0.23,-0.12
+A.8_row32,A.8,180,GfK Replication Negative treatment Democrat,-0.15,0.04,-0.23,-0.06
+A.8_row33,A.8,180,GfK Replication Negative treatment Republican,-0.19,0.04,-0.27,-0.12
+A.8_row34,A.8,180,GfK Replication Positive and negative Overall,-0.11,0.03,-0.17,-0.06
+A.8_row35,A.8,180,GfK Replication Positive and negative Democrat,-0.09,0.04,-0.17,-0.01
+A.8_row36,A.8,180,GfK Replication Positive and negative Republican,-0.13,0.04,-0.20,-0.05
+A.8_row37,A.8,180,Lucid Replication Expert treatment Overall,0.12,0.02,0.07,0.16
+A.8_row38,A.8,180,Lucid Replication Expert treatment Democrat,0.12,0.03,0.06,0.17
+A.8_row39,A.8,180,Lucid Replication Expert treatment Republican,0.12,0.04,0.05,0.19
+A.8_row40,A.8,180,Lucid Replication Positive treatment Overall,0.02,0.03,-0.04,0.08
+A.8_row41,A.8,180,Lucid Replication Positive treatment Democrat,0.04,0.04,-0.04,0.12
+A.8_row42,A.8,180,Lucid Replication Positive treatment Republican,-0.06,0.05,-0.15,0.04
+A.8_row43,A.8,180,Lucid Replication Negative treatment Overall,-0.08,0.03,-0.15,-0.02
+A.8_row44,A.8,180,Lucid Replication Negative treatment Democrat,-0.07,0.04,-0.15,0.02
+A.8_row45,A.8,180,Lucid Replication Negative treatment Republican,-0.13,0.05,-0.23,-0.04
+A.8_row46,A.8,180,Lucid Replication Positive and negative Overall,-0.04,0.03,-0.11,0.02
+A.8_row47,A.8,180,Lucid Replication Positive and negative Democrat,-0.01,0.04,-0.09,0.08
+A.8_row48,A.8,180,Lucid Replication Positive and negative Republican,-0.12,0.05,-0.23,-0.02
+A.9_row1,A.9,182,Original Study Immigration Democrat,-0.01,0.08,-0.17,0.16
+A.9_row2,A.9,182,Original Study Immigration Overall,0.07,0.06,-0.04,0.18
+A.9_row3,A.9,182,Original Study Immigration Republican,0.10,0.08,-0.06,0.25
+A.9_row4,A.9,182,Original Study Health Care Democrat,0.12,0.07,-0.02,0.26
+A.9_row5,A.9,182,Original Study Health Care Overall,0.07,0.05,-0.02,0.17
+A.9_row6,A.9,182,Original Study Health Care Republican,0.06,0.07,-0.09,0.21
+A.9_row7,A.9,182,Original Study Trade with China Democrat,0.12,0.07,-0.02,0.26
+A.9_row8,A.9,182,Original Study Trade with China Overall,0.12,0.05,0.02,0.22
+A.9_row9,A.9,182,Original Study Trade with China Republican,0.13,0.08,-0.03,0.30
+A.9_row10,A.9,182,Original Study Tax Cut Democrat,0.15,0.08,-0.01,0.30
+A.9_row11,A.9,182,Original Study Tax Cut Overall,0.18,0.05,0.08,0.28
+A.9_row12,A.9,182,Original Study Tax Cut Republican,0.23,0.06,0.11,0.35
+A.9_row13,A.9,182,Original Study Gold Standard Democrat,0.21,0.07,0.08,0.34
+A.9_row14,A.9,182,Original Study Gold Standard Overall,0.19,0.05,0.08,0.29
+A.9_row15,A.9,182,Original Study Gold Standard Republican,0.21,0.08,0.05,0.38
+A.9_row16,A.9,182,Mechanical Turk Replication Immigration Democrat,0.18,0.02,0.14,0.23
+A.9_row17,A.9,182,Mechanical Turk Replication Immigration Overall,0.16,0.02,0.13,0.20
+A.9_row18,A.9,182,Mechanical Turk Replication Immigration Republican,0.13,0.03,0.06,0.20
+A.9_row19,A.9,182,Mechanical Turk Replication Health Care Democrat,0.15,0.02,0.11,0.20
+A.9_row20,A.9,182,Mechanical Turk Replication Health Care Overall,0.17,0.02,0.14,0.21
+A.9_row21,A.9,182,Mechanical Turk Replication Health Care Republican,0.24,0.04,0.17,0.31
+A.9_row22,A.9,182,Mechanical Turk Replication Trade with China Democrat,0.22,0.02,0.18,0.27
+A.9_row23,A.9,182,Mechanical Turk Replication Trade with China Overall,0.21,0.02,0.17,0.24
+A.9_row24,A.9,182,Mechanical Turk Replication Trade with China Republican,0.20,0.04,0.13,0.27
+A.9_row25,A.9,182,Mechanical Turk Replication Tax Cut Democrat,0.21,0.02,0.17,0.26
+A.9_row26,A.9,182,Mechanical Turk Replication Tax Cut Overall,0.22,0.02,0.18,0.25
+A.9_row27,A.9,182,Mechanical Turk Replication Tax Cut Republican,0.22,0.04,0.15,0.29
+A.9_row28,A.9,182,Mechanical Turk Replication Gold Standard Democrat,0.27,0.02,0.22,0.31
+A.9_row29,A.9,182,Mechanical Turk Replication Gold Standard Overall,0.25,0.02,0.22,0.29
+A.9_row30,A.9,182,Mechanical Turk Replication Gold Standard Republican,0.27,0.04,0.20,0.34
+A.10_row1,A.10,184,Original Study Crime Democrat,0.10,0.09,-0.08,0.28
+A.10_row2,A.10,184,Original Study Crime Overall,0.08,0.07,-0.05,0.21
+A.10_row3,A.10,184,Original Study Crime Republican,0.07,0.10,-0.12,0.27
+A.10_row4,A.10,184,Original Study Health Democrat,0.05,0.09,-0.14,0.23
+A.10_row5,A.10,184,Original Study Health Overall,-0.04,0.08,-0.20,0.11
+A.10_row6,A.10,184,Original Study Health Republican,-0.12,0.13,-0.37,0.12
+A.10_row7,A.10,184,Original Study Stimulus Democrat,-0.41,0.11,-0.62,-0.20
+A.10_row8,A.10,184,Original Study Stimulus Overall,-0.32,0.09,-0.49,-0.15
+A.10_row9,A.10,184,Original Study Stimulus Republican,-0.15,0.14,-0.42,0.12
+A.10_row10,A.10,184,Original Study Terror Democrat,0.27,0.11,0.05,0.48
+A.10_row11,A.10,184,Original Study Terror Overall,0.36,0.08,0.21,0.51
+A.10_row12,A.10,184,Original Study Terror Republican,0.49,0.10,0.29,0.70
+A.10_row13,A.10,184,Mechanical Turk Replication Crime Democrat,-0.02,0.09,-0.19,0.15
+A.10_row14,A.10,184,Mechanical Turk Replication Crime Overall,-0.02,0.07,-0.15,0.12
+A.10_row15,A.10,184,Mechanical Turk Replication Crime Republican,0.16,0.12,-0.08,0.40
+A.10_row16,A.10,184,Mechanical Turk Replication Health Democrat,-0.14,0.07,-0.29,-0.00
+A.10_row17,A.10,184,Mechanical Turk Replication Health Overall,-0.08,0.08,-0.23,0.07
+A.10_row18,A.10,184,Mechanical Turk Replication Health Republican,-0.09,0.16,-0.41,0.22
+A.10_row19,A.10,184,Mechanical Turk Replication Stimulus Democrat,-0.32,0.08,-0.48,-0.16
+A.10_row20,A.10,184,Mechanical Turk Replication Stimulus Overall,-0.41,0.07,-0.56,-0.27
+A.10_row21,A.10,184,Mechanical Turk Replication Stimulus Republican,-0.39,0.15,-0.69,-0.10
+A.10_row22,A.10,184,Mechanical Turk Replication Terror Democrat,0.24,0.09,0.06,0.42
+A.10_row23,A.10,184,Mechanical Turk Replication Terror Overall,0.15,0.08,0.00,0.30
+A.10_row24,A.10,184,Mechanical Turk Replication Terror Republican,0.09,0.15,-0.20,0.38
+A.10_row25,A.10,184,GfK Replication Crime Democrat,0.24,0.10,0.05,0.43
+A.10_row26,A.10,184,GfK Replication Crime Overall,0.11,0.07,-0.02,0.25
+A.10_row27,A.10,184,GfK Replication Crime Republican,-0.08,0.10,-0.28,0.12
+A.10_row28,A.10,184,GfK Replication Health Democrat,-0.03,0.10,-0.23,0.16
+A.10_row29,A.10,184,GfK Replication Health Overall,-0.04,0.09,-0.21,0.12
+A.10_row30,A.10,184,GfK Replication Health Republican,-0.06,0.13,-0.31,0.20
+A.10_row31,A.10,184,GfK Replication Stimulus Democrat,-0.48,0.10,-0.68,-0.28
+A.10_row32,A.10,184,GfK Replication Stimulus Overall,-0.45,0.08,-0.61,-0.30
+A.10_row33,A.10,184,GfK Replication Stimulus Republican,-0.46,0.12,-0.69,-0.23
+A.10_row34,A.10,184,GfK Replication Terror Democrat,0.38,0.11,0.16,0.59
+A.10_row35,A.10,184,GfK Replication Terror Overall,0.26,0.08,0.11,0.42
+A.10_row36,A.10,184,GfK Replication Terror Republican,0.17,0.12,-0.06,0.40
+A.12_row1,A.12,186,Ballot Overall,0.54,0.10,0.34,0.73
+A.12_row2,A.12,186,Ballot Democrat,0.47,0.14,0.19,0.75
+A.12_row3,A.12,186,Ballot Republican,0.55,0.14,0.28,0.81
+A.12_row4,A.12,186,Ballot Women,0.52,0.14,0.24,0.80
+A.12_row5,A.12,186,Ballot Men,0.55,0.14,0.28,0.82
+A.12_row6,A.12,186,Ballot High School,0.63,0.15,0.34,0.93
+A.12_row7,A.12,186,Ballot Some College,0.73,0.18,0.37,1.10
+A.12_row8,A.12,186,Ballot College,0.16,0.17,-0.17,0.50
+A.12_row9,A.12,186,Ballot White,0.58,0.10,0.38,0.79
+A.12_row10,A.12,186,Ballot Black,0.73,0.40,-0.08,1.54
+A.12_row11,A.12,186,Ballot Hispanic,0.14,0.26,-0.38,0.66
+A.12_row12,A.12,186,Courts Overall,0.57,0.10,0.38,0.77
+A.12_row13,A.12,186,Courts Democrat,0.74,0.12,0.50,0.98
+A.12_row14,A.12,186,Courts Republican,0.32,0.16,-0.01,0.64
+A.12_row15,A.12,186,Courts Women,0.61,0.14,0.33,0.90
+A.12_row16,A.12,186,Courts Men,0.53,0.13,0.27,0.79
+A.12_row17,A.12,186,Courts High School,0.65,0.16,0.34,0.96
+A.12_row18,A.12,186,Courts Some College,0.76,0.18,0.40,1.11
+A.12_row19,A.12,186,Courts College,0.24,0.16,-0.07,0.55
+A.12_row20,A.12,186,Courts White,0.53,0.10,0.32,0.73
+A.12_row21,A.12,186,Courts Black,1.34,0.38,0.57,2.12
+A.12_row22,A.12,186,Courts Hispanic,0.11,0.29,-0.48,0.69
+A.12_row23,A.12,186,Legislature Overall,0.58,0.09,0.40,0.76
+A.12_row24,A.12,186,Legislature Democrat,0.70,0.12,0.46,0.94
+A.12_row25,A.12,186,Legislature Republican,0.46,0.14,0.19,0.73
+A.12_row26,A.12,186,Legislature Women,0.62,0.13,0.37,0.88
+A.12_row27,A.12,186,Legislature Men,0.54,0.13,0.28,0.80
+A.12_row28,A.12,186,Legislature High School,0.64,0.14,0.37,0.92
+A.12_row29,A.12,186,Legislature Some College,0.76,0.18,0.40,1.11
+A.12_row30,A.12,186,Legislature College,0.29,0.15,-0.01,0.58
+A.12_row31,A.12,186,Legislature White,0.55,0.10,0.35,0.75
+A.12_row32,A.12,186,Legislature Black,0.73,0.33,0.07,1.40
+A.12_row33,A.12,186,Legislature Hispanic,0.60,0.21,0.17,1.02
+A.14_row1,A.14,187,Overall,0.81,0.08,0.65,0.97
+A.14_row2,A.14,187,Democrat,0.80,0.11,0.59,1.02
+A.14_row3,A.14,187,Republican,0.86,0.12,0.62,1.10
+A.14_row4,A.14,187,Women,0.86,0.11,0.64,1.09
+A.14_row5,A.14,187,Men,0.75,0.11,0.53,0.97
+A.14_row6,A.14,187,High School,0.79,0.14,0.52,1.06
+A.14_row7,A.14,187,Some College,1.06,0.13,0.80,1.33
+A.14_row8,A.14,187,College,0.57,0.13,0.31,0.83
+A.14_row9,A.14,187,White,0.85,0.09,0.68,1.03
+A.14_row10,A.14,187,Black,0.60,0.26,0.08,1.12
+A.14_row11,A.14,187,Hispanic,0.93,0.26,0.42,1.45
+A.16_row1,A.16,188,Overall,-0.20,0.07,-0.33,-0.07
+A.16_row2,A.16,188,Democrat,-0.18,0.09,-0.35,-0.01
+A.16_row3,A.16,188,Republican,-0.24,0.10,-0.45,-0.04
+A.16_row4,A.16,188,Women,-0.24,0.09,-0.42,-0.07
+A.16_row5,A.16,188,Men,-0.17,0.10,-0.36,0.02
+A.16_row6,A.16,188,High School,-0.29,0.11,-0.51,-0.08
+A.16_row7,A.16,188,Some College,-0.12,0.13,-0.37,0.13
+A.16_row8,A.16,188,College,-0.16,0.10,-0.36,0.04
+A.16_row9,A.16,188,White,-0.25,0.07,-0.40,-0.10
+A.16_row10,A.16,188,Black,-0.13,0.18,-0.49,0.22
+A.16_row11,A.16,188,Hispanic,-0.18,0.20,-0.58,0.21
+A.18_row1,A.18,189,Overall,0.06,0.08,-0.11,0.23
+A.18_row2,A.18,189,Democrat,0.07,0.12,-0.18,0.31
+A.18_row3,A.18,189,Republican,0.04,0.11,-0.17,0.25
+A.18_row4,A.18,189,Women,0.08,0.12,-0.15,0.30
+A.18_row5,A.18,189,Men,0.07,0.12,-0.17,0.31
+A.18_row6,A.18,189,High School,0.11,0.18,-0.25,0.47
+A.18_row7,A.18,189,Some College,-0.07,0.12,-0.30,0.15
+A.18_row8,A.18,189,College,0.16,0.13,-0.10,0.43
+A.19_row1,A.19,189,Overall,0.26,0.03,0.19,0.32
+A.19_row2,A.19,189,Democrat,0.25,0.05,0.15,0.34
+A.19_row3,A.19,189,Republican,0.30,0.05,0.20,0.40
+A.19_row4,A.19,189,Women,0.24,0.05,0.14,0.34
+A.19_row5,A.19,189,Men,0.28,0.05,0.18,0.37
+A.19_row6,A.19,189,High School,0.23,0.06,0.12,0.34
+A.19_row7,A.19,189,Some College,0.26,0.06,0.14,0.38
+A.19_row8,A.19,189,College,0.29,0.06,0.17,0.41
+A.19_row9,A.19,189,White,0.26,0.04,0.19,0.34
+A.19_row10,A.19,189,Black,0.11,0.12,-0.12,0.34
+A.19_row11,A.19,189,Hispanic,0.37,0.10,0.17,0.58

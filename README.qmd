@@ -1,0 +1,616 @@
+---
+title: "Reproduction report: *Persuasion in Parallel* (Coppock 2022)"
+format:
+  gfm:
+    output-file: README.md
+    toc: true
+  pdf:
+    output-file: coppock_2022_report.pdf
+    toc: true
+    number-sections: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(here)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+here::i_am("README.qmd")
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+latex_out <- knitr::is_latex_output()
+
+# value_paper must be read as a character column, or "0.20" becomes 0.2 and the report
+# prints a precision the book does not use.
+ground_truth <- read_csv(
+  here::here("ground_truth", "coppock_2022_ground_truth.csv"),
+  col_types = cols(
+    value_paper = col_character(),
+    value_rewrite = col_character(),
+    value_script = col_character(),
+    match = col_integer(),
+    match_rewrite = col_integer(),
+    holds = col_integer(),
+    .default = col_character()
+  )
+)
+
+published_claims <- read_csv(
+  here::here("ground_truth", "published_claims.csv"),
+  col_types = cols(value_paper = col_character(), digits = col_integer(),
+                   needs_block = col_logical(), .default = col_character())
+)
+
+float_coverage <- read_csv(here::here("ground_truth", "float_coverage.csv"),
+                           show_col_types = FALSE)
+archive_status <- read_csv(here::here("ground_truth", "archive_run_status.csv"),
+                           show_col_types = FALSE)
+appendix_values <- read_csv(here::here("ground_truth", "published_appendix_values.csv"),
+                            col_types = cols(.default = col_character()))
+published_maintext <- read_csv(here::here("ground_truth", "published_maintext_tables.csv"),
+                               col_types = cols(value_paper = col_character(),
+                                                .default = col_character()))
+seed_dispersion <- read_csv(here::here("ground_truth", "seed_dispersion.csv"),
+                            show_col_types = FALSE)
+manifest <- read_csv(here::here("original_manifest.csv"), show_col_types = FALSE)
+members <- read_csv(here::here("original_members_manifest.csv"), show_col_types = FALSE)
+timings <- read_csv(here::here("run_timings.csv"), show_col_types = FALSE)
+
+show_table <- function(df, caption = NULL) {
+  if (latex_out) {
+    kable(df, booktabs = TRUE, linesep = "", caption = caption) |>
+      kable_styling(latex_options = c("striped", "scale_down"))
+  } else {
+    kable(df, caption = caption)
+  }
+}
+
+figure_path <- function(stem) {
+  file.path("maintained", "output", paste0(stem, if (latex_out) ".pdf" else ".png"))
+}
+```
+
+*Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
+
+## What this repository is
+
+This repository re-runs the empirical content of *Persuasion in Parallel: How Information
+Changes Minds about Politics* (Alexander Coppock, University of Chicago Press, 2022)
+against a current R environment, rewrites the analysis in modern idiom, and checks every
+number the maintained code produces against the number the book prints.
+
+| Item | Link |
+|---|---|
+| Book | <https://doi.org/10.7208/chicago/9780226821832.001.0001> |
+| Publisher page | <https://press.uchicago.edu/ucp/books/book/chicago/P/bo181475008.html> |
+| Replication archive | <https://doi.org/10.7910/DVN/I9GSKI> |
+
+```
+coppock_2022/
+  download_original.R          fetches and verifies the deposited archive
+  run_all.R                    the entry point: sources everything, in order
+  original/                    the deposited zip (not redistributed; gitignored)
+  original_extracted/          the unpacked deposit (rebuilt on every run; gitignored)
+  original_manifest.csv        the deposited file, its size and its published checksums
+  original_members_manifest.csv  every member of the zip, by size and checksum
+  maintained/                  the rewrite; one script per figure or table
+  maintained/output/           everything the rewrite writes
+  maintained/in_text_claims.R  the second instrument
+  ground_truth/                the extraction, the build, and the comparison
+  report/                      the rendered PDF of this document
+```
+
+To reproduce: clone the repository, open `coppock_2022.Rproj`, and run
+
+```r
+source("run_all.R")
+```
+
+`run_all.R` fetches the archive from Dataverse, verifies it, runs all
+`r nrow(timings)` analysis scripts, builds the ground truth, prints the in-text claims,
+and re-verifies the deposit. It took
+`r sprintf("%.1f", sum(timings$seconds) / 60)` minutes on the machine that produced the
+committed output; that figure describes one machine on one day and nothing else.
+
+## The book
+
+*Persuasion in Parallel* argues that persuasive information moves the opinions of
+opposing groups in the same direction by similar amounts, and that the backlash effects
+predicted by motivated reasoning theory are rare. The evidence is 23 survey experiments,
+some original, some replications and reanalyses of published studies, reported across
+seven chapters and an appendix. Twelve of the experiments carry a panel component that
+supports the persistence analysis of chapter 6.
+
+```{r}
+#| label: float-inventory
+#| include: false
+inventory <- float_coverage |>
+  count(kind = case_when(
+    str_starts(float, "figure_") ~ "figures",
+    str_starts(float, "table_a") ~ "appendix tables",
+    TRUE ~ "main text tables"
+  ))
+kind_n <- function(label) inventory$n[inventory$kind == label]
+```
+
+The book contains `r nrow(float_coverage)` numbered floats: `r kind_n("figures")` figures,
+`r kind_n("main text tables")` tables in the main text, and
+`r kind_n("appendix tables")` in the appendix.
+
+### A limitation of this report, stated first
+
+**The only copy of the book available to this repository is the uncorrected proof.** Every
+page carries the running foot *Uncorrected Proofs for Review Only*, dated 26 May 2022, and
+two running heads still read "Appendix 000" and "Notes to Pages 000-000" where the final
+page numbers had not been resolved. Published values in the ground truth are therefore
+transcribed from that proof rather than from the printed book.
+
+The four discrepancies the pipeline found are properties of the analysis rather than of
+the typesetting, so they do not depend on which copy is read, and `errata.qmd` states them
+with their corrected values computed at render time. Each of the four was checked against
+the printed edition, so none of them is an artifact of the proof or of the way a PDF's text
+layer is read.
+
+No errata page for the book exists on the publisher's site or on the author's own page.
+
+## The deposited archive
+
+The deposit is a single 6 MB zip at <https://doi.org/10.7910/DVN/I9GSKI>, holding
+`r sum(str_detect(members$member, "^replication_archive/code/.*\\.R$"))` R scripts,
+`r sum(str_detect(members$member, "^replication_archive/data/.*\\.rds$"))` pre-cleaned
+`.rds` data files and a README. Because the deposit is a container, `original/` holds one
+file and an emptiness check on it would be vacuous, so the repository carries two
+manifests: `original_manifest.csv` for the zip and `original_members_manifest.csv` for its
+`r nrow(members)` members. `download_original.R` verifies the zip against its published
+MD5 and its byte size, refuses to continue if `original/` holds anything the manifest does
+not list, audits `original_extracted/` before rebuilding it, rebuilds it from the zip, and
+audits it again. `run_all.R` sources that file first and again last, so a script that
+wrote into the deposit mid-run is caught at the end of the same run rather than months
+later.
+
+The deposited checksum is
+`r manifest$md5_served[1]`, and it is the same value Dataverse publishes. Post-run
+checksums are not quoted anywhere in this report: a PDF records the time it was written,
+so a hash taken after a run can never recur.
+
+### Does the deposited code run?
+
+```{r}
+#| label: archive-summary
+archive_summary <-
+  archive_status |>
+  count(pass, status) |>
+  pivot_wider(names_from = status, values_from = n, values_fill = 0)
+show_table(archive_summary, "Deposited scripts by outcome, as shipped and stripped to data plus code")
+```
+
+```{r}
+#| label: archive-cause
+#| include: false
+sunflower_failures <- sum(str_detect(archive_status$message, "unused arguments") &
+                            archive_status$pass == "as_shipped", na.rm = TRUE)
+n_scripts <- nrow(archive_status) / 2
+```
+
+No. `r n_scripts - sum(archive_status$status == "ok" & archive_status$pass == "as_shipped")`
+of the `r n_scripts` deposited analysis scripts fail, and
+`r sunflower_failures` of them fail on one line for one reason: `vayr::sunflower()`
+replaced its `width` and `height` arguments with `density` and `aspect_ratio`, so every
+call in the deposit raises `unused arguments`. Since almost every figure in the book is a
+sunflower plot, that single API change takes down most of the archive. The remaining
+failure is `figure_3.1.R`, which dies inside `ggbrace::geom_brace()`.
+
+The stripped-copy test is vacuous for this deposit and is recorded as such rather than
+reported as a pass: the archive ships 21 pre-cleaned `.rds` files and no derived object
+produced by its own code, so the stripped and as-shipped copies hold the same inputs and
+return the same per-script outcome.
+
+The deposit writes nothing. There is no `ggsave()`, no `pdf()`, no `write_csv()` and no
+`png()` anywhere in its 30 scripts; the figures are drawn to the active device and the
+tables are printed to the console with `print.xtable()`. Running it therefore overwrites
+zero deposited files, and that measured zero has an explanation rather than being left to
+speak for itself: most scripts fail before reaching anything, and the ones that succeed
+have nothing to write. One stray file appears, an `Rplots.pdf` that `Rscript` leaves
+behind.
+
+### Why `value_script` is empty
+
+The ground truth's archive column is empty on every row, and that is a finding rather than
+an omission. Twenty-three scripts never reach a value. Of the five that run, three print
+nothing at all, and the two that do print (the chapter 6 table scripts) call
+`rsample::bootstraps()` with no seed, so what they print changes from run to run and could
+not honestly be committed as a property of the deposit.
+
+## Chapter 6 is unseeded
+
+Neither of the deposit's two chapter 6 scripts sets a seed. Every number in tables 6.2,
+6.3 and 6.4, in figures 6.1 and 6.2, and in the persistence sentences of chapter 6 is one
+draw of an unseeded bootstrap. The bootstrap reaches the point estimates as well as the
+standard errors, which is easy to miss: `metafor::rma()` weights each study by the inverse
+of its squared standard error, and those standard errors are the bootstrapped ones.
+
+`ground_truth/measure_seed_dispersion.R` re-runs both scripts across
+`r max(seed_dispersion$n_seeds)` seeds and records how far each published quantity could
+have landed. Rows that depend on it carry `match_rewrite = NA` with the verdict in
+`holds`, compared against the range rather than against a single number.
+
+```{r}
+#| label: dispersion
+show_table(
+  seed_dispersion |>
+    transmute(Float = float, Quantity = quantity,
+              Minimum = sprintf("%.3f", minimum),
+              Median = sprintf("%.3f", median),
+              Maximum = sprintf("%.3f", maximum)),
+  "Range of each chapter 6 quantity across seeds"
+)
+```
+
+## The extraction and the two instruments
+
+`ground_truth/published_claims.csv` is the extraction: every claim the comparison covers,
+with the location in the book that states it, its type, the string the page prints, and
+the number of decimals it prints at. It carries `r nrow(published_claims)` rows, of which
+`r sum(published_claims$needs_block)` are prose claims that must have a block in
+`maintained/in_text_claims.R` and `r sum(!published_claims$needs_block)` are float-level
+rows reading cells-reproduced-of-cells.
+
+Two instruments reach the same claimed numbers by separate paths from the same pipeline
+outputs:
+
+- `ground_truth/build_ground_truth.R` joins each published value to what
+  `maintained/output/` contains and writes `coppock_2022_ground_truth.csv`.
+- `maintained/in_text_claims.R` carries the book's sentence verbatim beside code that
+  recomputes the number, and prints `CLAIM <id> = <value> || <label>`.
+
+Where a second derivation exists the claims file takes it: the chapter 1 treatment effects
+are recovered there by differencing the two condition means the figure plots, and the
+chapter 5 correlations by recomputing them from the plotted pairs, rather than by reading
+back the same file the build reads.
+
+The gate in `build_ground_truth.R` runs the claims file non-interactively under
+`capture.output()`, in its own environment, and asserts that the number of printed claim
+ids equals the number of required blocks, that every required id is printed, that no
+printed id is undeclared, and that the value each block printed equals the value the build
+rendered. A separate check re-renders each published string at the digit count the
+extraction records and requires it to equal the string stored, so a shared `digits` column
+cannot make the two instruments agree about a precision that is wrong.
+
+The gate was tested by breaking it rather than by reading it. Deleting a block fails the
+count; changing a value in a block fails the cross-instrument comparison; changing a
+`digits` entry fails the precision check.
+
+### What the extraction does not cover
+
+The extraction covers the numeric claims of chapters 1 through 6 and every float in the
+book. It deliberately excludes three classes, each for a reason that was checked rather
+than assumed:
+
+- The appendix reproduces the full text of five newspaper op-eds and the wording of every
+  treatment and outcome used in the 23 experiments. Those pages are dense with numbers
+  ("$9 billion in debt", "14.5% flat tax", "8 of the 10 pairs"), and every one is
+  transcribed from a source outside the book. They cannot drift and nothing in the
+  pipeline could check them.
+- Chapters 3, 4 and 7 contain worked illustrations: a hypothetical 3-point and 5-point
+  effect, a power calculation returning 3,000 subjects, a simulated subject with ten
+  considerations, and a run of Bayes' rule arithmetic. These are definitional, and each is
+  verified where it is used rather than against a pipeline that never computes them.
+- Tables 2.1 and the upper half of table 2.3 reproduce Lord, Ross, and Lepper's own
+  tables 3 and 1 from 1979. They are transcriptions, checked once against that article.
+
+## Ground truth
+
+```{r}
+#| label: gt-summary
+verdicts <-
+  ground_truth |>
+  transmute(
+    verdict = case_when(
+      !is.na(match_rewrite) & match_rewrite == 1 ~ "Matches at the book's precision",
+      !is.na(match_rewrite) & match_rewrite == 0 ~ "Does not match",
+      !is.na(holds) & holds == 1 ~ "Holds (no printed value to match)",
+      !is.na(holds) & holds == 0 ~ "Does not hold",
+      TRUE ~ "No verdict (approximate, or nothing computed)"
+    )
+  ) |>
+  count(verdict, name = "Rows") |>
+  rename(Verdict = verdict)
+show_table(verdicts, "Ground truth verdicts")
+```
+
+```{r}
+#| label: gt-adverse
+adverse <-
+  ground_truth |>
+  filter((!is.na(match_rewrite) & match_rewrite == 0) | (!is.na(holds) & holds == 0)) |>
+  transmute(Claim = claim, Book = value_paper, Locus = defect_locus)
+show_table(adverse, "Every row that does not agree")
+```
+
+### Float coverage
+
+```{r}
+#| label: coverage
+covered_values <- sum(float_coverage$covered[float_coverage$published > 0])
+published_values <- sum(float_coverage$published)
+zero_coverage <- float_coverage |> filter(published > 0, covered == 0)
+```
+
+Across the book's `r nrow(float_coverage)` floats the pipeline reproduces
+`r format(covered_values, big.mark = ",")` of
+`r format(published_values, big.mark = ",")` published values. The fraction is stated for every float that
+prints one, because an aggregate hides a float covered by a single row:
+
+```{r}
+#| label: coverage-per-float
+show_table(
+  float_coverage |>
+    filter(published > 0) |>
+    transmute(Float = float, `Published values` = published, Reproduced = covered,
+              Fraction = sprintf("%.0f%%", 100 * covered / published)),
+  "Published values reproduced, by float"
+)
+```
+
+`r nrow(zero_coverage)` published floats have zero coverage, and each has a reason that was
+tested:
+
+```{r}
+#| label: coverage-zero
+show_table(
+  zero_coverage |>
+    transmute(
+      Float = float,
+      `Published values` = published,
+      Reason = c(
+        "table_4.2" = "Sample sizes for the 23 experiments. The deposit computes none of them and neither does the rewrite.",
+        "table_6.1" = "Panel sample sizes for the 12 persistence experiments, on the same footing as table 4.2.",
+        "table_a.1" = "The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates.",
+        "table_a.8" = "The deposit contains no code for the Hiscox treatment effect estimates."
+      )[float]
+    ),
+  "Published floats with no coverage"
+)
+```
+
+The reason given for tables A.1 and A.8 is a measurement rather than an impression. The
+deposit contains thirteen `print.xtable()` calls; eleven build appendix tables and two
+build the chapter 6 tables, and none of the thirteen builds A.1 or A.8. A reconstruction
+of A.8 from the deposited data reproduces its valence contrasts and not all of its expert
+contrasts, which is why the specification is treated as unrecoverable rather than guessed
+at.
+
+```{r}
+#| label: figure-coverage
+#| include: false
+figure_rows <- float_coverage |> filter(str_starts(float, "figure_"))
+plotted_estimates <- sum(figure_rows$covered)
+drawn_figures <- sum(figure_rows$covered > 0)
+```
+
+The `r kind_n("figures")` figures print no estimates on their faces, so they contribute
+nothing to the counts above. Every one is a scatter of individual responses with condition
+means and intervals drawn over it, so what a figure asserts is the set of estimates it
+plots, and each figure script writes those estimates to a CSV:
+`r format(plotted_estimates, big.mark = ",")` estimates across the `r drawn_figures`
+figures the rewrite draws. Seven figures have no such file: figure 1.1 and figures 4.1, 4.2
+and 7.1 are schematics and simulations with no data behind them, figure 2.1 reproduces two
+graphics used as experimental stimuli, figure 3.4 is a diagram, and figure 5.14 reproduces
+the two income-inequality plots that are themselves the Trump and White treatment.
+
+### The appendix
+
+`ground_truth/published_appendix_values.csv` holds every cell of the book's 14 appendix
+estimate tables, `r nrow(appendix_values) * 4` published numbers in
+`r nrow(appendix_values)` rows, parsed positionally from the page. Positional parsing is
+not a preference here: read in reading order, `pdftotext` loses the numeric columns of
+table A.2 entirely and returns a table that looks complete and is not. Three artifacts of
+this PDF each drop rows if unhandled: a negative number is typeset as a minus sign
+followed by a soft hyphen and sometimes a space, the minus sign is U+2212 rather than a
+hyphen, and the small-capital T of "Table" is dropped from table A.10's caption.
+
+## Errata
+
+```{r}
+#| label: errata-values
+#| include: false
+convincing <- read_csv(here::here("maintained", "output", "table_2.3_gc_replication.csv"),
+                       show_col_types = FALSE) |>
+  filter(rating == "convincing", str_detect(predisposition, "Proponents"))
+```
+
+Four sentences, labels or cells in the book do not survive the reanalysis. They are set out
+in `errata.qmd`, rendered to `coppock_2022_errata.pdf` at the repository root, with every
+corrected value computed at render time from `maintained/output/`. Each was checked against
+the printed edition. Summarized here:
+
+**1. Table 2.2's two study rows carry each other's labels, in both panels.** The cells
+printed under "After pro-capital punishment study" are the means among subjects who read
+the anti-capital punishment study, and the reverse. Three artifacts identify which row is
+which and all three agree: the content variable in the deposited data, figure 2.2 drawn
+from that same variable, and the sentence on page 26 reporting that self-assessed change is
+higher in the pro condition than in the null and higher in the null than in the con. The
+values are correct and are printed in the order the analysis produces them; the "Combined"
+rows are sums and are unaffected, which is why the reading the surrounding text draws from
+the table is unchanged.
+
+**2. Page 114 attributes a persistence estimate to a sample that is not in the analysis.**
+The sentence reads "the different replications of the Hiscox (2006) 'expert' treatment
+generated very different persistence estimates: 49 percent on MTurk but 0 percent on
+Lucid." No Lucid sample appears anywhere in the persistence analysis. Table 6.1 lists
+twelve panel experiments and the Hiscox rows of table 6.4 are Mechanical Turk and GfK. The
+book's own table 6.4 gives the zero to GfK, and the pipeline reproduces it there.
+
+**3. Table 2.3 contradicts itself.** In the lower half, the mean rating of how convincing
+the two studies were is `r sprintf("%.1f", convincing$pro_study)` for the pro-capital
+punishment study and `r sprintf("%.1f", convincing$anti_study)` for the anti-capital
+punishment study among proponents, and the table prints both. It prints their difference
+as 3.0, where the two cells differ by
+`r sprintf("%.1f", convincing$difference)`. Every other cell of that half reproduces.
+
+**4. Page 101 disagrees with appendix table A.5.** The sentence gives the standard error of
+the two-sided message's effect on capital punishment support among opponents as 0.11.
+Table A.5 gives 0.12 for the same quantity, and the pipeline reproduces the appendix.
+
+Three further discrepancies were examined and are not errata. First, the Democratic slope
+in the gay marriage series is 2.02 points per year, which prints 2.0 where page 11 says 2.1; the
+other three slopes that sentence names reproduce exactly, and a single slope off by a
+tenth in a sentence whose point is that the slopes are similar does not mislead a reader
+who quotes it. Second, the standard error of the flat tax effect among Republican policy
+professionals is 0.24453 under HC2, which prints 0.24 against a published 0.25; under HC3
+it is 0.24589 and prints 0.25, and HC3 reproduces all eight of that chapter's standard
+errors where HC2 reproduces seven. The deposit contains no code for any of the eight, so
+the variance estimator behind the published figure cannot be established, and the rewrite
+keeps the house default rather than the one that happens to match. Third, page 114 says the
+pro-minimum wage videos, the flat tax op-ed and the pro-capital punishment studies "all had
+persistence ratios above 60 percent". Those three treatments span four rows of table 6.4,
+because the flat tax op-ed was fielded on two samples and the sentence names neither. Three
+of the four clear 60 per cent; the flat tax op-ed among policy professionals is 39 per cent
+in the book's own table 6.4 and 39 per cent here. The sentence holds on Mechanical Turk,
+where all three treatments were run, so what is wrong is not a number but the absence of
+one word, and the ground truth records it as unresolved.
+
+Five sentences in chapter 6 are not errata either, and they are the clearest thing the
+unseeded bootstrap costs. Each gives a persistence figure that the book's own table gives
+differently, and in every case the table's figure is inside the range the estimator takes
+across seeds while the sentence's is not:
+
+```{r}
+#| label: chapter-6-prose
+chapter_6_prose <- tribble(
+  ~claim_id,                ~sentence,                              ~float,      ~panel,     ~row_label,                         ~quantity,
+  "c6_persistence_weaker",  "p. 114, weaker persistence group",     "table_6.2", "estimate", "Prediction: weaker persistence",   "Prediction: weaker persistence",
+  "c6_oped_ten_days",       "p. 117, op-eds after ten days",        "table_6.3", "10 days",  "Overall",                          "Overall, 10 days",
+  "c6_oped_thirty_days",    "p. 117, op-eds after thirty days",     "table_6.3", "30 days",  "Overall",                          "Overall, 30 days",
+  "c6_oped_rep_ten_days",   "p. 118, Republicans after ten days",   "table_6.3", "10 days",  "Republican",                       "Republican, 10 days",
+  "c6_oped_dem_ten_days",   "p. 118, Democrats after ten days",     "table_6.3", "10 days",  "Democrat",                         "Democrat, 10 days"
+) |>
+  left_join(published_claims |> select(claim_id, value_paper), by = "claim_id") |>
+  left_join(published_maintext |> select(float = table, panel, row_label, in_table = value_paper),
+            by = c("float", "panel", "row_label")) |>
+  left_join(seed_dispersion, by = c("float", "quantity"))
+stopifnot(nrow(chapter_6_prose) == 5, !any(is.na(chapter_6_prose$in_table)))
+
+show_table(
+  chapter_6_prose |>
+    transmute(
+      Sentence = sentence,
+      `In the text` = sprintf("%.0f%%", as.numeric(value_paper)),
+      `In its own table` = sprintf("%.0f%%", 100 * as.numeric(in_table)),
+      `Across seeds` = sprintf("%.0f%% to %.0f%%", 100 * minimum, 100 * maximum)
+    ),
+  "Chapter 6 prose against the chapter 6 tables"
+)
+```
+
+Nothing here is correctable. The estimator has no seed, so each corrected figure moves with
+the draw, and picking one would claim a precision the procedure does not have. What can be
+said is that the tables reproduce and the sentences describing them do not, which is what
+the ground truth records.
+
+## The maintained rewrite
+
+`maintained/` holds `r nrow(timings)` analysis scripts and a `helpers.R`, one script per
+figure, with an appendix table folded into the figure script that shares its model where
+the two are inseparable. Every script sources `helpers.R` first and loads no packages of
+its own. Paths go through `here::here()`. Output goes to `maintained/output/`, which is
+committed so a reader can diff a fresh run against it.
+
+The substitutions the current environment forced:
+
+| Deposit | Rewrite | Why |
+|---|---|---|
+| `vayr::sunflower(x, y, width, height)` | `sunflower_compat()` | vayr 1.0.0 replaced the two semi-axis arguments with `density` and `aspect_ratio`; the helper inverts the new API's own formulas so the deposit's layout is recovered exactly |
+| `do(tidy(...))` | `reframe(tidy(...))` | `do()` is superseded |
+| `melt()` / `dcast()` | `pivot_longer()` / `pivot_wider()` | reshape2 is superseded |
+| `geom_errorbar(width = 0)` | `geom_linerange()` | house style for interval bars |
+| `xtable()` + `print.xtable()` | `write_csv()` | a table printed to the console cannot be diffed |
+| `rmeta::meta.summaries()` | `metafor::rma()` | unmaintained since 2018, and its non-standard evaluation fails inside `reframe()` |
+| `haven_labelled` outcome | `haven::zap_labels()` | `sunflower()` cannot do arithmetic on a labelled vector |
+
+Six defects in this repository's own code were found by the comparison and fixed:
+
+- Its Brader, Valentino, and Suhay appendix table (A.7) filtered independents out of the
+  data at load, so the pooled "Overall" rows were fitted on Democrats and Republicans
+  alone. The deposit filters them from the printed rows and not from the sample. All 13
+  affected cells now reproduce.
+- Its figure 5.16 script computed the six correlations chapter 5 quotes with six bare
+  `with(...)` calls at the top level, which print nothing when a file is sourced and wrote
+  nothing. The figure's headline quantities had no committed output at all.
+- Its figure 2.3 script carried a comment saying table 2.3 reports only the original 1979
+  study and could not be produced. Half of that was false: the deposited data carry the
+  replication's own quality and convincingness ratings, and computing them is what
+  surfaced the contradiction in that table.
+- `ground_truth/run_archive.R` described every clean script as having exited non-zero,
+  because `tibble()` evaluates its arguments in order and a `status` column shadowed the
+  exit code the next argument read.
+- `ground_truth/build_ground_truth.R` normalized signed zero on the rewrite's side of the
+  appendix comparison and not on the book's, so the two appendix cells the book prints as
+  `-0.00` were counted as failures against a rewritten `0.00`.
+- Its figure 5.3 script scattered the raw responses of two panels with an unseeded
+  `runif()`, following the deposit, so the figure was different on every run while its
+  estimates were not. The run-twice diff is what surfaced it, and it is the only file in
+  `maintained/output/` that was ever not byte-reproducible.
+
+## Verification
+
+### The figures
+
+```{r}
+#| label: fig-1-2
+#| fig-cap: "Figure 1.2, the flat tax op-ed experiment, as the rewrite draws it."
+knitr::include_graphics(figure_path("figure_1.2_flat_tax_immediate"))
+```
+
+```{r}
+#| label: fig-5-16
+#| fig-cap: "Figure 5.16, conditional average treatment effects across subgroups, as the rewrite draws it."
+knitr::include_graphics(figure_path("figure_5.16_cate_correlations"))
+```
+
+Every rendered figure was laid beside the published page. The check is not redundant with
+the numeric one: a transposed axis or a swapped facet leaves every estimate correct and
+every value comparison passing. All `r drawn_figures` reproduced figures match the
+published layout, including the facet order and the direction of every axis.
+
+### The pipeline
+
+`run_all.R` was run to completion from clean sessions and the whole of `maintained/output/`
+diffed between runs. Every CSV and PNG comes back byte-identical, as does
+`ground_truth/coppock_2022_ground_truth.csv`. The figure PDFs differ, and only in their
+embedded `CreationDate` and `ModDate`, which a PDF records on every write.
+
+The one thing this check found is worth naming, because it is exactly what the check is
+for: figure 5.3 came back different on the second run. Its estimates were identical and its
+CSV was byte-identical; what moved was the position of the faint background points in two
+of its four panels, scattered by an unseeded `runif()`. Nothing in the numeric comparison
+could have seen it.
+
+## R environment
+
+```{r}
+#| label: session
+show_table(
+  tibble(
+    Component = c("R", "tidyverse", "estimatr", "metafor", "vayr", "ggplot2", "rsample"),
+    Version = c(
+      paste(R.version$major, R.version$minor, sep = "."),
+      as.character(packageVersion("tidyverse")),
+      as.character(packageVersion("estimatr")),
+      as.character(packageVersion("metafor")),
+      as.character(packageVersion("vayr")),
+      as.character(packageVersion("ggplot2")),
+      as.character(packageVersion("rsample"))
+    )
+  ),
+  "Environment the committed output was produced under"
+)
+```
+
+## Licence
+
+CC0 1.0, matching the deposit.

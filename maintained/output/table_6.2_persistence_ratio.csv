@@ -1,0 +1,4 @@
+group,est,ci
+Overall,0.34 (0.04),"[0.26, 0.43]"
+Prediction: stronger persistence,0.51 (0.04),"[0.43, 0.59]"
+Prediction: weaker persistence,0.21 (0.04),"[0.14, 0.29]"

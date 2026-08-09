@@ -1,0 +1,83 @@
+dv_question,sample,term,estimate,std.error,statistic,p.value,conf.low,conf.high,df,outcome,Outcome,Treatment,target,Outcome_label,Treatment_label,Sample
+dv_amtrak_1_s_w1,Mechanical Turk Sample,Z_facamtrak,0.32671046388386743,0.06316540508458775,5.172300620036461,2.439671904155022e-7,0.2028664984268782,0.45055442934085665,3565,dv_value,Amtrak,Amtrak,Target attitude,Outcome: Amtrak,"Treatment:
+Amtrak",Sample: Mechanical Turk
+dv_amtrak_1_s_w1,Mechanical Turk Sample,Z_facpaul,0.14499455875429773,0.05794751028324383,2.5021706376265924,0.012387894109164117,0.031380952505335055,0.2586081650032604,3565,dv_value,Amtrak,Flat Tax,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Flat Tax",Sample: Mechanical Turk
+dv_amtrak_1_s_w1,Mechanical Turk Sample,Z_facveterans,0.035209624301626496,0.058790607227475616,0.5988988030926713,0.54927842222863,-0.08005698280593133,0.1504762314091843,3565,dv_value,Amtrak,Veterans,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Veterans",Sample: Mechanical Turk
+dv_amtrak_1_s_w1,Mechanical Turk Sample,Z_facwallstreet,0.028504377072563883,0.057635018240912744,0.494566982757191,0.6209362882397423,-0.08449654801581397,0.14150530216094173,3565,dv_value,Amtrak,Wall Street,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Wall Street",Sample: Mechanical Turk
+dv_amtrak_1_s_w1,Mechanical Turk Sample,Z_facclimate,0.04027322617361941,0.05851102587001814,0.6883014880492118,0.4913077293148511,-0.07444522543760282,0.15499167778484163,3565,dv_value,Amtrak,Climate,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Climate",Sample: Mechanical Turk
+dv_amtrak_1_s_w1,Policy Professional Sample,Z_facamtrak,0.3251688079358455,0.08123916967845184,4.002611169253425,6.474496703661454e-5,0.16585434599108964,0.4844832698806014,2176,dv_value,Amtrak,Amtrak,Target attitude,Outcome: Amtrak,"Treatment:
+Amtrak",Sample: Policy Professionals
+dv_amtrak_1_s_w1,Policy Professional Sample,Z_facpaul,-0.016904949999439603,0.07472410640132562,-0.22623154445831828,0.8210425853013413,-0.1634430159687119,0.12963311596983268,2176,dv_value,Amtrak,Flat Tax,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Flat Tax",Sample: Policy Professionals
+dv_amtrak_1_s_w1,Policy Professional Sample,Z_facveterans,-0.0033260285696086766,0.07658492013927815,-0.043429288214441246,0.965363315728319,-0.15351325221263237,0.14686119507341502,2176,dv_value,Amtrak,Veterans,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Veterans",Sample: Policy Professionals
+dv_amtrak_1_s_w1,Policy Professional Sample,Z_facwallstreet,0.03137963886807825,0.08054183398907014,0.3896067088854296,0.6968655174331972,-0.1265673095904069,0.18932658732656338,2176,dv_value,Amtrak,Wall Street,Nontarget attitude,Outcome: Amtrak,"Treatment:
+Wall Street",Sample: Policy Professionals
+dv_climate_1_s_w1,Mechanical Turk Sample,Z_facamtrak,-0.011956962362530394,0.05809312394693792,-0.20582405541578117,0.8369401022350503,-0.12585606307657957,0.10194213835151877,3565,dv_value,Climate,Amtrak,Nontarget attitude,Outcome: Climate,"Treatment:
+Amtrak",Sample: Mechanical Turk
+dv_climate_1_s_w1,Mechanical Turk Sample,Z_facpaul,0.07928306943358321,0.05928732050824153,1.3372685551299637,0.1812203059703388,-0.03695740845502675,0.19552354732219318,3565,dv_value,Climate,Flat Tax,Nontarget attitude,Outcome: Climate,"Treatment:
+Flat Tax",Sample: Mechanical Turk
+dv_climate_1_s_w1,Mechanical Turk Sample,Z_facveterans,0.019842364824458617,0.058424147639270174,0.339626090002577,0.7341581341690262,-0.09470575075245326,0.1343904804013705,3565,dv_value,Climate,Veterans,Nontarget attitude,Outcome: Climate,"Treatment:
+Veterans",Sample: Mechanical Turk
+dv_climate_1_s_w1,Mechanical Turk Sample,Z_facwallstreet,0.04839105725911507,0.05824305656886314,0.8308468014878366,0.40611581909978856,-0.06580200579754422,0.16258412031577435,3565,dv_value,Climate,Wall Street,Nontarget attitude,Outcome: Climate,"Treatment:
+Wall Street",Sample: Mechanical Turk
+dv_climate_1_s_w1,Mechanical Turk Sample,Z_facclimate,0.2610591915635007,0.05987205078508825,4.360284776290312,1.3356412356693974e-5,0.14367227416246325,0.3784461089645382,3565,dv_value,Climate,Climate,Target attitude,Outcome: Climate,"Treatment:
+Climate",Sample: Mechanical Turk
+dv_flat_1_s_w1,Mechanical Turk Sample,Z_facamtrak,0.029456346527546827,0.05665466539225482,0.5199279939895959,0.6031460450431171,-0.08162246970769749,0.14053516276279113,3565,dv_value,Flat Tax,Amtrak,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Amtrak",Sample: Mechanical Turk
+dv_flat_1_s_w1,Mechanical Turk Sample,Z_facpaul,0.4467747036785169,0.057159600670338935,7.816267056434418,7.108149626131148e-15,0.3347058963705751,0.5588435109864587,3565,dv_value,Flat Tax,Flat Tax,Target attitude,Outcome: Flat Tax,"Treatment:
+Flat Tax",Sample: Mechanical Turk
+dv_flat_1_s_w1,Mechanical Turk Sample,Z_facveterans,-0.05582651812588016,0.057682013501581135,-0.9678323403941141,0.33319376195499684,-0.168919583515283,0.05726654726352268,3565,dv_value,Flat Tax,Veterans,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Veterans",Sample: Mechanical Turk
+dv_flat_1_s_w1,Mechanical Turk Sample,Z_facwallstreet,0.07935964031626051,0.05615498296283962,1.4132252585452034,0.15767680559054567,-0.0307394837370831,0.18945876436960413,3565,dv_value,Flat Tax,Wall Street,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Wall Street",Sample: Mechanical Turk
+dv_flat_1_s_w1,Mechanical Turk Sample,Z_facclimate,0.0695211209711676,0.05778816346127261,1.2030339226433102,0.22904308059406334,-0.04378006517553405,0.18282230711786923,3565,dv_value,Flat Tax,Climate,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Climate",Sample: Mechanical Turk
+dv_flat_1_s_w1,Policy Professional Sample,Z_facamtrak,-0.049607288035718365,0.07897082784136496,-0.628172318712025,0.5299569835971881,-0.20447340738031436,0.10525883130887762,2176,dv_value,Flat Tax,Amtrak,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Amtrak",Sample: Policy Professionals
+dv_flat_1_s_w1,Policy Professional Sample,Z_facpaul,0.2167197722040334,0.07567172013734032,2.863946687226061,0.0042240730654676106,0.06832338378904704,0.36511616061901975,2176,dv_value,Flat Tax,Flat Tax,Target attitude,Outcome: Flat Tax,"Treatment:
+Flat Tax",Sample: Policy Professionals
+dv_flat_1_s_w1,Policy Professional Sample,Z_facveterans,-0.08211191943138105,0.0776689244509867,-1.057204281014579,0.29053571769331904,-0.23442493491040195,0.07020109604763985,2176,dv_value,Flat Tax,Veterans,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Veterans",Sample: Policy Professionals
+dv_flat_1_s_w1,Policy Professional Sample,Z_facwallstreet,0.035101534589486595,0.07817260939037639,0.44902600620886846,0.6534576110749066,-0.11819923464706478,0.18840230382603795,2176,dv_value,Flat Tax,Wall Street,Nontarget attitude,Outcome: Flat Tax,"Treatment:
+Wall Street",Sample: Policy Professionals
+dv_vets_1_s_w1,Mechanical Turk Sample,Z_facamtrak,0.10896430894733745,0.05620953344856147,1.9385378647032,0.052636472845770006,-0.001241768405210883,0.21917038629988578,3565,dv_value,Veterans,Amtrak,Nontarget attitude,Outcome: Veterans,"Treatment:
+Amtrak",Sample: Mechanical Turk
+dv_vets_1_s_w1,Mechanical Turk Sample,Z_facpaul,0.11253024478095403,0.05707242448241525,1.971709556786501,0.04871997295571907,6.323576909928325e-4,0.2244281318709152,3565,dv_value,Veterans,Flat Tax,Nontarget attitude,Outcome: Veterans,"Treatment:
+Flat Tax",Sample: Mechanical Turk
+dv_vets_1_s_w1,Mechanical Turk Sample,Z_facveterans,0.7062880131484173,0.05529719673649933,12.772582605118329,1.4595265049150182e-36,0.597870690195567,0.8147053361012675,3565,dv_value,Veterans,Veterans,Target attitude,Outcome: Veterans,"Treatment:
+Veterans",Sample: Mechanical Turk
+dv_vets_1_s_w1,Mechanical Turk Sample,Z_facwallstreet,-0.04834732005385099,0.058006861442630696,-0.8334758828775269,0.4046322315173505,-0.1620772919450999,0.06538265183739793,3565,dv_value,Veterans,Wall Street,Nontarget attitude,Outcome: Veterans,"Treatment:
+Wall Street",Sample: Mechanical Turk
+dv_vets_1_s_w1,Mechanical Turk Sample,Z_facclimate,0.0223177964096725,0.05670799699126623,0.39355642226456583,0.6939320949907212,-0.08886558333936373,0.13350117615870874,3565,dv_value,Veterans,Climate,Nontarget attitude,Outcome: Veterans,"Treatment:
+Climate",Sample: Mechanical Turk
+dv_vets_1_s_w1,Policy Professional Sample,Z_facamtrak,0.1559658890223621,0.0649125797818518,2.4027066794527077,0.01635750643355421,0.02866876422007872,0.28326301382464547,2176,dv_value,Veterans,Amtrak,Nontarget attitude,Outcome: Veterans,"Treatment:
+Amtrak",Sample: Policy Professionals
+dv_vets_1_s_w1,Policy Professional Sample,Z_facpaul,-0.016517793439669363,0.06333468299146834,-0.2608017070503761,0.7942701061816937,-0.14072057620030856,0.10768498932096984,2176,dv_value,Veterans,Flat Tax,Nontarget attitude,Outcome: Veterans,"Treatment:
+Flat Tax",Sample: Policy Professionals
+dv_vets_1_s_w1,Policy Professional Sample,Z_facveterans,0.17024320576989838,0.06266823922863178,2.716578730556034,0.006648260220083014,0.047347355735344224,0.29313905580445254,2176,dv_value,Veterans,Veterans,Target attitude,Outcome: Veterans,"Treatment:
+Veterans",Sample: Policy Professionals
+dv_vets_1_s_w1,Policy Professional Sample,Z_facwallstreet,0.0012736130420258791,0.06413086762105022,0.019859594751651704,0.9841571982577002,-0.12449053139146861,0.12703775747552037,2176,dv_value,Veterans,Wall Street,Nontarget attitude,Outcome: Veterans,"Treatment:
+Wall Street",Sample: Policy Professionals
+dv_wall_1_s_w1,Mechanical Turk Sample,Z_facamtrak,-0.009330109217452308,0.05689426029233624,-0.16399034225090522,0.8697480429218438,-0.12087868231548596,0.10221846388058134,3565,dv_value,Wall Street,Amtrak,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Amtrak",Sample: Mechanical Turk
+dv_wall_1_s_w1,Mechanical Turk Sample,Z_facpaul,-0.03642465480288122,0.057533481813060436,-0.6331036060225476,0.5267065963205302,-0.14922650456123104,0.07637719495546862,3565,dv_value,Wall Street,Flat Tax,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Flat Tax",Sample: Mechanical Turk
+dv_wall_1_s_w1,Mechanical Turk Sample,Z_facveterans,-0.109231945195784,0.05527604393223396,-1.9761172729672485,0.04821847305553849,-0.2176077953336139,-8.560950579540871e-4,3565,dv_value,Wall Street,Veterans,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Veterans",Sample: Mechanical Turk
+dv_wall_1_s_w1,Mechanical Turk Sample,Z_facwallstreet,0.5449901589303393,0.059522115730058764,9.156095213448847,8.843491414433548e-20,0.4282893345704092,0.6616909832902694,3565,dv_value,Wall Street,Wall Street,Target attitude,Outcome: Wall Street,"Treatment:
+Wall Street",Sample: Mechanical Turk
+dv_wall_1_s_w1,Mechanical Turk Sample,Z_facclimate,-0.03979100724860506,0.057833747765923434,-0.6880240134126421,0.49148242287845134,-0.15318156733414234,0.07359955283693223,3565,dv_value,Wall Street,Climate,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Climate",Sample: Mechanical Turk
+dv_wall_1_s_w1,Policy Professional Sample,Z_facamtrak,0.007001154178198947,0.06918658789740355,0.10119236099026771,0.9194070834031541,-0.1286775346648264,0.14267984302122427,2176,dv_value,Wall Street,Amtrak,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Amtrak",Sample: Policy Professionals
+dv_wall_1_s_w1,Policy Professional Sample,Z_facpaul,0.0054941472057001475,0.06693429585609202,0.08208269221973294,0.9345885054830896,-0.12576767356587346,0.13675596797727377,2176,dv_value,Wall Street,Flat Tax,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Flat Tax",Sample: Policy Professionals
+dv_wall_1_s_w1,Policy Professional Sample,Z_facveterans,0.10071991269385497,0.06786024925284095,1.484225504663002,0.13789393868393648,-0.03235775341159955,0.23379757879930949,2176,dv_value,Wall Street,Veterans,Nontarget attitude,Outcome: Wall Street,"Treatment:
+Veterans",Sample: Policy Professionals
+dv_wall_1_s_w1,Policy Professional Sample,Z_facwallstreet,0.6251259793505936,0.06846986026022545,9.129943846456673,1.5209295142097437e-19,0.49085283266574037,0.7593991260354467,2176,dv_value,Wall Street,Wall Street,Target attitude,Outcome: Wall Street,"Treatment:
+Wall Street",Sample: Policy Professionals

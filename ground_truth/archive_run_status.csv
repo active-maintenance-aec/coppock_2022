@@ -1,0 +1,57 @@
+pass,script,status,message
+as_shipped,code/figure_1.2_and_1.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.2)"
+as_shipped,code/figure_1.4.R,ok,NA
+as_shipped,code/figure_1.5.R,ok,NA
+as_shipped,code/figure_2.2.R,error,"Error in `mutate()`: ! unused arguments (width = 0.06, height = 0.25)"
+as_shipped,code/figure_2.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.125, height = 0.125)"
+as_shipped,code/figure_3.1.R,error,"Error in geom_brace(data = brace_df, aes(x = x, y = y), inherit.aes = FALSE, :"
+as_shipped,code/figure_3.2.R,error,"Error in `mutate()`: ! unused arguments (width = 0.12, height = 0.14)"
+as_shipped,code/figure_3.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.13)"
+as_shipped,code/figure_5.1.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.13)"
+as_shipped,code/figure_5.10.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.1)"
+as_shipped,code/figure_5.11.R,error,"Error in `mutate()`: ! unused arguments (width = 0.06, height = 0.22)"
+as_shipped,code/figure_5.12.R,error,"Error in `mutate()`: ! could not find function ""sunflower"""
+as_shipped,code/figure_5.13.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.22)"
+as_shipped,code/figure_5.15.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.08)"
+as_shipped,code/figure_5.16.R,ok,NA
+as_shipped,code/figure_5.17.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.24)"
+as_shipped,code/figure_5.18.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.19)"
+as_shipped,code/figure_5.19.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.1)"
+as_shipped,code/figure_5.2.R,error,"Error in `mutate()`: ! unused arguments (width = 0.115, height = 0.06)"
+as_shipped,code/figure_5.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.3)"
+as_shipped,code/figure_5.4.R,error,"Error in `mutate()`: ! unused arguments (width = 0.12, height = 0.18)"
+as_shipped,code/figure_5.5.R,error,"Error in `mutate()`: ! unused arguments (width = 0.1, height = 0.1)"
+as_shipped,code/figure_5.6.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.1)"
+as_shipped,code/figure_5.7.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.07)"
+as_shipped,code/figure_5.8.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.085)"
+as_shipped,code/figure_5.9.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.28)"
+as_shipped,code/figure_6.1_and_6.2_tables_6.2_and_6.4.R,ok,NA
+as_shipped,code/figure_6.3_table_6.3.R,ok,NA
+stripped,code/figure_1.2_and_1.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.2)"
+stripped,code/figure_1.4.R,ok,NA
+stripped,code/figure_1.5.R,ok,NA
+stripped,code/figure_2.2.R,error,"Error in `mutate()`: ! unused arguments (width = 0.06, height = 0.25)"
+stripped,code/figure_2.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.125, height = 0.125)"
+stripped,code/figure_3.1.R,error,"Error in geom_brace(data = brace_df, aes(x = x, y = y), inherit.aes = FALSE, :"
+stripped,code/figure_3.2.R,error,"Error in `mutate()`: ! unused arguments (width = 0.12, height = 0.14)"
+stripped,code/figure_3.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.13)"
+stripped,code/figure_5.1.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.13)"
+stripped,code/figure_5.10.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.1)"
+stripped,code/figure_5.11.R,error,"Error in `mutate()`: ! unused arguments (width = 0.06, height = 0.22)"
+stripped,code/figure_5.12.R,error,"Error in `mutate()`: ! could not find function ""sunflower"""
+stripped,code/figure_5.13.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.22)"
+stripped,code/figure_5.15.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.08)"
+stripped,code/figure_5.16.R,ok,NA
+stripped,code/figure_5.17.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.24)"
+stripped,code/figure_5.18.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.19)"
+stripped,code/figure_5.19.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.1)"
+stripped,code/figure_5.2.R,error,"Error in `mutate()`: ! unused arguments (width = 0.115, height = 0.06)"
+stripped,code/figure_5.3.R,error,"Error in `mutate()`: ! unused arguments (width = 0.08, height = 0.3)"
+stripped,code/figure_5.4.R,error,"Error in `mutate()`: ! unused arguments (width = 0.12, height = 0.18)"
+stripped,code/figure_5.5.R,error,"Error in `mutate()`: ! unused arguments (width = 0.1, height = 0.1)"
+stripped,code/figure_5.6.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.1)"
+stripped,code/figure_5.7.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.07)"
+stripped,code/figure_5.8.R,error,"Error in `mutate()`: ! unused arguments (width = 0.11, height = 0.085)"
+stripped,code/figure_5.9.R,error,"Error in `mutate()`: ! unused arguments (width = 0.09, height = 0.28)"
+stripped,code/figure_6.1_and_6.2_tables_6.2_and_6.4.R,ok,NA
+stripped,code/figure_6.3_table_6.3.R,ok,NA
