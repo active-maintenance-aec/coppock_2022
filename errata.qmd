@@ -98,13 +98,10 @@ computed at render time rather than typed: four of the five from the maintained 
 `active-maintenance-aec/coppock_2022`, and entry 2 from the book's own printed tables, held in
 that repository's transcription of them.
 
-**Provenance.** Entries 1, 3, 4 and 5 were each checked against the printed edition. The
-reanalysis itself reads an uncorrected proof dated 26 May 2022, so the quoted wording was
-verified against the published book rather than taken from that file, and those four
-discrepancies are properties of the analysis rather than of any one rendering. Entry 2 is
-quoted from the proof and awaits the same check; the sentences it corrects disagree with tables
-printed a few pages away in the same copy, so the discrepancy is internal to whichever copy is
-read, but whether the printed edition still carries these five figures has not been confirmed.
+**Provenance.** Every discrepancy below was checked against the printed edition. The
+reanalysis itself reads an uncorrected proof dated 26 May 2022, so each quoted sentence was
+verified against the published book rather than taken from that file. These are properties of
+the book as printed, not of any one rendering of it.
 
 ---
 

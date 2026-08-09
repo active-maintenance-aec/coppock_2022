@@ -90,14 +90,9 @@ therefore transcribed from that proof rather than from the printed book.
 The discrepancies the pipeline found are properties of the analysis
 rather than of the typesetting, so they do not depend on which copy is
 read, and `errata.qmd` states them with their corrected values computed
-at render time. Four of the five were checked against the printed
-edition, so none of those is an artifact of the proof or of the way a
-PDF’s text layer is read. The fifth, errata entry 2, is the set of
-chapter 6 sentences that disagree with the chapter 6 tables; it has not
-had that check, and the errata says so on its face. Both sides of that
-disagreement are read from the same copy, so the disagreement is
-internal to whichever copy is read, but whether the printed edition
-carries the same five figures is open.
+at render time. Every one was checked against the printed edition, so
+none is an artifact of the proof or of the way a PDF’s text layer is
+read.
 
 No errata page for the book exists on the publisher’s site or on the
 author’s own page.
@@ -559,7 +554,7 @@ comparison could have seen it.
 | tidyverse | 2.0.0   |
 | estimatr  | 1.0.6   |
 | metafor   | 5.0.1   |
-| vayr      | 1.0.0   |
+| vayr      | 1.1.0   |
 | ggplot2   | 4.0.3   |
 | rsample   | 1.3.2   |
 
