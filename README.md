@@ -61,7 +61,7 @@ source("run_all.R")
 
 `run_all.R` fetches the archive from Dataverse, verifies it, runs all 28
 analysis scripts, builds the ground truth, prints the in-text claims,
-and re-verifies the deposit. It took 4.5 minutes on the machine that
+and re-verifies the deposit. It took 4.4 minutes on the machine that
 produced the committed output; that figure describes one machine on one
 day and nothing else.
 

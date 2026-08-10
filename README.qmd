@@ -24,6 +24,13 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 latex_out <- knitr::is_latex_output()
 
+# The errata spine, defined once in errata.qmd and written out by it. This section reads it
+# rather than keeping its own count, and numbers its summaries as the note numbers its
+# entries, so the two cannot disagree.
+spine <- read_csv(here::here("errata_entries.csv"), show_col_types = FALSE)
+n_errata_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                   "ten", "eleven", "twelve")[nrow(spine)]
+
 # value_paper must be read as a character column, or "0.20" becomes 0.2 and the report
 # prints a precision the book does not use.
 ground_truth <- read_csv(
@@ -422,7 +429,7 @@ convincing <- read_csv(here::here("maintained", "output", "table_2.3_gc_replicat
   filter(rating == "convincing", str_detect(predisposition, "Proponents"))
 ```
 
-Nine sentences, labels or cells in the book do not survive the reanalysis, in five entries.
+Nine sentences, labels or cells in the book do not survive the reanalysis, in `r n_errata_word` entries.
 They are set out in `errata.qmd`, rendered to `coppock_2022_errata.pdf` at the repository
 root, with every corrected value computed at render time: from `maintained/output/` where
 the reanalysis settles it, and from the book's own transcribed tables where the estimator

@@ -90,10 +90,128 @@ two_sided_se <-
          predisposition == "Capital Punishment Opponents")
 stopifnot(nrow(two_sided_se) == 1)
 ```
+```{r}
+#| label: entries
+#| include: false
 
-Five errata in *Persuasion in Parallel: How Information Changes Minds about Politics*
+# THE ERRATA SPINE. Every entry is defined once, here, and rendered from this tibble into
+# this document and into the machine-readable errata_entries.csv written at the bottom of
+# the file, which is what any other document carrying these corrections reads. Before the
+# spine existed an entry was written out in prose wherever it was needed, and the copies
+# had already diverged.
+#
+# [[...]] marks the span that changes. Each renderer supplies its own markup for it: bold
+# here. Nothing else in a field is markup, so the same string can be set by any of them.
+#
+# Numbering is the published note's and is APPEND-ONLY: entry 3 can already have been cited,
+# so a later finding is added at the end and never interleaved.
+#
+# A published or corrected value that the pipeline settles stays computed: the field is built
+# with str_glue() so the number is produced when this document renders, not typed. Entry 2 is
+# the exception the estimator forces, and it is computed too: its corrected figures are the
+# book's own printed cells, read at render time from the transcription of the tables rather
+# than from a run, because the bootstrap behind them has no seed.
+#
+# Entries 1 and 2 carry more than one changed artifact. Their published and corrected fields
+# hold one paragraph per artifact, in printed order, separated by a blank line; the two
+# entries' floats and page headings stay in the document below, because they are presentation
+# rather than spine.
+entries <- tribble(
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note,
+
+  1, "label", "pipeline", "brief",
+  "In table 2.2 (p. 26), the two study rows carry each other's labels, in both panels.",
+  "published table 2.2, p. 26",
+  paste("After [[pro]]-capital punishment study",
+        "After [[anti]]-capital punishment study", sep = "\n\n"),
+  paste("After [[anti]]-capital punishment study",
+        "After [[pro]]-capital punishment study", sep = "\n\n"),
+  str_glue(
+    "The changed artifact is the two labels alone. Every value is correct, and the rows are ",
+    "in the order the analysis produces them, whose study-content factor runs con before pro ",
+    "and so puts the anti-capital punishment study first. Figure 2.2, printed on the same ",
+    "page from the same variable, shows the con study at ",
+    "{anti_study('attitude', 'Proponents')} for proponents and ",
+    "{anti_study('attitude', 'Opponents')} for opponents and the pro study at ",
+    "{pro_study('attitude', 'Proponents')} and {pro_study('attitude', 'Opponents')}, which is ",
+    "the table's two rows the other way up. The sentence beneath the figure, reporting that ",
+    "self-assessed change is higher in the pro condition than in the null and higher in the ",
+    "null than in the con, says the same thing again. The \"Combined\" rows are sums of the ",
+    "two and are unaffected, as is the reading of the table that the surrounding text draws ",
+    "from them."),
+
+  2, "quantity", "pipeline", "full",
+  "Four sentences in chapter 6 report persistence figures that the chapter's own tables print differently.",
+  "published pp. 114 and 117--118",
+  paste(
+    "Across all 12 studies, the average persistence ratio was about one-third, or 34 percent; that figure is 50 percent in the stronger persistence group and [[20]] percent in the weaker persistence group (see table 6.2).",
+    "After ten days treatment effects decay to [[46]] percent (SE = 5 percent) of their original magnitudes.",
+    "After thirty days, average persistence declines to [[44]] percent (SE = 6 percent).",
+    "For Republicans, persistence after ten days averaged [[57]] percent; this figure was [[43]] percent for Democrats.",
+    sep = "\n\n"),
+  paste(
+    str_glue("Across all 12 studies, the average persistence ratio was about one-third, or 34 percent; that figure is 50 percent in the stronger persistence group and [[{printed_pct('table_6.2', 'estimate', 'Prediction: weaker persistence')}]] percent in the weaker persistence group (see table 6.2)."),
+    str_glue("After ten days treatment effects decay to [[{printed_pct('table_6.3', '10 days', 'Overall')}]] percent (SE = 5 percent) of their original magnitudes."),
+    str_glue("After thirty days, average persistence declines to [[{printed_pct('table_6.3', '30 days', 'Overall')}]] percent (SE = 6 percent)."),
+    str_glue("For Republicans, persistence after ten days averaged [[{printed_pct('table_6.3', '10 days', 'Republican')}]] percent; this figure was [[{printed_pct('table_6.3', '10 days', 'Democrat')}]] percent for Democrats."),
+    sep = "\n\n"),
+  paste(
+    "The page 118 sentence is the one that moves furthest, and the two halves fail",
+    "differently. Its 57 percent is table 6.3's Republican estimate after *thirty* days, read",
+    "one column across from the ten-day estimate the sentence describes; its 43 percent is no",
+    "cell of the table at all. The sentence that follows, that the Republican and Democratic",
+    "estimates are not statistically significantly different, is unaffected and holds on the",
+    "corrected figures, which are closer together than the published pair. The standard errors",
+    "on page 117 are left as printed. The ten-day one agrees with table 6.3; the thirty-day one",
+    "says 6 percent where the table prints 0.05, but the reanalysis returns 6 percent as well,",
+    "so that figure sits inside the bootstrap's noise in a way none of the five estimates above",
+    "does. Tables 6.2 and 6.3 are otherwise correct as printed and are not reprinted here."),
+
+  3, "label", "pipeline", "full",
+  "Page 114 attributes a persistence estimate to a sample that is not in the persistence analysis.",
+  "published p. 114",
+  str_glue("Curiously, the different replications of the Hiscox (2006) \"expert\" treatment generated very different persistence estimates: {hiscox_mturk} percent on MTurk but {hiscox_gfk} percent on [[Lucid]]."),
+  str_glue("Curiously, the different replications of the Hiscox (2006) \"expert\" treatment generated very different persistence estimates: {hiscox_mturk} percent on MTurk but {hiscox_gfk} percent on [[GfK]]."),
+  paste(
+    "Table 6.1 lists twelve panel survey experiments and none of them is fielded on Lucid; the",
+    "Hiscox rows of table 6.4 are Mechanical Turk and GfK, and table 6.4 gives the zero to GfK.",
+    "The two percentages are left at the whole numbers the sentence uses because they come from",
+    "a bootstrap the analysis runs without a seed, and a decimal place would state a precision",
+    "the estimator does not have."),
+
+  4, "quantity", "pipeline", "full",
+  "In the lower half of table 2.3, the difference between the two convincingness ratings for proponents does not equal the difference between the two cells printed above it.",
+  "published table 2.3",
+  str_glue("The table prints {one_dp(convincing$pro_study)} for the pro-capital punishment study and {one_dp(convincing$anti_study)} for the anti-capital punishment study, and gives their difference as [[3.0]]."),
+  str_glue("The difference is [[{one_dp(convincing$difference)}]]."),
+  paste("The changed artifact is that single cell; every other cell in both halves of the",
+        "table reproduces."),
+
+  5, "quantity", "pipeline", "full",
+  "Page 101 gives a standard error that disagrees with the book's own appendix table A.5.",
+  "published p. 101",
+  "As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[0.11]]).",
+  str_glue("As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[{two_dp(two_sided_se$std.error)}]])."),
+  str_glue(
+    "Table A.5 reports {two_dp(two_sided_se$std.error)} for this same standard error, and the ",
+    "reanalysis reproduces the appendix. The other seven quantities in the passage are correct ",
+    "as printed.")
+) |>
+  mutate(across(c(title, published, corrected, note), as.character))
+
+stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# The prose below counts the entries in words, as the note has always done.
+n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                    "ten", "eleven", "twelve")[nrow(entries)]
+
+# The spine's markup, resolved for this document.
+bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
+```
+
+`r str_to_title(n_entries_word)` errata in *Persuasion in Parallel: How Information Changes Minds about Politics*
 (University of Chicago Press, 2022), <https://doi.org/10.7208/chicago/9780226821832.001.0001>.
-None of the five changes any conclusion the book draws. Every corrected value below is
+None of the `r n_entries_word` changes any conclusion the book draws. Every corrected value below is
 computed at render time rather than typed: four of the five from the maintained reanalysis in
 `active-maintenance-aec/coppock_2022`, and entry 2 from the book's own printed tables, held in
 that repository's transcription of them.
@@ -105,7 +223,15 @@ the book as printed, not of any one rendering of it.
 
 ---
 
-**1.** In table 2.2 (p. 26), the two study rows carry each other's labels, in both panels.
+```{r}
+#| label: entry-1-head
+#| echo: false
+#| results: asis
+# A heading is only a heading when a blank line precedes it, so every emitted block opens
+# with one. The two tables beneath are the entry's floats and stay in the document.
+e <- entries |> filter(entry == 1)
+cat("\n\n**1.** ", e$title, "\n", sep = "")
+```
 
 > Change in attitudes toward the death penalty
 >
@@ -137,21 +263,22 @@ the book as printed, not of any one rendering of it.
 > | After **anti**-capital punishment study | `r anti_study("belief", "Proponents")` | `r anti_study("belief", "Opponents")` |
 > | After **pro**-capital punishment study | `r pro_study("belief", "Proponents")` | `r pro_study("belief", "Opponents")` |
 
-The changed artifact is the two labels alone. Every value is correct, and the rows are in
-the order the analysis produces them, whose study-content factor runs con before pro and so
-puts the anti-capital punishment study first. Figure 2.2, printed on the same page from the
-same variable, shows the con study at `r anti_study("attitude", "Proponents")` for
-proponents and `r anti_study("attitude", "Opponents")` for opponents and the pro study at
-`r pro_study("attitude", "Proponents")` and `r pro_study("attitude", "Opponents")`, which is
-the table's two rows the other way up. The sentence beneath the figure, reporting that
-self-assessed change is higher in the pro condition than in the null and higher in the null
-than in the con, says the same thing again. The "Combined" rows are sums of the two and are
-unaffected, as is the reading of the table that the surrounding text draws from them.
+```{r}
+#| label: entry-1-note
+#| echo: false
+#| results: asis
+cat("\n\n", (entries |> filter(entry == 1))$note, "\n", sep = "")
+```
 
 ---
 
-**2.** Four sentences in chapter 6 report persistence figures that the chapter's own tables
-print differently.
+```{r}
+#| label: entry-2-head
+#| echo: false
+#| results: asis
+e <- entries |> filter(entry == 2)
+cat("\n\n**2.** ", e$title, "\n", sep = "")
+```
 
 Every persistence figure in chapter 6 comes from a bootstrap the deposited code runs without
 a seed, so no rerun can settle what these sentences should say. The tables can, and each
@@ -160,106 +287,66 @@ quantity. The tables are also the side the estimator supports: run at `r c6_seed
 five of the figures the tables print fall inside the range their quantity takes across seeds,
 and none of the five figures the prose gives does.
 
-*Page 114.*
-
-> Across all 12 studies, the average persistence ratio was about one-third, or 34 percent;
-> that figure is 50 percent in the stronger persistence group and **20** percent in the
-> weaker persistence group (see table 6.2).
-
-*Corrected:*
-
-> Across all 12 studies, the average persistence ratio was about one-third, or 34 percent;
-> that figure is 50 percent in the stronger persistence group and
-> **`r printed_pct("table_6.2", "estimate", "Prediction: weaker persistence")`** percent in
-> the weaker persistence group (see table 6.2).
-
-*Page 117.*
-
-> After ten days treatment effects decay to **46** percent (SE = 5 percent) of their original
-> magnitudes.
-
-*Corrected:*
-
-> After ten days treatment effects decay to
-> **`r printed_pct("table_6.3", "10 days", "Overall")`** percent (SE = 5 percent) of their
-> original magnitudes.
-
-> After thirty days, average persistence declines to **44** percent (SE = 6 percent).
-
-*Corrected:*
-
-> After thirty days, average persistence declines to
-> **`r printed_pct("table_6.3", "30 days", "Overall")`** percent (SE = 6 percent).
-
-*Page 118.*
-
-> For Republicans, persistence after ten days averaged **57** percent; this figure was **43**
-> percent for Democrats.
-
-*Corrected:*
-
-> For Republicans, persistence after ten days averaged
-> **`r printed_pct("table_6.3", "10 days", "Republican")`** percent; this figure was
-> **`r printed_pct("table_6.3", "10 days", "Democrat")`** percent for Democrats.
-
-The page 118 sentence is the one that moves furthest, and the two halves fail differently. Its
-57 percent is table 6.3's Republican estimate after *thirty* days, read one column across from
-the ten-day estimate the sentence describes; its 43 percent is no cell of the table at all. The
-sentence that follows, that the Republican and Democratic estimates are not statistically
-significantly different, is unaffected and holds on the corrected figures, which are closer
-together than the published pair. The standard errors on page 117 are left as printed. The
-ten-day one agrees with table 6.3; the thirty-day one says 6 percent where the table prints
-0.05, but the reanalysis returns 6 percent as well, so that figure sits inside the bootstrap's
-noise in a way none of the five estimates above does. Tables 6.2 and 6.3 are otherwise correct
-as printed and are not reprinted here.
+```{r}
+#| label: entry-2-body
+#| echo: false
+#| results: asis
+# The four sentences come from the spine, one paragraph each; the page headings stay here,
+# because which sentence sits under which page is a fact about the book's pages.
+e <- entries |> filter(entry == 2)
+pages <- c("*Page 114.*", "*Page 117.*", "", "*Page 118.*")
+published_parts <- str_split_1(e$published, "\n\n")
+corrected_parts <- str_split_1(e$corrected, "\n\n")
+stopifnot(length(published_parts) == length(pages),
+          length(corrected_parts) == length(pages))
+walk(seq_along(pages), function(i) {
+  cat("\n\n", if (pages[i] != "") paste0(pages[i], "\n\n") else "",
+      "> ", bold(published_parts[i]), "\n\n*Corrected:*\n\n> ", bold(corrected_parts[i]),
+      "\n", sep = "")
+})
+cat("\n\n", e$note, "\n", sep = "")
+```
 
 ---
 
-**3.** Page 114 attributes a persistence estimate to a sample that is not in the
-persistence analysis.
-
-> Curiously, the different replications of the Hiscox (2006) "expert" treatment generated
-> very different persistence estimates: `r hiscox_mturk` percent on MTurk but
-> `r hiscox_gfk` percent on **Lucid**.
-
-*Corrected:*
-
-> Curiously, the different replications of the Hiscox (2006) "expert" treatment generated
-> very different persistence estimates: `r hiscox_mturk` percent on MTurk but
-> `r hiscox_gfk` percent on **GfK**.
-
-Table 6.1 lists twelve panel survey experiments and none of them is fielded on Lucid; the
-Hiscox rows of table 6.4 are Mechanical Turk and GfK, and table 6.4 gives the zero to GfK.
-The two percentages are left at the whole numbers the sentence uses because they come from
-a bootstrap the analysis runs without a seed, and a decimal place would state a precision
-the estimator does not have.
+```{r}
+#| label: entry-3
+#| echo: false
+#| results: asis
+e <- entries |> filter(entry == 3)
+cat("\n\n**3.** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
+    bold(e$corrected), "\n\n", e$note, "\n", sep = "")
+```
 
 ---
 
-**4.** In the lower half of table 2.3, the difference between the two convincingness
-ratings for proponents does not equal the difference between the two cells printed above
-it.
-
-The table prints `r one_dp(convincing$pro_study)` for the pro-capital punishment study and
-`r one_dp(convincing$anti_study)` for the anti-capital punishment study, and gives their
-difference as **3.0**. The difference is **`r one_dp(convincing$difference)`**. The changed
-artifact is that single cell; every other cell in both halves of the table reproduces.
+```{r}
+#| label: entry-4
+#| echo: false
+#| results: asis
+# This entry's published and corrected artifacts are two cells of one table, so the document
+# sets them as a sentence rather than as facing blocks.
+e <- entries |> filter(entry == 4)
+cat("\n\n**4.** ", e$title, "\n\n", bold(e$published), " ", bold(e$corrected), " ", e$note,
+    "\n", sep = "")
+```
 
 ---
 
-**5.** Page 101 gives a standard error that disagrees with the book's own appendix
-table A.5.
+```{r}
+#| label: entry-5
+#| echo: false
+#| results: asis
+e <- entries |> filter(entry == 5)
+cat("\n\n**5.** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
+    bold(e$corrected), "\n\n", e$note, "\n", sep = "")
+```
 
-> As shown in the left facet, the average effect of the two-sided message on support for
-> capital punishment is very close to zero for both proponents (0.28 scale points, SE:
-> 0.18) and opponents (0.10, SE: **0.11**).
+```{r}
+#| label: emit-spine
+#| include: false
 
-*Corrected:*
-
-> As shown in the left facet, the average effect of the two-sided message on support for
-> capital punishment is very close to zero for both proponents (0.28 scale points, SE:
-> 0.18) and opponents (0.10, SE: **`r two_dp(two_sided_se$std.error)`**).
-
-Table A.5 reports `r two_dp(two_sided_se$std.error)` for this same standard error, and the
-reanalysis reproduces the appendix. The other seven quantities in the passage are correct
-as printed.
+# The machine-readable spine, written wherever this document is rendered. Anything else that
+# carries these corrections reads it rather than keeping its own copy, so the two cannot drift.
+write_csv(entries, here("errata_entries.csv"))
+```
