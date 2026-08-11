@@ -116,8 +116,14 @@ stopifnot(nrow(two_sided_se) == 1)
 # hold one paragraph per artifact, in printed order, separated by a blank line; the two
 # entries' floats and page headings stay in the document below, because they are presentation
 # rather than spine.
+#
+# claim_ids is the semicolon-separated list of ground-truth claim_id values the entry
+# corrects, and it is what makes "is this finding published?" a query rather than a reading
+# of every note. It is empty where an entry has no ground-truth row, which is normal for a
+# bibliographic or structural entry. ground_truth/build_ground_truth.R refuses to build if
+# any id here is absent from the ground truth.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
 
   1, "label", "pipeline", "brief",
   "In table 2.2 (p. 26), the two study rows carry each other's labels, in both panels.",
@@ -139,6 +145,7 @@ entries <- tribble(
     "null than in the con, says the same thing again. The \"Combined\" rows are sums of the ",
     "two and are unaffected, as is the reading of the table that the surrounding text draws ",
     "from them."),
+  "t2_2_row_labels",
 
   2, "quantity", "pipeline", "full",
   "Four sentences in chapter 6 report persistence figures that the chapter's own tables print differently.",
@@ -166,6 +173,8 @@ entries <- tribble(
     "says 6 percent where the table prints 0.05, but the reanalysis returns 6 percent as well,",
     "so that figure sits inside the bootstrap's noise in a way none of the five estimates above",
     "does. Tables 6.2 and 6.3 are otherwise correct as printed and are not reprinted here."),
+  paste("c6_persistence_weaker", "c6_oped_ten_days", "c6_oped_thirty_days",
+        "c6_oped_rep_ten_days", "c6_oped_dem_ten_days", sep = ";"),
 
   3, "label", "pipeline", "full",
   "Page 114 attributes a persistence estimate to a sample that is not in the persistence analysis.",
@@ -178,6 +187,7 @@ entries <- tribble(
     "The two percentages are left at the whole numbers the sentence uses because they come from",
     "a bootstrap the analysis runs without a seed, and a decimal place would state a precision",
     "the estimator does not have."),
+  "c6_hiscox_lucid",
 
   4, "quantity", "pipeline", "full",
   "In the lower half of table 2.3, the difference between the two convincingness ratings for proponents does not equal the difference between the two cells printed above it.",
@@ -186,6 +196,7 @@ entries <- tribble(
   str_glue("The difference is [[{one_dp(convincing$difference)}]]."),
   paste("The changed artifact is that single cell; every other cell in both halves of the",
         "table reproduces."),
+  "t2_3_gc_cells",
 
   5, "quantity", "pipeline", "full",
   "Page 101 gives a standard error that disagrees with the book's own appendix table A.5.",
@@ -195,11 +206,24 @@ entries <- tribble(
   str_glue(
     "Table A.5 reports {two_dp(two_sided_se$std.error)} for this same standard error, and the ",
     "reanalysis reproduces the appendix. The other seven quantities in the passage are correct ",
-    "as printed.")
+    "as printed."),
+  "c5_twosided_support_opp_se"
 ) |>
   mutate(across(c(title, published, corrected, note), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# Every id an entry claims to correct must be a real ground-truth claim. The build gate in
+# ground_truth/build_ground_truth.R checks the same property from the other side; checking it
+# here too means a dangling id cannot survive a render.
+gt_ids <- read_csv(here::here("ground_truth", "coppock_2022_ground_truth.csv"),
+                   show_col_types = FALSE)$claim_id
+cited_ids <- entries$claim_ids |>
+  str_split(";") |>
+  unlist() |>
+  str_trim() |>
+  discard(\(x) is.na(x) | x == "")
+stopifnot(all(cited_ids %in% gt_ids))
 
 # The prose below counts the entries in words, as the note has always done.
 n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",

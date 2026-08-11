@@ -855,6 +855,23 @@ stopifnot(
 
 write_csv(ground_truth, here::here("ground_truth", str_c(paper_id, "_ground_truth.csv")))
 
+# The errata spine's claim_ids ----
+# errata_entries.csv names, for every published entry, the ground-truth claims it corrects.
+# Every one of those ids has to exist here: a missing one is a typo or a claim that has since
+# been renamed, and a dangling reference inside a document whose whole purpose is correcting
+# the record is worse than a failed build.
+errata_spine <- here::here("errata_entries.csv")
+if (file.exists(errata_spine)) {
+  cited_ids <- read_csv(errata_spine, show_col_types = FALSE)$claim_ids |>
+    str_split(";") |>
+    unlist() |>
+    str_trim() |>
+    discard(\(x) is.na(x) | x == "")
+  dangling <- setdiff(cited_ids, ground_truth$claim_id)
+  if (length(dangling) > 0) print(dangling)
+  stopifnot(length(dangling) == 0)
+}
+
 # Float coverage ----
 # The covered fraction is written to its own file so the report can state it rather than
 # leaving it inside a gate nobody reads.
