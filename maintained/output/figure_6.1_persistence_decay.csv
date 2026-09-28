@@ -1,229 +1,229 @@
 study,sample_label,term,model,estimate,std.error,conf.low,conf.high,topic,prediction,study_label,sample_label2,term_label,estimate_id,w1_sign,estimate_w1_estimate_abs,estimate_abs,estimate_conf.low,estimate_conf.high,time,facet_label
-patriot_act,Original Study,T1_contentCon,estimate_w1,-0.3834364753866033,0.11215816134237401,-0.5998822370152496,-0.17414833760724122,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six anti-Patriot Act statements,Chong and Druckman (2010)Original StudySix anti-Patriot Act statementsNA,-1,0.3834364753866033,0.3834364753866033,0.5998822370152496,0.17414833760724122,"Immediately
+patriot_act,Original Study,T1_contentCon,estimate_w1,-0.38343647538660103,0.11266202643386125,-0.6011589099765671,-0.17498482171759797,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six anti-Patriot Act statements,Chong and Druckman (2010)Original StudySix anti-Patriot Act statementsNA,-1,0.38343647538660103,0.38343647538660103,0.6011589099765671,0.17498482171759797,"Immediately
 post-treatment","Chong and Druckman (2010)
 Original Study"
-patriot_act,Original Study,T1_contentCon,estimate_w2,0.03200183222316492,0.1185109361054241,-0.2020440458657599,0.2672235247735503,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six anti-Patriot Act statements,Chong and Druckman (2010)Original StudySix anti-Patriot Act statementsNA,-1,0.3834364753866033,-0.03200183222316492,0.2020440458657599,-0.2672235247735503,"10 days
+patriot_act,Original Study,T1_contentCon,estimate_w2,0.03200183222316899,0.11861909873574689,-0.2038864781539129,0.2653000190374354,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six anti-Patriot Act statements,Chong and Druckman (2010)Original StudySix anti-Patriot Act statementsNA,-1,0.38343647538660103,-0.03200183222316899,0.2038864781539129,-0.2653000190374354,"10 days
 post-treatment","Chong and Druckman (2010)
 Original Study"
-patriot_act,Original Study,T1_contentPro,estimate_w1,0.3596326988943671,0.11011335221487933,0.14479652597704212,0.581741565089785,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six pro-Patriot Act statements,Chong and Druckman (2010)Original StudySix pro-Patriot Act statementsNA,1,0.3596326988943671,0.3596326988943671,0.14479652597704212,0.581741565089785,"Immediately
+patriot_act,Original Study,T1_contentPro,estimate_w1,0.3596326988943691,0.11067832110797748,0.14322700732210517,0.5862554536748146,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six pro-Patriot Act statements,Chong and Druckman (2010)Original StudySix pro-Patriot Act statementsNA,1,0.3596326988943691,0.3596326988943691,0.14322700732210517,0.5862554536748146,"Immediately
 post-treatment","Chong and Druckman (2010)
 Original Study"
-patriot_act,Original Study,T1_contentPro,estimate_w2,0.16379289820281104,0.11730442783957065,-0.058353158029927465,0.3935790873647078,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six pro-Patriot Act statements,Chong and Druckman (2010)Original StudySix pro-Patriot Act statementsNA,1,0.3596326988943671,0.16379289820281104,-0.058353158029927465,0.3935790873647078,"10 days
+patriot_act,Original Study,T1_contentPro,estimate_w2,0.1637928982028143,0.11740792474999982,-0.06043374364669593,0.3929194793700615,NA,stronger persistence,Chong and Druckman (2010),Original Study,Six pro-Patriot Act statements,Chong and Druckman (2010)Original StudySix pro-Patriot Act statementsNA,1,0.3596326988943691,0.1637928982028143,-0.06043374364669593,0.3929194793700615,"10 days
 post-treatment","Chong and Druckman (2010)
 Original Study"
-patriot_act,Mechanical Turk Replication,T1_contentCon,estimate_w1,-0.34233163160420566,0.11777308200007516,-0.5823641673192944,-0.10852147961469108,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six anti-Patriot Act statements,Chong and Druckman (2010)MTurkSix anti-Patriot Act statementsNA,-1,0.34233163160420566,0.34233163160420566,0.5823641673192944,0.10852147961469108,"Immediately
+patriot_act,Mechanical Turk Replication,T1_contentCon,estimate_w1,-0.3423316316042073,0.11634690687929797,-0.5667382181923148,-0.1120524159065261,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six anti-Patriot Act statements,Chong and Druckman (2010)MTurkSix anti-Patriot Act statementsNA,-1,0.3423316316042073,0.3423316316042073,0.5667382181923148,0.1120524159065261,"Immediately
 post-treatment","Chong and Druckman (2010)
 MTurk"
-patriot_act,Mechanical Turk Replication,T1_contentCon,estimate_w2,-0.0638758065491784,0.12287239783520967,-0.2877752053130409,0.1816644739626526,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six anti-Patriot Act statements,Chong and Druckman (2010)MTurkSix anti-Patriot Act statementsNA,-1,0.34233163160420566,0.0638758065491784,0.2877752053130409,-0.1816644739626526,"10 days
+patriot_act,Mechanical Turk Replication,T1_contentCon,estimate_w2,-0.063875806549183,0.12288553426252465,-0.2977245817106991,0.18821821880472986,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six anti-Patriot Act statements,Chong and Druckman (2010)MTurkSix anti-Patriot Act statementsNA,-1,0.3423316316042073,0.063875806549183,0.2977245817106991,-0.18821821880472986,"10 days
 post-treatment","Chong and Druckman (2010)
 MTurk"
-patriot_act,Mechanical Turk Replication,T1_contentPro,estimate_w1,0.2616641491795769,0.11705853129714633,0.0279812545874935,0.49794501310512745,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six pro-Patriot Act statements,Chong and Druckman (2010)MTurkSix pro-Patriot Act statementsNA,1,0.2616641491795769,0.2616641491795769,0.0279812545874935,0.49794501310512745,"Immediately
+patriot_act,Mechanical Turk Replication,T1_contentPro,estimate_w1,0.26166414917956976,0.11518784282211782,0.04629876757753091,0.494093620720016,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six pro-Patriot Act statements,Chong and Druckman (2010)MTurkSix pro-Patriot Act statementsNA,1,0.26166414917956976,0.26166414917956976,0.04629876757753091,0.494093620720016,"Immediately
 post-treatment","Chong and Druckman (2010)
 MTurk"
-patriot_act,Mechanical Turk Replication,T1_contentPro,estimate_w2,-0.01173254250475208,0.12219086778604107,-0.24600568186679966,0.2441761607329898,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six pro-Patriot Act statements,Chong and Druckman (2010)MTurkSix pro-Patriot Act statementsNA,1,0.2616641491795769,-0.01173254250475208,-0.24600568186679966,0.2441761607329898,"10 days
+patriot_act,Mechanical Turk Replication,T1_contentPro,estimate_w2,-0.011732542504761799,0.1226998388505693,-0.2407712475779076,0.2338688913606595,NA,stronger persistence,Chong and Druckman (2010),MTurk,Six pro-Patriot Act statements,Chong and Druckman (2010)MTurkSix pro-Patriot Act statementsNA,1,0.26166414917956976,-0.011732542504761799,-0.2407712475779076,0.2338688913606595,"10 days
 post-treatment","Chong and Druckman (2010)
 MTurk"
-free_trade,Mechanical Turk Replication,Z_Hiscox_expertExpert treatment,estimate_w1,0.2832771631146118,0.04611082299993307,0.19200676985019285,0.3738531811469091,NA,weaker persistence,Hiscox (2006),MTurk,Expert cue,Hiscox (2006)MTurkExpert cueNA,1,0.2832771631146118,0.2832771631146118,0.19200676985019285,0.3738531811469091,"Immediately
+free_trade,Mechanical Turk Replication,Z_Hiscox_expertExpert treatment,estimate_w1,0.2832771631146089,0.04688973679776392,0.19188509689362826,0.37319956223716894,NA,weaker persistence,Hiscox (2006),MTurk,Expert cue,Hiscox (2006)MTurkExpert cueNA,1,0.2832771631146089,0.2832771631146089,0.19188509689362826,0.37319956223716894,"Immediately
 post-treatment","Hiscox (2006)
 MTurk"
-free_trade,Mechanical Turk Replication,Z_Hiscox_expertExpert treatment,estimate_w2,0.13954018476161484,0.04725278425965638,0.04623546169954438,0.2316246922065879,NA,weaker persistence,Hiscox (2006),MTurk,Expert cue,Hiscox (2006)MTurkExpert cueNA,1,0.2832771631146118,0.13954018476161484,0.04623546169954438,0.2316246922065879,"10 days
+free_trade,Mechanical Turk Replication,Z_Hiscox_expertExpert treatment,estimate_w2,0.13954018476161206,0.04838464424086422,0.044650333158730085,0.23200482952107446,NA,weaker persistence,Hiscox (2006),MTurk,Expert cue,Hiscox (2006)MTurkExpert cueNA,1,0.2832771631146089,0.13954018476161206,0.044650333158730085,0.23200482952107446,"10 days
 post-treatment","Hiscox (2006)
 MTurk"
-free_trade,GfK Replication,Z_Hiscox_expertExpert treatment,estimate_w1,0.176233700640857,0.060411687848179865,0.059405692206622215,0.29277335952751643,NA,weaker persistence,Hiscox (2006),GfK,Expert cue,Hiscox (2006)GfKExpert cueNA,1,0.176233700640857,0.176233700640857,0.059405692206622215,0.29277335952751643,"Immediately
+free_trade,GfK Replication,Z_Hiscox_expertExpert treatment,estimate_w1,0.17623370064085764,0.06078254443942412,0.05450535764091296,0.2907396851796719,NA,weaker persistence,Hiscox (2006),GfK,Expert cue,Hiscox (2006)GfKExpert cueNA,1,0.17623370064085764,0.17623370064085764,0.05450535764091296,0.2907396851796719,"Immediately
 post-treatment","Hiscox (2006)
 GfK"
-free_trade,GfK Replication,Z_Hiscox_expertExpert treatment,estimate_w2,1.033369030442345e-4,0.06135640446243619,-0.12370195728293919,0.12141988648674212,NA,weaker persistence,Hiscox (2006),GfK,Expert cue,Hiscox (2006)GfKExpert cueNA,1,0.176233700640857,1.033369030442345e-4,-0.12370195728293919,0.12141988648674212,"10 days
+free_trade,GfK Replication,Z_Hiscox_expertExpert treatment,estimate_w2,1.033369030445797e-4,0.06233993893961752,-0.11972923828579655,0.12358772009508566,NA,weaker persistence,Hiscox (2006),GfK,Expert cue,Hiscox (2006)GfKExpert cueNA,1,0.17623370064085764,1.033369030445797e-4,-0.11972923828579655,0.12358772009508566,"10 days
 post-treatment","Hiscox (2006)
 GfK"
-free_trade,Mechanical Turk Replication,Z_Hiscox_valenceNegative,estimate_w1,-0.2586523666987445,0.058514709226602464,-0.37278012876074107,-0.14147253132534768,NA,weaker persistence,Hiscox (2006),MTurk,Negative frame,Hiscox (2006)MTurkNegative frameNA,-1,0.2586523666987445,0.2586523666987445,0.37278012876074107,0.14147253132534768,"Immediately
+free_trade,Mechanical Turk Replication,Z_Hiscox_valenceNegative,estimate_w1,-0.2586523666987436,0.05755048666849626,-0.3706056365054354,-0.14824882890296323,NA,weaker persistence,Hiscox (2006),MTurk,Negative frame,Hiscox (2006)MTurkNegative frameNA,-1,0.2586523666987436,0.2586523666987436,0.3706056365054354,0.14824882890296323,"Immediately
 post-treatment","Hiscox (2006)
 MTurk"
-free_trade,Mechanical Turk Replication,Z_Hiscox_valenceNegative,estimate_w2,-0.13096174922441745,0.05774872006115461,-0.24439526559958213,-0.01710699559528037,NA,weaker persistence,Hiscox (2006),MTurk,Negative frame,Hiscox (2006)MTurkNegative frameNA,-1,0.2586523666987445,0.13096174922441745,0.24439526559958213,0.01710699559528037,"10 days
+free_trade,Mechanical Turk Replication,Z_Hiscox_valenceNegative,estimate_w2,-0.13096174922441572,0.058659549628259144,-0.24905704467756765,-0.020768473607540798,NA,weaker persistence,Hiscox (2006),MTurk,Negative frame,Hiscox (2006)MTurkNegative frameNA,-1,0.2586523666987436,0.13096174922441572,0.24905704467756765,0.020768473607540798,"10 days
 post-treatment","Hiscox (2006)
 MTurk"
-free_trade,Mechanical Turk Replication,Z_Hiscox_valencePositive,estimate_w1,-0.07830677963784174,0.052663741646661356,-0.18150420335672215,0.029145642427029942,NA,weaker persistence,Hiscox (2006),MTurk,Positive frame,Hiscox (2006)MTurkPositive frameNA,-1,0.07830677963784174,0.07830677963784174,0.18150420335672215,-0.029145642427029942,"Immediately
+free_trade,Mechanical Turk Replication,Z_Hiscox_valencePositive,estimate_w1,-0.07830677963784154,0.05402196341810283,-0.183408456461367,0.027303860638010446,NA,weaker persistence,Hiscox (2006),MTurk,Positive frame,Hiscox (2006)MTurkPositive frameNA,-1,0.07830677963784154,0.07830677963784154,0.183408456461367,-0.027303860638010446,"Immediately
 post-treatment","Hiscox (2006)
 MTurk"
-free_trade,Mechanical Turk Replication,Z_Hiscox_valencePositive,estimate_w2,-0.1085681332696571,0.055234199577932366,-0.21918035430041088,-0.0022276781917351255,NA,weaker persistence,Hiscox (2006),MTurk,Positive frame,Hiscox (2006)MTurkPositive frameNA,-1,0.07830677963784174,0.1085681332696571,0.21918035430041088,0.0022276781917351255,"10 days
+free_trade,Mechanical Turk Replication,Z_Hiscox_valencePositive,estimate_w2,-0.10856813326965631,0.056755651989629466,-0.22069857217977512,0.0028504407240642804,NA,weaker persistence,Hiscox (2006),MTurk,Positive frame,Hiscox (2006)MTurkPositive frameNA,-1,0.07830677963784154,0.10856813326965631,0.22069857217977512,-0.0028504407240642804,"10 days
 post-treatment","Hiscox (2006)
 MTurk"
-free_trade,GfK Replication,Z_Hiscox_valenceNegative,estimate_w1,-0.32806322044063446,0.07488799933616778,-0.47798650405195975,-0.1832897384957928,NA,weaker persistence,Hiscox (2006),GfK,Negative frame,Hiscox (2006)GfKNegative frameNA,-1,0.32806322044063446,0.32806322044063446,0.47798650405195975,0.1832897384957928,"Immediately
+free_trade,GfK Replication,Z_Hiscox_valenceNegative,estimate_w1,-0.3280632204406341,0.07533455433091464,-0.4760635432806883,-0.18258272859616842,NA,weaker persistence,Hiscox (2006),GfK,Negative frame,Hiscox (2006)GfKNegative frameNA,-1,0.3280632204406341,0.3280632204406341,0.4760635432806883,0.18258272859616842,"Immediately
 post-treatment","Hiscox (2006)
 GfK"
-free_trade,GfK Replication,Z_Hiscox_valenceNegative,estimate_w2,-0.03422221303171745,0.07236241782310072,-0.1762112390458673,0.11103088693686441,NA,weaker persistence,Hiscox (2006),GfK,Negative frame,Hiscox (2006)GfKNegative frameNA,-1,0.32806322044063446,0.03422221303171745,0.1762112390458673,-0.11103088693686441,"10 days
+free_trade,GfK Replication,Z_Hiscox_valenceNegative,estimate_w2,-0.03422221303171711,0.07145122343471925,-0.17467092884516652,0.10482616118236711,NA,weaker persistence,Hiscox (2006),GfK,Negative frame,Hiscox (2006)GfKNegative frameNA,-1,0.3280632204406341,0.03422221303171711,0.17467092884516652,-0.10482616118236711,"10 days
 post-treatment","Hiscox (2006)
 GfK"
-free_trade,GfK Replication,Z_Hiscox_valencePositive,estimate_w1,-0.04140914868722603,0.07052564419537276,-0.17252432492095068,0.09455769572254615,NA,weaker persistence,Hiscox (2006),GfK,Positive frame,Hiscox (2006)GfKPositive frameNA,-1,0.04140914868722603,0.04140914868722603,0.17252432492095068,-0.09455769572254615,"Immediately
+free_trade,GfK Replication,Z_Hiscox_valencePositive,estimate_w1,-0.04140914868722565,0.07057601125216784,-0.17881415939361187,0.0965398002352739,NA,weaker persistence,Hiscox (2006),GfK,Positive frame,Hiscox (2006)GfKPositive frameNA,-1,0.04140914868722565,0.04140914868722565,0.17881415939361187,-0.0965398002352739,"Immediately
 post-treatment","Hiscox (2006)
 GfK"
-free_trade,GfK Replication,Z_Hiscox_valencePositive,estimate_w2,-0.014761876740479778,0.07432148512799198,-0.15666654799070492,0.12459499577944981,NA,weaker persistence,Hiscox (2006),GfK,Positive frame,Hiscox (2006)GfKPositive frameNA,-1,0.04140914868722603,0.014761876740479778,0.15666654799070492,-0.12459499577944981,"10 days
+free_trade,GfK Replication,Z_Hiscox_valencePositive,estimate_w2,-0.014761876740479286,0.07283989267671381,-0.1585379228619456,0.1294762880523473,NA,weaker persistence,Hiscox (2006),GfK,Positive frame,Hiscox (2006)GfKPositive frameNA,-1,0.04140914868722565,0.014761876740479286,0.1585379228619456,-0.1294762880523473,"10 days
 post-treatment","Hiscox (2006)
 GfK"
-immigration,Mechanical Turk Replication,Z_brader_pos_negnegative,estimate_w1,-0.1381019867041336,0.06526502763434118,-0.2654062929021136,-0.00937240246512344,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Negative article,"Brader, Valentino, and Suhay (2008)MTurkNegative articleNA",-1,0.1381019867041336,0.1381019867041336,0.2654062929021136,0.00937240246512344,"Immediately
+immigration,Mechanical Turk Replication,Z_brader_pos_negnegative,estimate_w1,-0.13810198670412704,0.06499333584601823,-0.2719071383027923,-0.013104698819992076,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Negative article,"Brader, Valentino, and Suhay (2008)MTurkNegative articleNA",-1,0.13810198670412704,0.13810198670412704,0.2719071383027923,0.013104698819992076,"Immediately
 post-treatment","Brader, Valentino, and Suhay (2008)
 MTurk"
-immigration,Mechanical Turk Replication,Z_brader_pos_negnegative,estimate_w2,-0.022071031696747675,0.06730803160961477,-0.1490062787099215,0.11442160612582863,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Negative article,"Brader, Valentino, and Suhay (2008)MTurkNegative articleNA",-1,0.1381019867041336,0.022071031696747675,0.1490062787099215,-0.11442160612582863,"10 days
+immigration,Mechanical Turk Replication,Z_brader_pos_negnegative,estimate_w2,-0.022071031696745194,0.06784067457336923,-0.15296832369716568,0.11278789282349512,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Negative article,"Brader, Valentino, and Suhay (2008)MTurkNegative articleNA",-1,0.13810198670412704,0.022071031696745194,0.15296832369716568,-0.11278789282349512,"10 days
 post-treatment","Brader, Valentino, and Suhay (2008)
 MTurk"
-immigration,Mechanical Turk Replication,Z_brader_pos_negpositive,estimate_w1,0.05935288276730947,0.0619515931959134,-0.05669290662932867,0.1830728102868667,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Positive article,"Brader, Valentino, and Suhay (2008)MTurkPositive articleNA",1,0.05935288276730947,0.05935288276730947,-0.05669290662932867,0.1830728102868667,"Immediately
+immigration,Mechanical Turk Replication,Z_brader_pos_negpositive,estimate_w1,0.05935288276730853,0.06174004902017222,-0.05883226001631236,0.18309267994763645,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Positive article,"Brader, Valentino, and Suhay (2008)MTurkPositive articleNA",1,0.05935288276730853,0.05935288276730853,-0.05883226001631236,0.18309267994763645,"Immediately
 post-treatment","Brader, Valentino, and Suhay (2008)
 MTurk"
-immigration,Mechanical Turk Replication,Z_brader_pos_negpositive,estimate_w2,0.025122688093610537,0.0656640565732951,-0.09524825309968514,0.15818083053984086,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Positive article,"Brader, Valentino, and Suhay (2008)MTurkPositive articleNA",1,0.05935288276730947,0.025122688093610537,-0.09524825309968514,0.15818083053984086,"10 days
+immigration,Mechanical Turk Replication,Z_brader_pos_negpositive,estimate_w2,0.025122688093609926,0.06578496273636,-0.10125985031065042,0.1595524692436153,NA,weaker persistence,"Brader, Valentino, and Suhay (2008)",MTurk,Positive article,"Brader, Valentino, and Suhay (2008)MTurkPositive articleNA",1,0.05935288276730853,0.025122688093609926,-0.10125985031065042,0.1595524692436153,"10 days
 post-treatment","Brader, Valentino, and Suhay (2008)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.3203699022509353,0.041943627492521646,0.23279763876842155,0.39676004232667095,Immigration,weaker persistence,Johnston and Ballard (2016),MTurk,Immigration,Johnston and Ballard (2016)MTurkImmigrationImmigration,1,0.3203699022509353,0.3203699022509353,0.23279763876842155,0.39676004232667095,"Immediately
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.3203699022509397,0.04179441833989737,0.23555900736431543,0.3976925849764709,Immigration,weaker persistence,Johnston and Ballard (2016),MTurk,Immigration,Johnston and Ballard (2016)MTurkImmigrationImmigration,1,0.3203699022509397,0.3203699022509397,0.23555900736431543,0.3976925849764709,"Immediately
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.06237400282153692,0.04246873969553089,-0.022755009349713754,0.1431480544134588,Immigration,weaker persistence,Johnston and Ballard (2016),MTurk,Immigration,Johnston and Ballard (2016)MTurkImmigrationImmigration,1,0.3203699022509353,0.06237400282153692,-0.022755009349713754,0.1431480544134588,"10 days
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.062374002821535504,0.04220593733092778,-0.019787225285974198,0.14670146884284738,Immigration,weaker persistence,Johnston and Ballard (2016),MTurk,Immigration,Johnston and Ballard (2016)MTurkImmigrationImmigration,1,0.3203699022509397,0.062374002821535504,-0.019787225285974198,0.14670146884284738,"10 days
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.3667052236275571,0.04265874053842334,0.2817802841431191,0.4471962284501216,Health Care,weaker persistence,Johnston and Ballard (2016),MTurk,Health Care,Johnston and Ballard (2016)MTurkHealth CareHealth Care,1,0.3667052236275571,0.3667052236275571,0.2817802841431191,0.4471962284501216,"Immediately
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.36670522362755265,0.04261369381248233,0.2828300707917773,0.45060848101654405,Health Care,weaker persistence,Johnston and Ballard (2016),MTurk,Health Care,Johnston and Ballard (2016)MTurkHealth CareHealth Care,1,0.36670522362755265,0.36670522362755265,0.2828300707917773,0.45060848101654405,"Immediately
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.005224469003800772,0.04230757324715459,-0.07579522887273543,0.08898939255159403,Health Care,weaker persistence,Johnston and Ballard (2016),MTurk,Health Care,Johnston and Ballard (2016)MTurkHealth CareHealth Care,1,0.3667052236275571,0.005224469003800772,-0.07579522887273543,0.08898939255159403,"10 days
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.005224469003800382,0.04217283124816956,-0.07518824030510862,0.08512831590022503,Health Care,weaker persistence,Johnston and Ballard (2016),MTurk,Health Care,Johnston and Ballard (2016)MTurkHealth CareHealth Care,1,0.36670522362755265,0.005224469003800382,-0.07518824030510862,0.08512831590022503,"10 days
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.42369680754227446,0.04189284243647881,0.34211204792165834,0.5051438568622196,Trade with China,weaker persistence,Johnston and Ballard (2016),MTurk,Trade with China,Johnston and Ballard (2016)MTurkTrade with ChinaTrade with China,1,0.42369680754227446,0.42369680754227446,0.34211204792165834,0.5051438568622196,"Immediately
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.42369680754227507,0.043282239514891546,0.3400673510904174,0.5101943935916472,Trade with China,weaker persistence,Johnston and Ballard (2016),MTurk,Trade with China,Johnston and Ballard (2016)MTurkTrade with ChinaTrade with China,1,0.42369680754227507,0.42369680754227507,0.3400673510904174,0.5101943935916472,"Immediately
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.08115577421604811,0.042003036919595615,0.0013586653966922977,0.16505784733999154,Trade with China,weaker persistence,Johnston and Ballard (2016),MTurk,Trade with China,Johnston and Ballard (2016)MTurkTrade with ChinaTrade with China,1,0.42369680754227446,0.08115577421604811,0.0013586653966922977,0.16505784733999154,"10 days
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.08115577421604729,0.042985625486631956,-7.67274179462894e-4,0.1666659982306304,Trade with China,weaker persistence,Johnston and Ballard (2016),MTurk,Trade with China,Johnston and Ballard (2016)MTurkTrade with ChinaTrade with China,1,0.42369680754227507,0.08115577421604729,-7.67274179462894e-4,0.1666659982306304,"10 days
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.44346217706117946,0.04280166023044983,0.36022999944837397,0.5277885395723788,Tax Cut,weaker persistence,Johnston and Ballard (2016),MTurk,Tax Cut,Johnston and Ballard (2016)MTurkTax CutTax Cut,1,0.44346217706117946,0.44346217706117946,0.36022999944837397,0.5277885395723788,"Immediately
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.443462177061178,0.042344858271362334,0.3616739212884312,0.527657053982956,Tax Cut,weaker persistence,Johnston and Ballard (2016),MTurk,Tax Cut,Johnston and Ballard (2016)MTurkTax CutTax Cut,1,0.443462177061178,0.443462177061178,0.3616739212884312,0.527657053982956,"Immediately
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,-0.005600825265014348,0.041505037678703206,-0.08760813581254481,0.072195648141056,Tax Cut,weaker persistence,Johnston and Ballard (2016),MTurk,Tax Cut,Johnston and Ballard (2016)MTurkTax CutTax Cut,1,0.44346217706117946,-0.005600825265014348,-0.08760813581254481,0.072195648141056,"10 days
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,-0.005600825265014923,0.041377148977658346,-0.08485780869681459,0.07346084058146649,Tax Cut,weaker persistence,Johnston and Ballard (2016),MTurk,Tax Cut,Johnston and Ballard (2016)MTurkTax CutTax Cut,1,0.443462177061178,-0.005600825265014923,-0.08485780869681459,0.07346084058146649,"10 days
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.51623603803659,0.04115839249832284,0.4340980779112969,0.5948322879299728,Gold Standard,weaker persistence,Johnston and Ballard (2016),MTurk,Gold Standard,Johnston and Ballard (2016)MTurkGold StandardGold Standard,1,0.51623603803659,0.51623603803659,0.4340980779112969,0.5948322879299728,"Immediately
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w1,0.5162360380365805,0.04130265525512417,0.43672161577685825,0.5967669711387845,Gold Standard,weaker persistence,Johnston and Ballard (2016),MTurk,Gold Standard,Johnston and Ballard (2016)MTurkGold StandardGold Standard,1,0.5162360380365805,0.5162360380365805,0.43672161577685825,0.5967669711387845,"Immediately
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.1580980494370655,0.04192826150994481,0.07487572710991218,0.2404293005661931,Gold Standard,weaker persistence,Johnston and Ballard (2016),MTurk,Gold Standard,Johnston and Ballard (2016)MTurkGold StandardGold Standard,1,0.51623603803659,0.1580980494370655,0.07487572710991218,0.2404293005661931,"10 days
+expert_economists,Mechanical Turk Replication,Z_expert_allExpert Treatment,estimate_w2,0.15809804943706082,0.04181484037331284,0.07982755786377141,0.24239804694141734,Gold Standard,weaker persistence,Johnston and Ballard (2016),MTurk,Gold Standard,Johnston and Ballard (2016)MTurkGold StandardGold Standard,1,0.5162360380365805,0.15809804943706082,0.07982755786377141,0.24239804694141734,"10 days
 post-treatment","Johnston and Ballard (2016)
 MTurk"
-opeds,Mechanical Turk Sample,Zamtrak,estimate_w1,0.29701246408715093,0.07008867137526098,0.16171450483405034,0.43925056854432587,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)MTurkAmtrak op-edamtrak",1,0.29701246408715093,0.29701246408715093,0.16171450483405034,0.43925056854432587,"Immediately
+opeds,Mechanical Turk Sample,Zamtrak,estimate_w1,0.2970124640871496,0.0690520799665122,0.16298520995300772,0.43240170209926065,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)MTurkAmtrak op-edamtrak",1,0.2970124640871496,0.2970124640871496,0.16298520995300772,0.43240170209926065,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zamtrak,estimate_w2,0.055459650577935636,0.06723976999309113,-0.07500004702210895,0.18945581024900499,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)MTurkAmtrak op-edamtrak",1,0.29701246408715093,0.055459650577935636,-0.07500004702210895,0.18945581024900499,"10 days
+opeds,Mechanical Turk Sample,Zamtrak,estimate_w2,0.05545965057793549,0.06674215080203871,-0.0745527175260043,0.19142904374013794,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)MTurkAmtrak op-edamtrak",1,0.2970124640871496,0.05545965057793549,-0.0745527175260043,0.19142904374013794,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zclimate,estimate_w1,0.23507960372124606,0.05985759506968512,0.11983510570471885,0.35506269453133477,climate,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,NA,"Coppock, Ekins, and Kirby (2018)MTurkNAclimate",1,0.23507960372124606,0.23507960372124606,0.11983510570471885,0.35506269453133477,"Immediately
+opeds,Mechanical Turk Sample,Zclimate,estimate_w1,0.23507960372124692,0.0598583573304578,0.12302616767113125,0.3561051727966397,climate,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,NA,"Coppock, Ekins, and Kirby (2018)MTurkNAclimate",1,0.23507960372124692,0.23507960372124692,0.12302616767113125,0.3561051727966397,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zclimate,estimate_w2,0.13846513932524976,0.05957788461540766,0.023079345767728587,0.2545450505787507,climate,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,NA,"Coppock, Ekins, and Kirby (2018)MTurkNAclimate",1,0.23507960372124606,0.13846513932524976,0.023079345767728587,0.2545450505787507,"10 days
+opeds,Mechanical Turk Sample,Zclimate,estimate_w2,0.13846513932525037,0.059996343336948504,0.013622726747340894,0.25649734876626346,climate,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,NA,"Coppock, Ekins, and Kirby (2018)MTurkNAclimate",1,0.23507960372124692,0.13846513932525037,0.013622726747340894,0.25649734876626346,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zpaul,estimate_w1,0.38245401110097105,0.06218955483282274,0.2614063951812486,0.5050991600275665,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)MTurkFlat tax op-edflat",1,0.38245401110097105,0.38245401110097105,0.2614063951812486,0.5050991600275665,"Immediately
+opeds,Mechanical Turk Sample,Zpaul,estimate_w1,0.38245401110097266,0.06388367057184598,0.2570507083991331,0.5060099031796057,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)MTurkFlat tax op-edflat",1,0.38245401110097266,0.38245401110097266,0.2570507083991331,0.5060099031796057,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zpaul,estimate_w2,0.2647169250667632,0.06631558264968249,0.1416501457256598,0.39299196492819755,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)MTurkFlat tax op-edflat",1,0.38245401110097105,0.2647169250667632,0.1416501457256598,0.39299196492819755,"10 days
+opeds,Mechanical Turk Sample,Zpaul,estimate_w2,0.2647169250667641,0.06587406659739371,0.1427446404606789,0.3961900195259474,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)MTurkFlat tax op-edflat",1,0.38245401110097266,0.2647169250667641,0.1427446404606789,0.3961900195259474,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zveterans,estimate_w1,0.7659091584700795,0.06434108798699796,0.6396345993714527,0.8886282657332483,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)MTurkVeterans op-edveterans",1,0.7659091584700795,0.7659091584700795,0.6396345993714527,0.8886282657332483,"Immediately
+opeds,Mechanical Turk Sample,Zveterans,estimate_w1,0.7659091584700791,0.065418817343954,0.6364230077264571,0.8927832160244769,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)MTurkVeterans op-edveterans",1,0.7659091584700791,0.7659091584700791,0.6364230077264571,0.8927832160244769,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zveterans,estimate_w2,0.4214407926601335,0.061978841634168766,0.3050256774727559,0.5457029684348064,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)MTurkVeterans op-edveterans",1,0.7659091584700795,0.4214407926601335,0.3050256774727559,0.5457029684348064,"10 days
+opeds,Mechanical Turk Sample,Zveterans,estimate_w2,0.42144079266013224,0.06327775650152723,0.2977866298672816,0.5506447658631866,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)MTurkVeterans op-edveterans",1,0.7659091584700791,0.42144079266013224,0.2977866298672816,0.5506447658631866,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zwallstreet,estimate_w1,0.5435271728937292,0.06679603902455834,0.4115430522013307,0.6739837428881758,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)MTurkWallstreet op-edwallstreet",1,0.5435271728937292,0.5435271728937292,0.4115430522013307,0.6739837428881758,"Immediately
+opeds,Mechanical Turk Sample,Zwallstreet,estimate_w1,0.5435271728937294,0.06778594089375337,0.41722405161543746,0.6752208126221265,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)MTurkWallstreet op-edwallstreet",1,0.5435271728937294,0.5435271728937294,0.41722405161543746,0.6752208126221265,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Mechanical Turk Sample,Zwallstreet,estimate_w2,0.20243317117222778,0.06745332770242973,0.07593572143687317,0.34234548914759533,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)MTurkWallstreet op-edwallstreet",1,0.5435271728937292,0.20243317117222778,0.07593572143687317,0.34234548914759533,"10 days
+opeds,Mechanical Turk Sample,Zwallstreet,estimate_w2,0.2024331711722279,0.06704010885300966,0.07742013149954483,0.34160316588581563,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",MTurk,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)MTurkWallstreet op-edwallstreet",1,0.5435271728937294,0.2024331711722279,0.07742013149954483,0.34160316588581563,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 MTurk"
-opeds,Policy Professional Sample,Zamtrak,estimate_w1,0.37710002722421904,0.08567530701997426,0.21486291838459873,0.5438396111112296,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsAmtrak op-edamtrak",1,0.37710002722421904,0.37710002722421904,0.21486291838459873,0.5438396111112296,"Immediately
+opeds,Policy Professional Sample,Zamtrak,estimate_w1,0.37710002722421904,0.08504394844661854,0.21106584435999398,0.5436347192415955,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsAmtrak op-edamtrak",1,0.37710002722421904,0.37710002722421904,0.21106584435999398,0.5436347192415955,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zamtrak,estimate_w2,0.17612927395246045,0.07127070816247953,0.046489569015254396,0.3187469502238981,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsAmtrak op-edamtrak",1,0.37710002722421904,0.17612927395246045,0.046489569015254396,0.3187469502238981,"10 days
+opeds,Policy Professional Sample,Zamtrak,estimate_w2,0.17612927395246097,0.07006200381465333,0.04579357815343966,0.31330143348999984,amtrak,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Amtrak op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsAmtrak op-edamtrak",1,0.37710002722421904,0.17612927395246097,0.04579357815343966,0.31330143348999984,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zpaul,estimate_w1,0.19377885235850614,0.0790739863140119,0.0364040258199887,0.3441497952450977,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsFlat tax op-edflat",1,0.19377885235850614,0.19377885235850614,0.0364040258199887,0.3441497952450977,"Immediately
+opeds,Policy Professional Sample,Zpaul,estimate_w1,0.1937788523585058,0.07807490825932953,0.04085783780671608,0.3445251115881962,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsFlat tax op-edflat",1,0.1937788523585058,0.1937788523585058,0.04085783780671608,0.3445251115881962,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zpaul,estimate_w2,0.07554447555638254,0.077776797646157525,-0.07607651823575161,0.23166998285676446,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsFlat tax op-edflat",1,0.19377885235850614,0.07554447555638254,-0.07607651823575161,0.23166998285676446,"10 days
+opeds,Policy Professional Sample,Zpaul,estimate_w2,0.07554447555638251,0.07768099689079247,-0.06859790715943019,0.23023354146625974,flat,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Flat tax op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsFlat tax op-edflat",1,0.1937788523585058,0.07554447555638251,-0.06859790715943019,0.23023354146625974,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zveterans,estimate_w1,0.18217429967523782,0.07796137789865598,0.026161627943126122,0.3367469361198675,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsVeterans op-edveterans",1,0.18217429967523782,0.18217429967523782,0.026161627943126122,0.3367469361198675,"Immediately
+opeds,Policy Professional Sample,Zveterans,estimate_w1,0.18217429967523782,0.07764732625881168,0.028690205739746764,0.3370846776535913,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsVeterans op-edveterans",1,0.18217429967523782,0.18217429967523782,0.028690205739746764,0.3370846776535913,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zveterans,estimate_w2,0.09916308248044677,0.07877130752978231,-0.052251828731578694,0.25171342908850075,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsVeterans op-edveterans",1,0.18217429967523782,0.09916308248044677,-0.052251828731578694,0.25171342908850075,"10 days
+opeds,Policy Professional Sample,Zveterans,estimate_w2,0.09916308248044656,0.07767870018749537,-0.05714762850017889,0.2512925101310585,veterans,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Veterans op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsVeterans op-edveterans",1,0.18217429967523782,0.09916308248044656,-0.05714762850017889,0.2512925101310585,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zwallstreet,estimate_w1,0.5509075138593192,0.07952561066001564,0.4013927648531893,0.7096356578999109,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsWallstreet op-edwallstreet",1,0.5509075138593192,0.5509075138593192,0.4013927648531893,0.7096356578999109,"Immediately
+opeds,Policy Professional Sample,Zwallstreet,estimate_w1,0.5509075138593194,0.07869551536107196,0.3994861900449812,0.71181227767063,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsWallstreet op-edwallstreet",1,0.5509075138593194,0.5509075138593194,0.3994861900449812,0.71181227767063,"Immediately
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-opeds,Policy Professional Sample,Zwallstreet,estimate_w2,0.20847694810419057,0.0827320501760637,0.058757203534078775,0.36879025794495124,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsWallstreet op-edwallstreet",1,0.5509075138593192,0.20847694810419057,0.058757203534078775,0.36879025794495124,"10 days
+opeds,Policy Professional Sample,Zwallstreet,estimate_w2,0.2084769481041904,0.08198010260088442,0.05922042130885161,0.3677660019197496,wallstreet,stronger persistence,"Coppock, Ekins, and Kirby (2018)",Policy Professionals,Wallstreet op-ed,"Coppock, Ekins, and Kirby (2018)Policy ProfessionalsWallstreet op-edwallstreet",1,0.5509075138593194,0.2084769481041904,0.05922042130885161,0.3677660019197496,"10 days
 post-treatment","Coppock, Ekins, and Kirby (2018)
 Policy Professionals"
-frame_breath,Mechanical Turk Replication,Z,estimate_w1,-0.009104757208580365,0.06019899124533701,-0.12447584321405436,0.1077135367930742,Crime,weaker persistence,Hopkins and Mummolo (2017),MTurk,Crime statement,Hopkins and Mummolo (2017)MTurkCrime statementCrime,-1,0.009104757208580365,0.009104757208580365,0.12447584321405436,-0.1077135367930742,"Immediately
+frame_breath,Mechanical Turk Replication,Z,estimate_w1,-0.009104757208580533,0.05976170087545384,-0.12731953474415503,0.1047524476743413,Crime,weaker persistence,Hopkins and Mummolo (2017),MTurk,Crime statement,Hopkins and Mummolo (2017)MTurkCrime statementCrime,-1,0.009104757208580533,0.009104757208580533,0.12731953474415503,-0.1047524476743413,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w2,0.04949871817562184,0.05839653887402992,-0.0639503091147245,0.16843667580718344,Crime,weaker persistence,Hopkins and Mummolo (2017),MTurk,Crime statement,Hopkins and Mummolo (2017)MTurkCrime statementCrime,-1,0.009104757208580365,-0.04949871817562184,0.0639503091147245,-0.16843667580718344,"10 days
+frame_breath,Mechanical Turk Replication,Z,estimate_w2,0.049498718175622416,0.058025405213001625,-0.06794418825695618,0.16114002314135722,Crime,weaker persistence,Hopkins and Mummolo (2017),MTurk,Crime statement,Hopkins and Mummolo (2017)MTurkCrime statementCrime,-1,0.009104757208580533,-0.049498718175622416,0.06794418825695618,-0.16114002314135722,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w1,-0.06895240731899015,0.044844456686375364,-0.15595591743190734,0.017672635882270776,Health,weaker persistence,Hopkins and Mummolo (2017),MTurk,Health statement,Hopkins and Mummolo (2017)MTurkHealth statementHealth,-1,0.06895240731899015,0.06895240731899015,0.15595591743190734,-0.017672635882270776,"Immediately
+frame_breath,Mechanical Turk Replication,Z,estimate_w1,-0.06895240731899131,0.045588979995443535,-0.1566625592976548,0.02448226529128558,Health,weaker persistence,Hopkins and Mummolo (2017),MTurk,Health statement,Hopkins and Mummolo (2017)MTurkHealth statementHealth,-1,0.06895240731899131,0.06895240731899131,0.1566625592976548,-0.02448226529128558,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w2,-0.05241343111302021,0.04682765840104143,-0.143200093664135,0.03921016105241133,Health,weaker persistence,Hopkins and Mummolo (2017),MTurk,Health statement,Hopkins and Mummolo (2017)MTurkHealth statementHealth,-1,0.06895240731899015,0.05241343111302021,0.143200093664135,-0.03921016105241133,"10 days
+frame_breath,Mechanical Turk Replication,Z,estimate_w2,-0.05241343111302099,0.047476768023758144,-0.14220929244660457,0.041801002054839144,Health,weaker persistence,Hopkins and Mummolo (2017),MTurk,Health statement,Hopkins and Mummolo (2017)MTurkHealth statementHealth,-1,0.06895240731899131,0.05241343111302099,0.14220929244660457,-0.041801002054839144,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w1,-0.21572186091736203,0.04776556290292452,-0.3075956414274236,-0.12496073415677189,Stimulus,weaker persistence,Hopkins and Mummolo (2017),MTurk,Stimulus statement,Hopkins and Mummolo (2017)MTurkStimulus statementStimulus,-1,0.21572186091736203,0.21572186091736203,0.3075956414274236,0.12496073415677189,"Immediately
+frame_breath,Mechanical Turk Replication,Z,estimate_w1,-0.21572186091736353,0.04835735942605164,-0.3121718348691051,-0.12010196028014629,Stimulus,weaker persistence,Hopkins and Mummolo (2017),MTurk,Stimulus statement,Hopkins and Mummolo (2017)MTurkStimulus statementStimulus,-1,0.21572186091736353,0.21572186091736353,0.3121718348691051,0.12010196028014629,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w2,-0.09475268660698326,0.04636193799388081,-0.18363597343472726,-0.0029175573920656845,Stimulus,weaker persistence,Hopkins and Mummolo (2017),MTurk,Stimulus statement,Hopkins and Mummolo (2017)MTurkStimulus statementStimulus,-1,0.21572186091736203,0.09475268660698326,0.18363597343472726,0.0029175573920656845,"10 days
+frame_breath,Mechanical Turk Replication,Z,estimate_w2,-0.09475268660698358,0.04662129670632798,-0.18138177993379948,-0.0018270276459904098,Stimulus,weaker persistence,Hopkins and Mummolo (2017),MTurk,Stimulus statement,Hopkins and Mummolo (2017)MTurkStimulus statementStimulus,-1,0.21572186091736353,0.09475268660698358,0.18138177993379948,0.0018270276459904098,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w1,0.13327489054557368,0.05515282957675708,0.025667819172058688,0.23703389207110884,Terror,weaker persistence,Hopkins and Mummolo (2017),MTurk,Terror statement,Hopkins and Mummolo (2017)MTurkTerror statementTerror,1,0.13327489054557368,0.13327489054557368,0.025667819172058688,0.23703389207110884,"Immediately
+frame_breath,Mechanical Turk Replication,Z,estimate_w1,0.13327489054557376,0.0552052736646271,0.021487249476343322,0.23689414066840023,Terror,weaker persistence,Hopkins and Mummolo (2017),MTurk,Terror statement,Hopkins and Mummolo (2017)MTurkTerror statementTerror,1,0.13327489054557376,0.13327489054557376,0.021487249476343322,0.23689414066840023,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,Mechanical Turk Replication,Z,estimate_w2,0.06621191050885068,0.05239620279630646,-0.041139020206852984,0.16291264902684635,Terror,weaker persistence,Hopkins and Mummolo (2017),MTurk,Terror statement,Hopkins and Mummolo (2017)MTurkTerror statementTerror,1,0.13327489054557368,0.06621191050885068,-0.041139020206852984,0.16291264902684635,"10 days
+frame_breath,Mechanical Turk Replication,Z,estimate_w2,0.06621191050885043,0.05300105377772773,-0.04099611129273908,0.16846764213548657,Terror,weaker persistence,Hopkins and Mummolo (2017),MTurk,Terror statement,Hopkins and Mummolo (2017)MTurkTerror statementTerror,1,0.13327489054557376,0.06621191050885043,-0.04099611129273908,0.16846764213548657,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 MTurk"
-frame_breath,GfK Replication,Z,estimate_w1,0.043645250808224706,0.05740120265527405,-0.06859244747177494,0.1567040713456624,Crime,weaker persistence,Hopkins and Mummolo (2017),GfK,Crime statement,Hopkins and Mummolo (2017)GfKCrime statementCrime,1,0.043645250808224706,0.043645250808224706,-0.06859244747177494,0.1567040713456624,"Immediately
+frame_breath,GfK Replication,Z,estimate_w1,0.04364525080822475,0.05722770353877029,-0.06864544912186281,0.1535594510301084,Crime,weaker persistence,Hopkins and Mummolo (2017),GfK,Crime statement,Hopkins and Mummolo (2017)GfKCrime statementCrime,1,0.04364525080822475,0.04364525080822475,-0.06864544912186281,0.1535594510301084,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w2,-0.06831722231272615,0.05180965594017978,-0.163496837507032,0.034410995451720175,Crime,weaker persistence,Hopkins and Mummolo (2017),GfK,Crime statement,Hopkins and Mummolo (2017)GfKCrime statementCrime,1,0.043645250808224706,-0.06831722231272615,-0.163496837507032,0.034410995451720175,"10 days
+frame_breath,GfK Replication,Z,estimate_w2,-0.06831722231272638,0.05161677705320984,-0.16384055055561925,0.034164520060171934,Crime,weaker persistence,Hopkins and Mummolo (2017),GfK,Crime statement,Hopkins and Mummolo (2017)GfKCrime statementCrime,1,0.04364525080822475,-0.06831722231272638,-0.16384055055561925,0.034164520060171934,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w1,0.02145787461637566,0.050908825204750895,-0.07757282853353185,0.12154101303635668,Health,weaker persistence,Hopkins and Mummolo (2017),GfK,Health statement,Hopkins and Mummolo (2017)GfKHealth statementHealth,1,0.02145787461637566,0.02145787461637566,-0.07757282853353185,0.12154101303635668,"Immediately
+frame_breath,GfK Replication,Z,estimate_w1,0.02145787461637566,0.05028691219910518,-0.07687086741511119,0.12145934048749846,Health,weaker persistence,Hopkins and Mummolo (2017),GfK,Health statement,Hopkins and Mummolo (2017)GfKHealth statementHealth,1,0.02145787461637566,0.02145787461637566,-0.07687086741511119,0.12145934048749846,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w2,0.058229132480747216,0.04801283676547643,-0.034225501438197733,0.15225407456191234,Health,weaker persistence,Hopkins and Mummolo (2017),GfK,Health statement,Hopkins and Mummolo (2017)GfKHealth statementHealth,1,0.02145787461637566,0.058229132480747216,-0.034225501438197733,0.15225407456191234,"10 days
+frame_breath,GfK Replication,Z,estimate_w2,0.05822913248074735,0.048172986572937865,-0.03662838330515902,0.15208038670609045,Health,weaker persistence,Hopkins and Mummolo (2017),GfK,Health statement,Hopkins and Mummolo (2017)GfKHealth statementHealth,1,0.02145787461637566,0.05822913248074735,-0.03662838330515902,0.15208038670609045,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w1,-0.27786803322226494,0.050162419312647914,-0.3782035769182099,-0.18071837202573085,Stimulus,weaker persistence,Hopkins and Mummolo (2017),GfK,Stimulus statement,Hopkins and Mummolo (2017)GfKStimulus statementStimulus,-1,0.27786803322226494,0.27786803322226494,0.3782035769182099,0.18071837202573085,"Immediately
+frame_breath,GfK Replication,Z,estimate_w1,-0.2778680332222648,0.05167541285144833,-0.37864532512832266,-0.17849741541763367,Stimulus,weaker persistence,Hopkins and Mummolo (2017),GfK,Stimulus statement,Hopkins and Mummolo (2017)GfKStimulus statementStimulus,-1,0.2778680332222648,0.2778680332222648,0.37864532512832266,0.17849741541763367,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w2,-0.06170875859653998,0.051159438549522616,-0.16204507401965104,0.040186382094368346,Stimulus,weaker persistence,Hopkins and Mummolo (2017),GfK,Stimulus statement,Hopkins and Mummolo (2017)GfKStimulus statementStimulus,-1,0.27786803322226494,0.06170875859653998,0.16204507401965104,-0.040186382094368346,"10 days
+frame_breath,GfK Replication,Z,estimate_w2,-0.061708758596539875,0.052231165133301775,-0.16219573875976623,0.04139870397138187,Stimulus,weaker persistence,Hopkins and Mummolo (2017),GfK,Stimulus statement,Hopkins and Mummolo (2017)GfKStimulus statementStimulus,-1,0.2778680332222648,0.061708758596539875,0.16219573875976623,-0.04139870397138187,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w1,0.20213030190125303,0.052483111657404234,0.09512097622273206,0.3034629564126966,Terror,weaker persistence,Hopkins and Mummolo (2017),GfK,Terror statement,Hopkins and Mummolo (2017)GfKTerror statementTerror,1,0.20213030190125303,0.20213030190125303,0.09512097622273206,0.3034629564126966,"Immediately
+frame_breath,GfK Replication,Z,estimate_w1,0.20213030190125283,0.05283823022222124,0.09661821716045614,0.30259507444724393,Terror,weaker persistence,Hopkins and Mummolo (2017),GfK,Terror statement,Hopkins and Mummolo (2017)GfKTerror statementTerror,1,0.20213030190125283,0.20213030190125283,0.09661821716045614,0.30259507444724393,"Immediately
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-frame_breath,GfK Replication,Z,estimate_w2,0.04388566409282075,0.05176211394583628,-0.052344649982331,0.14642922259852512,Terror,weaker persistence,Hopkins and Mummolo (2017),GfK,Terror statement,Hopkins and Mummolo (2017)GfKTerror statementTerror,1,0.20213030190125303,0.04388566409282075,-0.052344649982331,0.14642922259852512,"10 days
+frame_breath,GfK Replication,Z,estimate_w2,0.04388566409282077,0.05075923038371922,-0.05498465390139388,0.14215998746351893,Terror,weaker persistence,Hopkins and Mummolo (2017),GfK,Terror statement,Hopkins and Mummolo (2017)GfKTerror statementTerror,1,0.20213030190125283,0.04388566409282077,-0.05498465390139388,0.14215998746351893,"10 days
 post-treatment","Hopkins and Mummolo (2017)
 GfK"
-minimum_wage,Mechanical Turk Sample,condition_typeConYoung_ConOld,estimate_w1,-0.19194128313520623,0.0777347768569956,-0.344628247613279,-0.04151222766279105,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two anti-minimum wage videos,Guess and Coppock (2018)MTurkTwo anti-minimum wage videosNA,-1,0.19194128313520623,0.19194128313520623,0.344628247613279,0.04151222766279105,"Immediately
+minimum_wage,Mechanical Turk Sample,condition_typeConYoung_ConOld,estimate_w1,-0.19194128313520634,0.08000655492652395,-0.3611212523798953,-0.04077985232252483,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two anti-minimum wage videos,Guess and Coppock (2018)MTurkTwo anti-minimum wage videosNA,-1,0.19194128313520634,0.19194128313520634,0.3611212523798953,0.04077985232252483,"Immediately
 post-treatment","Guess and Coppock (2018)
 MTurk"
-minimum_wage,Mechanical Turk Sample,condition_typeConYoung_ConOld,estimate_w2,-0.10099984284822026,0.0827673941562833,-0.2625794442470597,0.06392912057814577,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two anti-minimum wage videos,Guess and Coppock (2018)MTurkTwo anti-minimum wage videosNA,-1,0.19194128313520623,0.10099984284822026,0.2625794442470597,-0.06392912057814577,"10 days
+minimum_wage,Mechanical Turk Sample,condition_typeConYoung_ConOld,estimate_w2,-0.10099984284822015,0.08360051846469808,-0.26218979388049946,0.059709721170399147,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two anti-minimum wage videos,Guess and Coppock (2018)MTurkTwo anti-minimum wage videosNA,-1,0.19194128313520634,0.10099984284822015,0.26218979388049946,-0.059709721170399147,"10 days
 post-treatment","Guess and Coppock (2018)
 MTurk"
-minimum_wage,Mechanical Turk Sample,condition_typeProYoung_ProOld,estimate_w1,0.48594471741744705,0.08146752269134172,0.3274367417984183,0.6471687448477863,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two pro-minimum wage videos,Guess and Coppock (2018)MTurkTwo pro-minimum wage videosNA,1,0.48594471741744705,0.48594471741744705,0.3274367417984183,0.6471687448477863,"Immediately
+minimum_wage,Mechanical Turk Sample,condition_typeProYoung_ProOld,estimate_w1,0.48594471741744744,0.08037978044441177,0.3337513780548451,0.6461020703509119,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two pro-minimum wage videos,Guess and Coppock (2018)MTurkTwo pro-minimum wage videosNA,1,0.48594471741744744,0.48594471741744744,0.3337513780548451,0.6461020703509119,"Immediately
 post-treatment","Guess and Coppock (2018)
 MTurk"
-minimum_wage,Mechanical Turk Sample,condition_typeProYoung_ProOld,estimate_w2,0.29804760428929455,0.0821065525424062,0.13547589313133557,0.4620133005371215,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two pro-minimum wage videos,Guess and Coppock (2018)MTurkTwo pro-minimum wage videosNA,1,0.48594471741744705,0.29804760428929455,0.13547589313133557,0.4620133005371215,"10 days
+minimum_wage,Mechanical Turk Sample,condition_typeProYoung_ProOld,estimate_w2,0.2980476042892951,0.08286041464104159,0.12972669182922172,0.45576818740207203,NA,stronger persistence,Guess and Coppock (2018),MTurk,Two pro-minimum wage videos,Guess and Coppock (2018)MTurkTwo pro-minimum wage videosNA,1,0.48594471741744744,0.2980476042892951,0.12972669182922172,0.45576818740207203,"10 days
 post-treatment","Guess and Coppock (2018)
 MTurk"
-capital_punishment,Mechanical Turk Sample,condition.factorCC,estimate_w1,-0.05149681850493491,0.04573658103207463,-0.14178384053362716,0.03624823271740506,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two con studies,"Lord, Ross, and Lepper (1979)MTurkTwo con studiesNA",-1,0.05149681850493491,0.05149681850493491,0.14178384053362716,-0.03624823271740506,"Immediately
+capital_punishment,Mechanical Turk Sample,condition.factorCC,estimate_w1,-0.05149681850493508,0.04602939741479436,-0.13856922307299158,0.036677084094285946,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two con studies,"Lord, Ross, and Lepper (1979)MTurkTwo con studiesNA",-1,0.05149681850493508,0.05149681850493508,0.13856922307299158,-0.036677084094285946,"Immediately
 post-treatment","Lord, Ross, and Lepper (1979)
 MTurk"
-capital_punishment,Mechanical Turk Sample,condition.factorCC,estimate_w2,-0.07169958251629595,0.044594778318214644,-0.16157661143378388,0.015461570809516448,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two con studies,"Lord, Ross, and Lepper (1979)MTurkTwo con studiesNA",-1,0.05149681850493491,0.07169958251629595,0.16157661143378388,-0.015461570809516448,"10 days
+capital_punishment,Mechanical Turk Sample,condition.factorCC,estimate_w2,-0.07169958251629577,0.044623381529928494,-0.1575451420688977,0.0174727411980054,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two con studies,"Lord, Ross, and Lepper (1979)MTurkTwo con studiesNA",-1,0.05149681850493508,0.07169958251629577,0.1575451420688977,-0.0174727411980054,"10 days
 post-treatment","Lord, Ross, and Lepper (1979)
 MTurk"
-capital_punishment,Mechanical Turk Sample,condition.factorPP,estimate_w1,0.1458411252048803,0.05362797445378423,0.043066736538006495,0.25337679002587626,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two pro studies,"Lord, Ross, and Lepper (1979)MTurkTwo pro studiesNA",1,0.1458411252048803,0.1458411252048803,0.043066736538006495,0.25337679002587626,"Immediately
+capital_punishment,Mechanical Turk Sample,condition.factorPP,estimate_w1,0.14584112520488018,0.053425863677541215,0.04128348489862159,0.25063735652437086,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two pro studies,"Lord, Ross, and Lepper (1979)MTurkTwo pro studiesNA",1,0.14584112520488018,0.14584112520488018,0.04128348489862159,0.25063735652437086,"Immediately
 post-treatment","Lord, Ross, and Lepper (1979)
 MTurk"
-capital_punishment,Mechanical Turk Sample,condition.factorPP,estimate_w2,0.09577705783129067,0.050283828279030614,-0.0034923720910865186,0.19230823184412926,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two pro studies,"Lord, Ross, and Lepper (1979)MTurkTwo pro studiesNA",1,0.1458411252048803,0.09577705783129067,-0.0034923720910865186,0.19230823184412926,"10 days
+capital_punishment,Mechanical Turk Sample,condition.factorPP,estimate_w2,0.0957770578312907,0.050347535014559484,-0.0014230809061431132,0.191188322841923,NA,stronger persistence,"Lord, Ross, and Lepper (1979)",MTurk,Two pro studies,"Lord, Ross, and Lepper (1979)MTurkTwo pro studiesNA",1,0.14584112520488018,0.0957770578312907,-0.0014230809061431132,0.191188322841923,"10 days
 post-treatment","Lord, Ross, and Lepper (1979)
 MTurk"

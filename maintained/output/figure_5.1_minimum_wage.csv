@@ -1,8 +1,8 @@
 initial_position,condition_type,dv_label,term,value,std.error,statistic,p.value,conf.low,conf.high,df,outcome
 Opponents,"Two Anti Minimum Wage
-Videos",What do you think the federal minimum wage should be? [$0.00 - $25.00],(Intercept),6.2804878048780495,0.4575913811469142,13.725100741925113,1.0137658401237108e-16,5.355661125625764,7.205314484130335,40,value
+Videos",What do you think the federal minimum wage should be? [$0.00 - $25.00],(Intercept),6.280487804878052,0.4575913811469144,13.725100741925113,1.0137658401237108e-16,5.355661125625765,7.205314484130339,40,value
 Opponents,"Two Anti Minimum Wage
-Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much opposed, 7: Very much in favor]",(Intercept),2.9512195121951224,0.22072833847314666,13.370369806657886,2.4061906277827865e-16,2.5051108993638525,3.3973281250263923,40,value
+Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much opposed, 7: Very much in favor]",(Intercept),2.9512195121951237,0.22072833847314677,13.370369806657886,2.4061906277827865e-16,2.5051108993638533,3.397328125026394,40,value
 Opponents,"Two Placebo
 Videos",What do you think the federal minimum wage should be? [$0.00 - $25.00],(Intercept),6.775925925925926,0.48028340970214317,14.10818235451469,1.0719886522355391e-13,5.788689238391395,7.763162613460457,26,value
 Opponents,"Two Placebo
@@ -14,7 +14,7 @@ Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much 
 Proponents,"Two Anti Minimum Wage
 Videos",What do you think the federal minimum wage should be? [$0.00 - $25.00],(Intercept),10.061999999999998,0.2535190878966077,39.68931918887136,1.2520115179959719e-51,9.556852190507408,10.567147809492587,74,value
 Proponents,"Two Anti Minimum Wage
-Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much opposed, 7: Very much in favor]",(Intercept),5.786666666666665,0.17531781522804896,33.006723584477236,5.113679010313864e-46,5.437338294344684,6.135995038988646,74,value
+Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much opposed, 7: Very much in favor]",(Intercept),5.786666666666664,0.17531781522804893,33.006723584477236,5.113679010313864e-46,5.437338294344683,6.1359950389886455,74,value
 Proponents,"Two Placebo
 Videos",What do you think the federal minimum wage should be? [$0.00 - $25.00],(Intercept),11.201351351351352,0.37270562620938863,30.054151490212156,4.287182719676486e-27,10.445469306704428,11.957233395998276,36,value
 Proponents,"Two Placebo
@@ -22,4 +22,4 @@ Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much 
 Proponents,"Two Pro Minimum Wage
 Videos",What do you think the federal minimum wage should be? [$0.00 - $25.00],(Intercept),13.305555555555555,0.3151890477197283,42.214523797118396,1.9148405689942066e-56,12.678309360908502,13.932801750202609,80,value
 Proponents,"Two Pro Minimum Wage
-Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much opposed, 7: Very much in favor]",(Intercept),6.629629629629628,0.07124216319137534,93.05766883889649,2.5981560230909407e-83,6.487853206611432,6.771406052647824,80,value
+Videos","Do you favor or oppose raising the federal minimum wage? [1: Very much opposed, 7: Very much in favor]",(Intercept),6.629629629629626,0.07124216319137534,93.05766883889646,2.5981560230909407e-83,6.4878532066114305,6.771406052647822,80,value
