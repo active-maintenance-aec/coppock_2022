@@ -207,7 +207,70 @@ entries <- tribble(
     "Table A.5 reports {two_dp(two_sided_se$std.error)} for this same standard error, and the ",
     "reanalysis reproduces the appendix. The other seven quantities in the passage are correct ",
     "as printed."),
-  "c5_twosided_support_opp_se"
+  "c5_twosided_support_opp_se",
+
+  # Entries 6 to 12 come from the reference-list audit of 2026-10-29. They were read off the
+  # uncorrected proof only, which is the one copy of the book this repository holds.
+  6, "reference", "reference_audit", "brief",
+  "An author's middle initial, in Lord, Ross, and Lepper (1979)",
+  "published, the reference list, p. 196",
+  "Lord, Charles [[S.]], L. Ross, and M. Lepper. 1979.",
+  "Lord, Charles [[G.]], L. Ross, and M. Lepper. 1979.",
+  str_c("The first author is Charles G. Lord (doi ",
+        "[10.1037/0022-3514.37.11.2098](https://doi.org/10.1037/0022-3514.37.11.2098))."),
+  "",
+
+  7, "reference", "reference_audit", "brief",
+  "A first page, in Nyhan, Porter, Reifler, and Wood (2019)",
+  "published, the reference list, p. 198",
+  "Political Behavior 42: [[936]]–60.",
+  "Political Behavior 42: [[939]]–60.",
+  str_c("The article runs from 939 to 960 (doi ",
+        "[10.1007/s11109-019-09528-x](https://doi.org/10.1007/s11109-019-09528-x))."),
+  "",
+
+  8, "reference", "reference_audit", "brief",
+  "A working-paper title, in Blair, Coppock, and Moor (2020)",
+  "published, the reference list, p. 190",
+  "\"When to Worry about Sensitivity Bias: [[Evidence]] from 30 Years of List Experiments.\"",
+  "\"When to Worry about Sensitivity Bias: [[A Social Reference Theory and Evidence]] from 30 Years of List Experiments.\"",
+  str_c("The entry gives the article's volume and pages but the title of an earlier draft (doi ",
+        "[10.1017/S0003055420000374](https://doi.org/10.1017/S0003055420000374))."),
+  "",
+
+  9, "reference", "reference_audit", "brief",
+  "A working-paper title, in Green, Wilke, and Cooper (2020)",
+  "published, the reference list, p. 194",
+  "\"Countering Violence against Women [[at Scale]]: A Mass Media Experiment in Rural Uganda.\"",
+  "\"Countering Violence against Women [[by Encouraging Disclosure]]: A Mass Media Experiment in Rural Uganda.\"",
+  str_c("The entry gives the article's volume and pages but the title of an earlier draft (doi ",
+        "[10.1177/0010414020912275](https://doi.org/10.1177/0010414020912275))."),
+  "",
+
+  10, "citation", "reference_audit", "brief",
+  "A citation year in four study tables",
+  "published tables on pp. 67, 112, 115, and 119",
+  "Guess and Coppock ([[2018]])",
+  "Guess and Coppock ([[2020]])",
+  str_c("The reference list has Guess and Coppock 2020 and no 2018 entry, and the other 18 ",
+        "citations of the article in the book give 2020."),
+  "",
+
+  11, "citation", "reference_audit", "brief",
+  "A citation year",
+  "published p. 127",
+  "Little, Schnakenberg, and Turner ([[2020]])",
+  "Little, Schnakenberg, and Turner ([[2021]])",
+  "The reference list dates the article 2021.",
+  "",
+
+  12, "typography", "reference_audit", "brief",
+  "A misspelled surname",
+  "published p. 42",
+  "Fishbein and [[Azjen]] argue",
+  "Fishbein and [[Ajzen]] argue",
+  "The same paragraph spells the name correctly twice, and so does the reference list.",
+  ""
 ) |>
   mutate(across(c(title, published, corrected, note), as.character))
 
@@ -227,7 +290,9 @@ stopifnot(all(cited_ids %in% gt_ids))
 
 # The prose below counts the entries in words, as the note has always done.
 n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-                    "ten", "eleven", "twelve")[nrow(entries)]
+                    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                    "seventeen", "eighteen", "nineteen", "twenty")[nrow(entries)]
+stopifnot(!is.na(n_entries_word))
 
 # The spine's markup, resolved for this document.
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
@@ -236,14 +301,16 @@ bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 `r str_to_title(n_entries_word)` errata in *Persuasion in Parallel: How Information Changes Minds about Politics*
 (University of Chicago Press, 2022), <https://doi.org/10.7208/chicago/9780226821832.001.0001>.
 None of the `r n_entries_word` changes any conclusion the book draws. Every corrected value below is
-computed at render time rather than typed: four of the five from the maintained reanalysis in
+computed at render time rather than typed: four of the first five from the maintained reanalysis in
 `active-maintenance-aec/coppock_2022`, and entry 2 from the book's own printed tables, held in
-that repository's transcription of them.
+that repository's transcription of them. Entries 6 to 12 are corrections to the reference list
+and to citations in the text, found by checking every entry in the list against its published
+record.
 
-**Provenance.** Every discrepancy below was checked against the printed edition. The
-reanalysis itself reads an uncorrected proof dated 26 May 2022, so each quoted sentence was
-verified against the published book rather than taken from that file. These are properties of
-the book as printed, not of any one rendering of it.
+**Provenance.** Entries 1 to 5 were checked against the printed edition. The reanalysis itself
+reads an uncorrected proof dated 26 May 2022, so each quoted sentence was verified against the
+published book rather than taken from that file. Entries 6 to 12 were read from that proof
+alone, so any of them may have been put right before the book went to press.
 
 ---
 
@@ -364,6 +431,22 @@ cat("\n\n**4.** ", e$title, "\n\n", bold(e$published), " ", bold(e$corrected), "
 e <- entries |> filter(entry == 5)
 cat("\n\n**5.** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
     bold(e$corrected), "\n\n", e$note, "\n", sep = "")
+```
+
+---
+
+```{r}
+#| label: entries-6-to-12
+#| echo: false
+#| results: asis
+# Seven reference and citation corrections of one shape, emitted in a loop. The location
+# drops its "published" prefix, which every entry shares.
+walk(6:12, function(i) {
+  e <- entries |> filter(entry == i)
+  cat("\n\n**", i, ".** ", e$title, " (", str_remove(e$location, "^published,? "), ")\n\n> ",
+      bold(e$published), "\n\n*Corrected:*\n\n> ", bold(e$corrected), "\n\n", e$note, "\n",
+      sep = "")
+})
 ```
 
 ```{r}

@@ -29,7 +29,9 @@ latex_out <- knitr::is_latex_output()
 # entries, so the two cannot disagree.
 spine <- read_csv(here::here("errata_entries.csv"), show_col_types = FALSE)
 n_errata_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-                   "ten", "eleven", "twelve")[nrow(spine)]
+                   "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                   "seventeen", "eighteen", "nineteen", "twenty")[nrow(spine)]
+stopifnot(!is.na(n_errata_word))
 
 # value_paper must be read as a character column, or "0.20" becomes 0.2 and the report
 # prints a precision the book does not use.
@@ -159,7 +161,9 @@ transcribed from that proof rather than from the printed book.
 The discrepancies the pipeline found are properties of the analysis rather than of the
 typesetting, so they do not depend on which copy is read, and `errata.qmd` states them with
 their corrected values computed at render time. Every one was checked against the printed
-edition, so none is an artifact of the proof or of the way a PDF's text layer is read.
+edition, so none is an artifact of the proof or of the way a PDF's text layer is read. The
+seven reference and citation entries added later (errata 6 to 12) were not: they were read
+off the proof alone.
 
 No errata page for the book exists on the publisher's site or on the author's own page.
 
@@ -429,7 +433,8 @@ convincing <- read_csv(here::here("maintained", "output", "table_2.3_gc_replicat
   filter(rating == "convincing", str_detect(predisposition, "Proponents"))
 ```
 
-Nine sentences, labels or cells in the book do not survive the reanalysis, in `r n_errata_word` entries.
+Nine sentences, labels or cells in the book do not survive the reanalysis, in five entries,
+and seven more entries correct the reference list and the citations, for `r n_errata_word` in all.
 They are set out in `errata.qmd`, rendered to `coppock_2022_errata.pdf` at the repository
 root, with every corrected value computed at render time: from `maintained/output/` where
 the reanalysis settles it, and from the book's own transcribed tables where the estimator
@@ -505,6 +510,14 @@ as 3.0, where the two cells differ by
 **5. Page 101 disagrees with appendix table A.5.** The sentence gives the standard error of
 the two-sided message's effect on capital punishment support among opponents as 0.11.
 Table A.5 gives 0.12 for the same quantity, and the pipeline reproduces the appendix.
+
+**6 to 12. The reference list and the citations.** An audit checking every entry in the
+reference list against its published record found four defects there: Lord's middle initial
+(S. for G.), Nyhan et al.'s first page (936 for 939), and the titles of Blair, Coppock, and
+Moor (2020) and of Green, Wilke, and Cooper (2020), each printed as an earlier draft's. A
+citation cross-check found three more in the text: "Guess and Coppock (2018)" in four study
+tables against the list's 2020, "Little, Schnakenberg, and Turner (2020)" on page 127
+against 2021, and "Azjen" on page 42. These seven were read off the proof only.
 
 Three further discrepancies were examined and are not errata. First, the Democratic slope
 in the gay marriage series is 2.02 points per year, which prints 2.0 where page 11 says 2.1; the

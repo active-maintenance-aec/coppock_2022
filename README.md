@@ -61,7 +61,7 @@ source("run_all.R")
 
 `run_all.R` fetches the archive from Dataverse, verifies it, runs all 28
 analysis scripts, builds the ground truth, prints the in-text claims,
-and re-verifies the deposit. It took 4.4 minutes on the machine that
+and re-verifies the deposit. It took 3.5 minutes on the machine that
 produced the committed output; that figure describes one machine on one
 day and nothing else.
 
@@ -92,7 +92,8 @@ rather than of the typesetting, so they do not depend on which copy is
 read, and `errata.qmd` states them with their corrected values computed
 at render time. Every one was checked against the printed edition, so
 none is an artifact of the proof or of the way a PDF’s text layer is
-read.
+read. The seven reference and citation entries added later (errata 6 to
+12) were not: they were read off the proof alone.
 
 No errata page for the book exists on the publisher’s site or on the
 author’s own page.
@@ -361,11 +362,13 @@ the small-capital T of “Table” is dropped from table A.10’s caption.
 ## Errata
 
 Nine sentences, labels or cells in the book do not survive the
-reanalysis, in five entries. They are set out in `errata.qmd`, rendered
-to `coppock_2022_errata.pdf` at the repository root, with every
-corrected value computed at render time: from `maintained/output/` where
-the reanalysis settles it, and from the book’s own transcribed tables
-where the estimator behind it is unseeded. Summarized here:
+reanalysis, in five entries, and seven more entries correct the
+reference list and the citations, for twelve in all. They are set out in
+`errata.qmd`, rendered to `coppock_2022_errata.pdf` at the repository
+root, with every corrected value computed at render time: from
+`maintained/output/` where the reanalysis settles it, and from the
+book’s own transcribed tables where the estimator behind it is unseeded.
+Summarized here:
 
 **1. Table 2.2’s two study rows carry each other’s labels, in both
 panels.** The cells printed under “After pro-capital punishment study”
@@ -428,6 +431,16 @@ reproduces.
 the standard error of the two-sided message’s effect on capital
 punishment support among opponents as 0.11. Table A.5 gives 0.12 for the
 same quantity, and the pipeline reproduces the appendix.
+
+**6 to 12. The reference list and the citations.** An audit checking
+every entry in the reference list against its published record found
+four defects there: Lord’s middle initial (S. for G.), Nyhan et al.’s
+first page (936 for 939), and the titles of Blair, Coppock, and Moor
+(2020) and of Green, Wilke, and Cooper (2020), each printed as an
+earlier draft’s. A citation cross-check found three more in the text:
+“Guess and Coppock (2018)” in four study tables against the list’s 2020,
+“Little, Schnakenberg, and Turner (2020)” on page 127 against 2021, and
+“Azjen” on page 42. These seven were read off the proof only.
 
 Three further discrepancies were examined and are not errata. First, the
 Democratic slope in the gay marriage series is 2.02 points per year,
@@ -548,15 +561,15 @@ comparison could have seen it.
 
 ## R environment
 
-| Component | Version |
-|:----------|:--------|
-| R         | 4.6.0   |
-| tidyverse | 2.0.0   |
-| estimatr  | 1.0.6   |
-| metafor   | 5.0.1   |
-| vayr      | 1.1.0   |
-| ggplot2   | 4.0.3   |
-| rsample   | 1.3.2   |
+| Component | Version    |
+|:----------|:-----------|
+| R         | 4.6.1      |
+| tidyverse | 2.0.0      |
+| estimatr  | 2.0.1.9000 |
+| metafor   | 5.0.1      |
+| vayr      | 1.1.0      |
+| ggplot2   | 4.0.3      |
+| rsample   | 1.3.2      |
 
 Environment the committed output was produced under
 
