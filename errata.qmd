@@ -271,8 +271,8 @@ entries <- tribble(
   NA_character_,
 
   10, "citation", "reference_audit", "brief",
-  "A citation year in four study tables",
-  "published tables on pp. 67, 112, 115, and 119",
+  "A citation year in three study tables and a figure",
+  "published tables on pp. 67, 112, and 119, and figure 6.1 on p. 115",
   "Guess and Coppock ([[2018]])",
   "Guess and Coppock ([[2020]])",
   str_c("The reference list has Guess and Coppock 2020 and no 2018 entry, and the other 18 ",
