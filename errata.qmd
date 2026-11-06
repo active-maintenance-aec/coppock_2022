@@ -122,8 +122,22 @@ stopifnot(nrow(two_sided_se) == 1)
 # of every note. It is empty where an entry has no ground-truth row, which is normal for a
 # bibliographic or structural entry. ground_truth/build_ground_truth.R refuses to build if
 # any id here is absent from the ground truth.
+#
+# corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
+# the corrected quantity as a number rather than as a sentence. Each value is built from the
+# same expression that builds the marked span of the corrected sentence, so the two cannot be
+# written apart, and the gate below re-checks that each one is still inside its span. An
+# entry that changes no quantity (a label, a reference, a citation, typography) carries NA.
+cv_weaker  <- printed_pct('table_6.2', 'estimate', 'Prediction: weaker persistence')
+cv_ten     <- printed_pct('table_6.3', '10 days', 'Overall')
+cv_thirty  <- printed_pct('table_6.3', '30 days', 'Overall')
+cv_ten_rep <- printed_pct('table_6.3', '10 days', 'Republican')
+cv_ten_dem <- printed_pct('table_6.3', '10 days', 'Democrat')
+cv_convincing_diff <- one_dp(convincing$difference)
+cv_twosided_se     <- two_dp(two_sided_se$std.error)
+
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
   1, "label", "pipeline", "brief",
   "In table 2.2 (p. 26), the two study rows carry each other's labels, in both panels.",
@@ -146,6 +160,7 @@ entries <- tribble(
     "two and are unaffected, as is the reading of the table that the surrounding text draws ",
     "from them."),
   "t2_2_row_labels",
+  NA_character_,
 
   2, "quantity", "pipeline", "full",
   "Four sentences in chapter 6 report persistence figures that the chapter's own tables print differently.",
@@ -157,10 +172,10 @@ entries <- tribble(
     "For Republicans, persistence after ten days averaged [[57]] percent; this figure was [[43]] percent for Democrats.",
     sep = "\n\n"),
   paste(
-    str_glue("Across all 12 studies, the average persistence ratio was about one-third, or 34 percent; that figure is 50 percent in the stronger persistence group and [[{printed_pct('table_6.2', 'estimate', 'Prediction: weaker persistence')}]] percent in the weaker persistence group (see table 6.2)."),
-    str_glue("After ten days treatment effects decay to [[{printed_pct('table_6.3', '10 days', 'Overall')}]] percent (SE = 5 percent) of their original magnitudes."),
-    str_glue("After thirty days, average persistence declines to [[{printed_pct('table_6.3', '30 days', 'Overall')}]] percent (SE = 6 percent)."),
-    str_glue("For Republicans, persistence after ten days averaged [[{printed_pct('table_6.3', '10 days', 'Republican')}]] percent; this figure was [[{printed_pct('table_6.3', '10 days', 'Democrat')}]] percent for Democrats."),
+    str_glue("Across all 12 studies, the average persistence ratio was about one-third, or 34 percent; that figure is 50 percent in the stronger persistence group and [[{cv_weaker}]] percent in the weaker persistence group (see table 6.2)."),
+    str_glue("After ten days treatment effects decay to [[{cv_ten}]] percent (SE = 5 percent) of their original magnitudes."),
+    str_glue("After thirty days, average persistence declines to [[{cv_thirty}]] percent (SE = 6 percent)."),
+    str_glue("For Republicans, persistence after ten days averaged [[{cv_ten_rep}]] percent; this figure was [[{cv_ten_dem}]] percent for Democrats."),
     sep = "\n\n"),
   paste(
     "The page 118 sentence is the one that moves furthest, and the two halves fail",
@@ -175,6 +190,7 @@ entries <- tribble(
     "does. Tables 6.2 and 6.3 are otherwise correct as printed and are not reprinted here."),
   paste("c6_persistence_weaker", "c6_oped_ten_days", "c6_oped_thirty_days",
         "c6_oped_rep_ten_days", "c6_oped_dem_ten_days", sep = ";"),
+  paste(cv_weaker, cv_ten, cv_thirty, cv_ten_rep, cv_ten_dem, sep = ";"),
 
   3, "label", "pipeline", "full",
   "Page 114 attributes a persistence estimate to a sample that is not in the persistence analysis.",
@@ -188,26 +204,29 @@ entries <- tribble(
     "a bootstrap the analysis runs without a seed, and a decimal place would state a precision",
     "the estimator does not have."),
   "c6_hiscox_lucid",
+  NA_character_,
 
   4, "quantity", "pipeline", "full",
   "In the lower half of table 2.3, the difference between the two convincingness ratings for proponents does not equal the difference between the two cells printed above it.",
   "published table 2.3",
   str_glue("The table prints {one_dp(convincing$pro_study)} for the pro-capital punishment study and {one_dp(convincing$anti_study)} for the anti-capital punishment study, and gives their difference as [[3.0]]."),
-  str_glue("The difference is [[{one_dp(convincing$difference)}]]."),
+  str_glue("The difference is [[{cv_convincing_diff}]]."),
   paste("The changed artifact is that single cell; every other cell in both halves of the",
         "table reproduces."),
   "t2_3_gc_cells",
+  cv_convincing_diff,
 
   5, "quantity", "pipeline", "full",
   "Page 101 gives a standard error that disagrees with the book's own appendix table A.5.",
   "published p. 101",
   "As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[0.11]]).",
-  str_glue("As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[{two_dp(two_sided_se$std.error)}]])."),
+  str_glue("As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[{cv_twosided_se}]])."),
   str_glue(
     "Table A.5 reports {two_dp(two_sided_se$std.error)} for this same standard error, and the ",
     "reanalysis reproduces the appendix. The other seven quantities in the passage are correct ",
     "as printed."),
   "c5_twosided_support_opp_se",
+  cv_twosided_se,
 
   # Entries 6 to 12 come from the reference-list audit of 2026-10-29. They were read off the
   # uncorrected proof only, which is the one copy of the book this repository holds.
@@ -219,6 +238,7 @@ entries <- tribble(
   str_c("The first author is Charles G. Lord (doi ",
         "[10.1037/0022-3514.37.11.2098](https://doi.org/10.1037/0022-3514.37.11.2098))."),
   "",
+  NA_character_,
 
   7, "reference", "reference_audit", "brief",
   "A first page, in Nyhan, Porter, Reifler, and Wood (2019)",
@@ -228,6 +248,7 @@ entries <- tribble(
   str_c("The article runs from 939 to 960 (doi ",
         "[10.1007/s11109-019-09528-x](https://doi.org/10.1007/s11109-019-09528-x))."),
   "",
+  NA_character_,
 
   8, "reference", "reference_audit", "brief",
   "A working-paper title, in Blair, Coppock, and Moor (2020)",
@@ -237,6 +258,7 @@ entries <- tribble(
   str_c("The entry gives the article's volume and pages but the title of an earlier draft (doi ",
         "[10.1017/S0003055420000374](https://doi.org/10.1017/S0003055420000374))."),
   "",
+  NA_character_,
 
   9, "reference", "reference_audit", "brief",
   "A working-paper title, in Green, Wilke, and Cooper (2020)",
@@ -246,6 +268,7 @@ entries <- tribble(
   str_c("The entry gives the article's volume and pages but the title of an earlier draft (doi ",
         "[10.1177/0010414020912275](https://doi.org/10.1177/0010414020912275))."),
   "",
+  NA_character_,
 
   10, "citation", "reference_audit", "brief",
   "A citation year in four study tables",
@@ -255,6 +278,7 @@ entries <- tribble(
   str_c("The reference list has Guess and Coppock 2020 and no 2018 entry, and the other 18 ",
         "citations of the article in the book give 2020."),
   "",
+  NA_character_,
 
   11, "citation", "reference_audit", "brief",
   "A citation year",
@@ -263,6 +287,7 @@ entries <- tribble(
   "Little, Schnakenberg, and Turner ([[2021]])",
   "The reference list dates the article 2021.",
   "",
+  NA_character_,
 
   12, "typography", "reference_audit", "brief",
   "A misspelled surname",
@@ -270,11 +295,54 @@ entries <- tribble(
   "Fishbein and [[Azjen]] argue",
   "Fishbein and [[Ajzen]] argue",
   "The same paragraph spells the name correctly twice, and so does the reference list.",
-  ""
+  "",
+  NA_character_
 ) |>
-  mutate(across(c(title, published, corrected, note), as.character))
+  mutate(across(c(title, published, corrected, note, claim_ids, corrected_values), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# Gate: corrected_values agrees with the sentence it was glued into ----
+# The column and the sentence are written from one expression, so they begin in agreement
+# and this gate exists for the edit that separates them: a value moved from one marked span
+# to another, a span reworded to carry a second number, a claim id appended without its
+# value. Each value has to be inside the span it belongs to, matched by position where the
+# counts line up, and inside SOME span where an entry marks a label as well as a number and
+# its spans outnumber its values.
+marked_spans <- function(x) str_match_all(x, "\\[\\[(.*?)\\]\\]")[[1]][, 2]
+
+quantified <- entries |>
+  filter(!is.na(corrected_values)) |>
+  mutate(ids = str_split(claim_ids, ";"), values = str_split(corrected_values, ";"),
+         spans = map(corrected, marked_spans))
+
+stopifnot(all(lengths(quantified$ids) == lengths(quantified$values)))
+
+value_placed <- pmap_lgl(quantified, function(...) {
+  e <- list(...)
+  if (length(e$values) == length(e$spans)) {
+    all(map2_lgl(e$values, e$spans, \(v, s) str_detect(s, fixed(v))))
+  } else {
+    all(map_lgl(e$values, \(v) any(map_lgl(e$spans, \(s) str_detect(s, fixed(v))))))
+  }
+})
+
+if (!all(value_placed)) {
+  print(quantified |> filter(!value_placed) |> select(entry, title, corrected_values, corrected))
+  stop("An entry's corrected_values are not in the spans of its corrected sentence.")
+}
+
+# A quantity entry that corrects something has to say which quantity, and an entry that
+# corrects none (any other class, or a note) may not carry a value. The class is the
+# declaration and this is where it binds. An empty claim_ids counts as missing.
+has_ids <- !is.na(entries$claim_ids) & nzchar(entries$claim_ids)
+no_value_ok <- integer()
+stopifnot(
+  all(!is.na(entries$corrected_values[entries$class == "quantity" & entries$form != "note" &
+                                        has_ids & !entries$entry %in% no_value_ok])),
+  all(is.na(entries$corrected_values[entries$class != "quantity" | entries$form == "note"])),
+  all(is.na(entries$corrected_values) | has_ids)
+)
 
 # Every id an entry claims to correct must be a real ground-truth claim. The build gate in
 # ground_truth/build_ground_truth.R checks the same property from the other side; checking it
