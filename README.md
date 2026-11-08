@@ -363,8 +363,9 @@ the small-capital T of “Table” is dropped from table A.10’s caption.
 
 Nine sentences, labels or cells in the book do not survive the
 reanalysis, in five entries, and seven more entries correct the
-reference list and the citations, for twelve in all. They are set out in
-`errata.qmd`, rendered to `coppock_2022_errata.pdf` at the repository
+reference list and the citations, for twelve in all, together with 3
+notes that correct nothing (entries 13 to 15, below). They are set out
+in `errata.qmd`, rendered to `coppock_2022_errata.pdf` at the repository
 root, with every corrected value computed at render time: from
 `maintained/output/` where the reanalysis settles it, and from the
 book’s own transcribed tables where the estimator behind it is unseeded.
@@ -442,28 +443,42 @@ earlier draft’s. A citation cross-check found three more in the text:
 “Little, Schnakenberg, and Turner (2020)” on page 127 against 2021, and
 “Azjen” on page 42. These seven were read off the proof only.
 
-Three further discrepancies were examined and are not errata. First, the
-Democratic slope in the gay marriage series is 2.02 points per year,
-which prints 2.0 where page 11 says 2.1; the other three slopes that
-sentence names reproduce exactly, and a single slope off by a tenth in a
-sentence whose point is that the slopes are similar does not mislead a
-reader who quotes it. Second, the standard error of the flat tax effect
-among Republican policy professionals is 0.24453 under HC2, which prints
-0.24 against a published 0.25; under HC3 it is 0.24589 and prints 0.25,
-and HC3 reproduces all eight of that chapter’s standard errors where HC2
+**13. The Democratic slope in the gay marriage series is given as 2.1
+points per year.** Page 11 says “Democrats 2.1 points per year”, and the
+reanalysis of figure 1.4 returns 2.02, which prints 2.0. The other three
+slopes that sentence names reproduce exactly. Entry 13 is a note that
+corrects nothing, for the reason the examination gave: a single slope
+off by a tenth in a sentence whose point is that the slopes are similar
+does not mislead a reader who quotes it, and no replacement can be set
+without guessing at the author’s number.
+
+**14. A standard error for Republican policy professionals is given as
+0.25.** The flat tax effect among Republican policy professionals has a
+standard error of 0.24453 under HC2, which prints 0.24 against a
+published 0.25; under HC3 it is 0.24589 and prints 0.25, and HC3
+reproduces all eight of that chapter’s standard errors where HC2
 reproduces seven. The deposit contains no code for any of the eight, so
 the variance estimator behind the published figure cannot be
 established, and the rewrite keeps the house default rather than the one
-that happens to match. Third, page 114 says the pro-minimum wage videos,
-the flat tax op-ed and the pro-capital punishment studies “all had
-persistence ratios above 60 percent”. Those three treatments span four
-rows of table 6.4, because the flat tax op-ed was fielded on two samples
-and the sentence names neither. Three of the four clear 60 per cent; the
-flat tax op-ed among policy professionals is 39 per cent in the book’s
-own table 6.4 and 39 per cent here. The sentence holds on Mechanical
-Turk, where all three treatments were run, so what is wrong is not a
-number but the absence of one word, and the ground truth records it as
-unresolved.
+that happens to match. Entry 14 is a note that corrects nothing, because
+which estimator the author used is the open question.
+
+**15. “All had persistence ratios above 60 percent” names no sample.**
+Page 114 says the pro-minimum wage videos, the flat tax op-ed and the
+pro-capital punishment studies “all had persistence ratios above 60
+percent”. Those three treatments span four rows of table 6.4, because
+the flat tax op-ed was fielded on two samples and the sentence names
+neither. Three of the four clear 60 per cent; the flat tax op-ed among
+policy professionals is 39 per cent in the book’s own table 6.4 and 39
+per cent here. The sentence holds on Mechanical Turk, where all three
+treatments were run, so what is wrong is not a number but the absence of
+one word, and the ground truth records it as unresolved. Entry 15 is a
+note that corrects nothing, because the missing word is the author’s to
+supply.
+
+Entries 13 to 15 are the three further discrepancies that were examined
+and are not errata. Each is carried in `errata.qmd` as a note, which
+quotes the passage as the proof prints it and sets no corrected side.
 
 ## The maintained rewrite
 
