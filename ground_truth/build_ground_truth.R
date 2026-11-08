@@ -406,7 +406,7 @@ dispersion_of <- function(float_id, quantity_label) {
 # not the archive at all: every chapter 6 sentence that misses the band names a quantity
 # the book's own table prints differently, and the table is inside the band. That is the
 # article disagreeing with itself, and a default would have filed all five as the deposit's
-# fault. Each of those five is errata entry 2, corrected to the figure its own table prints:
+# fault. Each of those five is errata entry 1, corrected to the figure its own table prints:
 # the unseeded estimator is why the sentence cannot be re-derived, and no reason at all not
 # to quote the table.
 unseeded_claim <- function(claim_id, value_rewrite, float_id, quantity_label, scale = 1,

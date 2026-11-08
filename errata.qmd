@@ -24,7 +24,7 @@ out <- function(file) {
 one_dp <- function(x) sprintf("%.1f", x)
 two_dp <- function(x) sprintf("%.2f", x)
 
-# Entry 1: the two study rows of table 2.2, whose labels are interchanged.
+# Entry 4: the two study rows of table 2.2, whose labels are interchanged.
 table_2.2 <- out("table_2.2_lrl_reanalysis.csv")
 lrl_cell <- function(content_label, panel, group) {
   row <- table_2.2 |>
@@ -35,7 +35,7 @@ lrl_cell <- function(content_label, panel, group) {
 pro_study <- function(panel, group) lrl_cell("After pro capital punishment study", panel, group)
 anti_study <- function(panel, group) lrl_cell("After anti capital punishment study", panel, group)
 
-# Entry 2: chapter 6's prose against the chapter 6 tables it describes. The corrected
+# Entry 1: chapter 6's prose against the chapter 6 tables it describes. The corrected
 # figures are the book's own printed cells, read from the transcription rather than from a
 # run, because the estimator behind them has no seed.
 published_maintext <- read_csv(here::here("ground_truth", "published_maintext_tables.csv"),
@@ -65,7 +65,7 @@ stopifnot(nrow(c6) == 5, !any(is.na(c6$in_table)), !any(is.na(c6$minimum)),
           all(c6$table_inside), !any(c6$prose_inside), n_distinct(c6$n_seeds) == 1)
 c6_seeds <- unique(c6$n_seeds)
 
-# Entry 3: the Hiscox expert cue persistence estimates.
+# Entry 5: the Hiscox expert cue persistence estimates.
 table_6.4 <- out("table_6.4_all_persistence.csv")
 hiscox <- function(sample_label) {
   row <- table_6.4 |>
@@ -77,13 +77,13 @@ hiscox <- function(sample_label) {
 hiscox_mturk <- round(hiscox("MTurk"))
 hiscox_gfk <- round(hiscox("GfK"))
 
-# Entry 4: the convincingness ratings in the lower half of table 2.3.
+# Entry 2: the convincingness ratings in the lower half of table 2.3.
 convincing <-
   out("table_2.3_gc_replication.csv") |>
   filter(rating == "convincing", str_detect(predisposition, "Proponents"))
 stopifnot(nrow(convincing) == 1)
 
-# Entry 5: the standard error of the two-sided effect on support among opponents.
+# Entry 3: the standard error of the two-sided effect on support among opponents.
 two_sided_se <-
   out("figure_5.17_gc_pro_con_effects.csv") |>
   filter(dv == "support_recode_change", term == "Pro Con",
@@ -103,16 +103,19 @@ stopifnot(nrow(two_sided_se) == 1)
 # [[...]] marks the span that changes. Each renderer supplies its own markup for it: bold
 # here. Nothing else in a field is markup, so the same string can be set by any of them.
 #
-# Numbering is the published note's and is APPEND-ONLY: entry 3 can already have been cited,
-# so a later finding is added at the end and never interleaved.
+# Numbering follows PROCEDURES.md Stage 4b: entries are ordered by severity block (quantity;
+# description, interpretation, definition; label, float, cross_reference; wording, spelling,
+# typography; bibliographic), discovery order inside a block, and a finding that lands in an
+# earlier block renumbers the entries after it. Renumbered 2026-11-07; the old-to-new map is
+# in that day's commit message.
 #
 # A published or corrected value that the pipeline settles stays computed: the field is built
-# with str_glue() so the number is produced when this document renders, not typed. Entry 2 is
+# with str_glue() so the number is produced when this document renders, not typed. Entry 1 is
 # the exception the estimator forces, and it is computed too: its corrected figures are the
 # book's own printed cells, read at render time from the transcription of the tables rather
 # than from a run, because the bootstrap behind them has no seed.
 #
-# Entries 1 and 2 carry more than one changed artifact. Their published and corrected fields
+# Entries 1 and 4 carry more than one changed artifact. Their published and corrected fields
 # hold one paragraph per artifact, in printed order, separated by a blank line; the two
 # entries' floats and page headings stay in the document below, because they are presentation
 # rather than spine.
@@ -139,32 +142,9 @@ cv_twosided_se     <- two_dp(two_sided_se$std.error)
 entries <- tribble(
   ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
-  1, "label", "pipeline", "brief",
-  "In table 2.2 (p. 26), the two study rows carry each other's labels, in both panels.",
-  "published table 2.2, p. 26",
-  paste("After [[pro]]-capital punishment study",
-        "After [[anti]]-capital punishment study", sep = "\n\n"),
-  paste("After [[anti]]-capital punishment study",
-        "After [[pro]]-capital punishment study", sep = "\n\n"),
-  str_glue(
-    "The changed artifact is the two labels alone. Every value is correct, and the rows are ",
-    "in the order the analysis produces them, whose study-content factor runs con before pro ",
-    "and so puts the anti-capital punishment study first. Figure 2.2, printed on the same ",
-    "page from the same variable, shows the con study at ",
-    "{anti_study('attitude', 'Proponents')} for proponents and ",
-    "{anti_study('attitude', 'Opponents')} for opponents and the pro study at ",
-    "{pro_study('attitude', 'Proponents')} and {pro_study('attitude', 'Opponents')}, which is ",
-    "the table's two rows the other way up. The sentence beneath the figure, reporting that ",
-    "self-assessed change is higher in the pro condition than in the null and higher in the ",
-    "null than in the con, says the same thing again. The \"Combined\" rows are sums of the ",
-    "two and are unaffected, as is the reading of the table that the surrounding text draws ",
-    "from them."),
-  "t2_2_row_labels",
-  NA_character_,
-
-  2, "quantity", "pipeline", "full",
+  1, "quantity", "pipeline", "full",
   "Four sentences in chapter 6 report persistence figures that the chapter's own tables print differently.",
-  "published pp. 114 and 117--118",
+  "pp. 114 and 117--118",
   paste(
     "Across all 12 studies, the average persistence ratio was about one-third, or 34 percent; that figure is 50 percent in the stronger persistence group and [[20]] percent in the weaker persistence group (see table 6.2).",
     "After ten days treatment effects decay to [[46]] percent (SE = 5 percent) of their original magnitudes.",
@@ -192,9 +172,54 @@ entries <- tribble(
         "c6_oped_rep_ten_days", "c6_oped_dem_ten_days", sep = ";"),
   paste(cv_weaker, cv_ten, cv_thirty, cv_ten_rep, cv_ten_dem, sep = ";"),
 
-  3, "label", "pipeline", "full",
+  2, "quantity", "pipeline", "full",
+  "In the lower half of table 2.3, the difference between the two convincingness ratings for proponents does not equal the difference between the two cells printed above it.",
+  "Table 2.3",
+  str_glue("The table prints {one_dp(convincing$pro_study)} for the pro-capital punishment study and {one_dp(convincing$anti_study)} for the anti-capital punishment study, and gives their difference as [[3.0]]."),
+  str_glue("The difference is [[{cv_convincing_diff}]]."),
+  paste("The changed artifact is that single cell; every other cell in both halves of the",
+        "table reproduces."),
+  "t2_3_gc_cells",
+  cv_convincing_diff,
+
+  3, "quantity", "pipeline", "full",
+  "Page 101 gives a standard error that disagrees with the book's own appendix table A.5.",
+  "p. 101",
+  "As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[0.11]]).",
+  str_glue("As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[{cv_twosided_se}]])."),
+  str_glue(
+    "Table A.5 reports {two_dp(two_sided_se$std.error)} for this same standard error, and the ",
+    "reanalysis reproduces the appendix. The other seven quantities in the passage are correct ",
+    "as printed."),
+  "c5_twosided_support_opp_se",
+  cv_twosided_se,
+
+  4, "label", "pipeline", "brief",
+  "In table 2.2 (p. 26), the two study rows carry each other's labels, in both panels.",
+  "p. 26, Table 2.2",
+  paste("After [[pro]]-capital punishment study",
+        "After [[anti]]-capital punishment study", sep = "\n\n"),
+  paste("After [[anti]]-capital punishment study",
+        "After [[pro]]-capital punishment study", sep = "\n\n"),
+  str_glue(
+    "The changed artifact is the two labels alone. Every value is correct, and the rows are ",
+    "in the order the analysis produces them, whose study-content factor runs con before pro ",
+    "and so puts the anti-capital punishment study first. Figure 2.2, printed on the same ",
+    "page from the same variable, shows the con study at ",
+    "{anti_study('attitude', 'Proponents')} for proponents and ",
+    "{anti_study('attitude', 'Opponents')} for opponents and the pro study at ",
+    "{pro_study('attitude', 'Proponents')} and {pro_study('attitude', 'Opponents')}, which is ",
+    "the table's two rows the other way up. The sentence beneath the figure, reporting that ",
+    "self-assessed change is higher in the pro condition than in the null and higher in the ",
+    "null than in the con, says the same thing again. The \"Combined\" rows are sums of the ",
+    "two and are unaffected, as is the reading of the table that the surrounding text draws ",
+    "from them."),
+  "t2_2_row_labels",
+  NA_character_,
+
+  5, "label", "pipeline", "full",
   "Page 114 attributes a persistence estimate to a sample that is not in the persistence analysis.",
-  "published p. 114",
+  "p. 114",
   str_glue("Curiously, the different replications of the Hiscox (2006) \"expert\" treatment generated very different persistence estimates: {hiscox_mturk} percent on MTurk but {hiscox_gfk} percent on [[Lucid]]."),
   str_glue("Curiously, the different replications of the Hiscox (2006) \"expert\" treatment generated very different persistence estimates: {hiscox_mturk} percent on MTurk but {hiscox_gfk} percent on [[GfK]]."),
   paste(
@@ -206,33 +231,20 @@ entries <- tribble(
   "c6_hiscox_lucid",
   NA_character_,
 
-  4, "quantity", "pipeline", "full",
-  "In the lower half of table 2.3, the difference between the two convincingness ratings for proponents does not equal the difference between the two cells printed above it.",
-  "published table 2.3",
-  str_glue("The table prints {one_dp(convincing$pro_study)} for the pro-capital punishment study and {one_dp(convincing$anti_study)} for the anti-capital punishment study, and gives their difference as [[3.0]]."),
-  str_glue("The difference is [[{cv_convincing_diff}]]."),
-  paste("The changed artifact is that single cell; every other cell in both halves of the",
-        "table reproduces."),
-  "t2_3_gc_cells",
-  cv_convincing_diff,
-
-  5, "quantity", "pipeline", "full",
-  "Page 101 gives a standard error that disagrees with the book's own appendix table A.5.",
-  "published p. 101",
-  "As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[0.11]]).",
-  str_glue("As shown in the left facet, the average effect of the two-sided message on support for capital punishment is very close to zero for both proponents (0.28 scale points, SE: 0.18) and opponents (0.10, SE: [[{cv_twosided_se}]])."),
-  str_glue(
-    "Table A.5 reports {two_dp(two_sided_se$std.error)} for this same standard error, and the ",
-    "reanalysis reproduces the appendix. The other seven quantities in the passage are correct ",
-    "as printed."),
-  "c5_twosided_support_opp_se",
-  cv_twosided_se,
+  6, "typography", "reference_audit", "brief",
+  "A misspelled surname",
+  "p. 42",
+  "Fishbein and [[Azjen]] argue",
+  "Fishbein and [[Ajzen]] argue",
+  "The same paragraph spells the name correctly twice, and so does the reference list.",
+  "",
+  NA_character_,
 
   # Entries 6 to 12 come from the reference-list audit of 2026-10-29. They were read off the
   # uncorrected proof only, which is the one copy of the book this repository holds.
-  6, "reference", "reference_audit", "brief",
+  7, "bibliographic", "reference_audit", "brief",
   "An author's middle initial, in Lord, Ross, and Lepper (1979)",
-  "published, the reference list, p. 196",
+  "p. 196, refs",
   "Lord, Charles [[S.]], L. Ross, and M. Lepper. 1979.",
   "Lord, Charles [[G.]], L. Ross, and M. Lepper. 1979.",
   str_c("The first author is Charles G. Lord (doi ",
@@ -240,9 +252,9 @@ entries <- tribble(
   "",
   NA_character_,
 
-  7, "reference", "reference_audit", "brief",
+  8, "bibliographic", "reference_audit", "brief",
   "A first page, in Nyhan, Porter, Reifler, and Wood (2019)",
-  "published, the reference list, p. 198",
+  "p. 198, refs",
   "Political Behavior 42: [[936]]–60.",
   "Political Behavior 42: [[939]]–60.",
   str_c("The article runs from 939 to 960 (doi ",
@@ -250,9 +262,9 @@ entries <- tribble(
   "",
   NA_character_,
 
-  8, "reference", "reference_audit", "brief",
+  9, "bibliographic", "reference_audit", "brief",
   "A working-paper title, in Blair, Coppock, and Moor (2020)",
-  "published, the reference list, p. 190",
+  "p. 190, refs",
   "\"When to Worry about Sensitivity Bias: [[Evidence]] from 30 Years of List Experiments.\"",
   "\"When to Worry about Sensitivity Bias: [[A Social Reference Theory and Evidence]] from 30 Years of List Experiments.\"",
   str_c("The entry gives the article's volume and pages but the title of an earlier draft (doi ",
@@ -260,9 +272,9 @@ entries <- tribble(
   "",
   NA_character_,
 
-  9, "reference", "reference_audit", "brief",
+  10, "bibliographic", "reference_audit", "brief",
   "A working-paper title, in Green, Wilke, and Cooper (2020)",
-  "published, the reference list, p. 194",
+  "p. 194, refs",
   "\"Countering Violence against Women [[at Scale]]: A Mass Media Experiment in Rural Uganda.\"",
   "\"Countering Violence against Women [[by Encouraging Disclosure]]: A Mass Media Experiment in Rural Uganda.\"",
   str_c("The entry gives the article's volume and pages but the title of an earlier draft (doi ",
@@ -270,9 +282,9 @@ entries <- tribble(
   "",
   NA_character_,
 
-  10, "citation", "reference_audit", "brief",
+  11, "bibliographic", "reference_audit", "brief",
   "A citation year in three study tables and a figure",
-  "published tables on pp. 67, 112, and 119, and figure 6.1 on p. 115",
+  "tables on pp. 67, 112, and 119, and Figure 6.1 on p. 115",
   "Guess and Coppock ([[2018]])",
   "Guess and Coppock ([[2020]])",
   str_c("The reference list has Guess and Coppock 2020 and no 2018 entry, and the other 18 ",
@@ -280,21 +292,12 @@ entries <- tribble(
   "",
   NA_character_,
 
-  11, "citation", "reference_audit", "brief",
+  12, "bibliographic", "reference_audit", "brief",
   "A citation year",
-  "published p. 127",
+  "p. 127",
   "Little, Schnakenberg, and Turner ([[2020]])",
   "Little, Schnakenberg, and Turner ([[2021]])",
   "The reference list dates the article 2021.",
-  "",
-  NA_character_,
-
-  12, "typography", "reference_audit", "brief",
-  "A misspelled surname",
-  "published p. 42",
-  "Fishbein and [[Azjen]] argue",
-  "Fishbein and [[Ajzen]] argue",
-  "The same paragraph spells the name correctly twice, and so does the reference list.",
   "",
   NA_character_
 ) |>
@@ -370,7 +373,7 @@ bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 (University of Chicago Press, 2022), <https://doi.org/10.7208/chicago/9780226821832.001.0001>.
 None of the `r n_entries_word` changes any conclusion the book draws. Every corrected value below is
 computed at render time rather than typed: four of the first five from the maintained reanalysis in
-`active-maintenance-aec/coppock_2022`, and entry 2 from the book's own printed tables, held in
+`active-maintenance-aec/coppock_2022`, and entry 1 from the book's own printed tables, held in
 that repository's transcription of them. Entries 6 to 12 are corrections to the reference list
 and to citations in the text, found by checking every entry in the list against its published
 record.
@@ -386,10 +389,71 @@ alone, so any of them may have been put right before the book went to press.
 #| label: entry-1-head
 #| echo: false
 #| results: asis
+e <- entries |> filter(entry == 1)
+cat("\n\n**", e$entry, ".** ", e$title, "\n", sep = "")
+```
+
+Every persistence figure in chapter 6 comes from a bootstrap the deposited code runs without
+a seed, so no rerun can settle what these sentences should say. The tables can, and each
+corrected figure below is the number the book's own table 6.2 or table 6.3 prints for the same
+quantity. The tables are also the side the estimator supports: run at `r c6_seeds` seeds, all
+five of the figures the tables print fall inside the range their quantity takes across seeds,
+and none of the five figures the prose gives does.
+
+```{r}
+#| label: entry-1-body
+#| echo: false
+#| results: asis
+# The four sentences come from the spine, one paragraph each; the page headings stay here,
+# because which sentence sits under which page is a fact about the book's pages.
+e <- entries |> filter(entry == 1)
+pages <- c("*Page 114.*", "*Page 117.*", "", "*Page 118.*")
+published_parts <- str_split_1(e$published, "\n\n")
+corrected_parts <- str_split_1(e$corrected, "\n\n")
+stopifnot(length(published_parts) == length(pages),
+          length(corrected_parts) == length(pages))
+walk(seq_along(pages), function(i) {
+  cat("\n\n", if (pages[i] != "") paste0(pages[i], "\n\n") else "",
+      "> ", bold(published_parts[i]), "\n\n*Corrected:*\n\n> ", bold(corrected_parts[i]),
+      "\n", sep = "")
+})
+cat("\n\n", e$note, "\n", sep = "")
+```
+
+---
+
+```{r}
+#| label: entry-2
+#| echo: false
+#| results: asis
+# This entry's published and corrected artifacts are two cells of one table, so the document
+# sets them as a sentence rather than as facing blocks.
+e <- entries |> filter(entry == 2)
+cat("\n\n**", e$entry, ".** ", e$title, "\n\n", bold(e$published), " ", bold(e$corrected), " ", e$note,
+    "\n", sep = "")
+```
+
+---
+
+```{r}
+#| label: entry-3
+#| echo: false
+#| results: asis
+e <- entries |> filter(entry == 3)
+cat("\n\n**", e$entry, ".** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
+    bold(e$corrected), "\n\n", e$note, "\n", sep = "")
+```
+
+---
+
+```{r}
+#| label: entry-4-head
+#| echo: false
+#| results: asis
 # A heading is only a heading when a blank line precedes it, so every emitted block opens
 # with one. The two tables beneath are the entry's floats and stay in the document.
-e <- entries |> filter(entry == 1)
-cat("\n\n**1.** ", e$title, "\n", sep = "")
+e <- entries |> filter(entry == 4)
+cat("\n\n**", e$entry, ".** ", e$title, "\n", sep = "")
 ```
 
 > Change in attitudes toward the death penalty
@@ -423,71 +487,10 @@ cat("\n\n**1.** ", e$title, "\n", sep = "")
 > | After **pro**-capital punishment study | `r pro_study("belief", "Proponents")` | `r pro_study("belief", "Opponents")` |
 
 ```{r}
-#| label: entry-1-note
+#| label: entry-4-note
 #| echo: false
 #| results: asis
-cat("\n\n", (entries |> filter(entry == 1))$note, "\n", sep = "")
-```
-
----
-
-```{r}
-#| label: entry-2-head
-#| echo: false
-#| results: asis
-e <- entries |> filter(entry == 2)
-cat("\n\n**2.** ", e$title, "\n", sep = "")
-```
-
-Every persistence figure in chapter 6 comes from a bootstrap the deposited code runs without
-a seed, so no rerun can settle what these sentences should say. The tables can, and each
-corrected figure below is the number the book's own table 6.2 or table 6.3 prints for the same
-quantity. The tables are also the side the estimator supports: run at `r c6_seeds` seeds, all
-five of the figures the tables print fall inside the range their quantity takes across seeds,
-and none of the five figures the prose gives does.
-
-```{r}
-#| label: entry-2-body
-#| echo: false
-#| results: asis
-# The four sentences come from the spine, one paragraph each; the page headings stay here,
-# because which sentence sits under which page is a fact about the book's pages.
-e <- entries |> filter(entry == 2)
-pages <- c("*Page 114.*", "*Page 117.*", "", "*Page 118.*")
-published_parts <- str_split_1(e$published, "\n\n")
-corrected_parts <- str_split_1(e$corrected, "\n\n")
-stopifnot(length(published_parts) == length(pages),
-          length(corrected_parts) == length(pages))
-walk(seq_along(pages), function(i) {
-  cat("\n\n", if (pages[i] != "") paste0(pages[i], "\n\n") else "",
-      "> ", bold(published_parts[i]), "\n\n*Corrected:*\n\n> ", bold(corrected_parts[i]),
-      "\n", sep = "")
-})
-cat("\n\n", e$note, "\n", sep = "")
-```
-
----
-
-```{r}
-#| label: entry-3
-#| echo: false
-#| results: asis
-e <- entries |> filter(entry == 3)
-cat("\n\n**3.** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
-    bold(e$corrected), "\n\n", e$note, "\n", sep = "")
-```
-
----
-
-```{r}
-#| label: entry-4
-#| echo: false
-#| results: asis
-# This entry's published and corrected artifacts are two cells of one table, so the document
-# sets them as a sentence rather than as facing blocks.
-e <- entries |> filter(entry == 4)
-cat("\n\n**4.** ", e$title, "\n\n", bold(e$published), " ", bold(e$corrected), " ", e$note,
-    "\n", sep = "")
+cat("\n\n", (entries |> filter(entry == 4))$note, "\n", sep = "")
 ```
 
 ---
@@ -497,7 +500,7 @@ cat("\n\n**4.** ", e$title, "\n\n", bold(e$published), " ", bold(e$corrected), "
 #| echo: false
 #| results: asis
 e <- entries |> filter(entry == 5)
-cat("\n\n**5.** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
+cat("\n\n**", e$entry, ".** ", e$title, "\n\n> ", bold(e$published), "\n\n*Corrected:*\n\n> ",
     bold(e$corrected), "\n\n", e$note, "\n", sep = "")
 ```
 
@@ -523,5 +526,12 @@ walk(6:12, function(i) {
 
 # The machine-readable spine, written wherever this document is rendered. Anything else that
 # carries these corrections reads it rather than keeping its own copy, so the two cannot drift.
+# The spine's vocabularies are closed (cleanup of 2026-11-07): a value outside them is a
+# typo, and the edition builders read these columns to shape every entry.
+stopifnot(
+  all(entries$class %in% c("quantity", "description", "interpretation", "definition", "label", "float", "cross_reference", "wording", "spelling", "typography", "bibliographic")),
+  all(entries$form %in% c("full", "brief", "note")),
+  all(entries$source %in% c("pipeline", "reading", "reference_audit", "publisher_record", "authors_archive", "proof"))
+)
 write_csv(entries, here("errata_entries.csv"))
 ```
