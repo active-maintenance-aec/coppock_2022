@@ -24,6 +24,8 @@
 - [R environment](#r-environment)
 - [Licence](#licence)
 
+**Archived at Zenodo:** [doi:10.5281/zenodo.24168318](https://doi.org/10.5281/zenodo.24168318). This DOI always resolves to the latest release of the maintained version.
+
 *Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
 
 ## What this repository is
