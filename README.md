@@ -63,7 +63,7 @@ source("run_all.R")
 
 `run_all.R` fetches the archive from Dataverse, verifies it, runs all 28
 analysis scripts, builds the ground truth, prints the in-text claims,
-and re-verifies the deposit. It took 3.5 minutes on the machine that
+and re-verifies the deposit. It took 9.4 minutes on the machine that
 produced the committed output; that figure describes one machine on one
 day and nothing else.
 
@@ -123,10 +123,10 @@ hash taken after a run can never recur.
 
 ### Does the deposited code run?
 
-| pass       | error |  ok |
-|:-----------|------:|----:|
-| as_shipped |    23 |   5 |
-| stripped   |    23 |   5 |
+| pass       | clean | error |
+|:-----------|------:|------:|
+| as_shipped |     5 |    23 |
+| stripped   |     5 |    23 |
 
 Deposited scripts by outcome, as shipped and stripped to data plus code
 
@@ -208,7 +208,8 @@ the same pipeline outputs:
   `coppock_2022_ground_truth.csv`.
 - `maintained/in_text_claims.R` carries the book’s sentence verbatim
   beside code that recomputes the number, and prints
-  `CLAIM <id> = <value> || <label>`.
+  `CLAIM <id> = <value> || [verdict] <label>`, scored by `excheckr`
+  against the extraction and the errata spine.
 
 Where a second derivation exists the claims file takes it: the chapter 1
 treatment effects are recovered there by differencing the two condition
@@ -292,28 +293,28 @@ one, because an aggregate hides a float covered by a single row:
 
 | Float      | Published values | Reproduced | Fraction |
 |:-----------|-----------------:|-----------:|:---------|
-| table_2.1  |               12 |         12 | 100%     |
-| table_2.2  |               12 |         12 | 100%     |
-| table_2.3  |               24 |         23 | 96%      |
-| table_4.2  |               23 |          0 | 0%       |
-| table_6.1  |               12 |          0 | 0%       |
-| table_6.2  |                9 |          9 | 100%     |
-| table_6.3  |               12 |         12 | 100%     |
-| table_6.4  |              114 |        114 | 100%     |
-| table_a.1  |              108 |          0 | 0%       |
-| table_a.10 |              144 |        144 | 100%     |
-| table_a.12 |              132 |        132 | 100%     |
-| table_a.14 |               44 |         44 | 100%     |
-| table_a.16 |               44 |         44 | 100%     |
-| table_a.18 |               32 |         32 | 100%     |
-| table_a.19 |               44 |         44 | 100%     |
-| table_a.2  |               24 |         24 | 100%     |
-| table_a.4  |               48 |         48 | 100%     |
-| table_a.5  |              120 |        120 | 100%     |
-| table_a.6  |               72 |         72 | 100%     |
-| table_a.7  |               48 |         48 | 100%     |
-| table_a.8  |              192 |          0 | 0%       |
-| table_a.9  |              120 |        120 | 100%     |
+| Table 2.1  |               12 |         12 | 100%     |
+| Table 2.2  |               12 |         12 | 100%     |
+| Table 2.3  |               24 |         23 | 96%      |
+| Table 4.2  |               23 |          0 | 0%       |
+| Table 6.1  |               12 |          0 | 0%       |
+| Table 6.2  |                9 |          9 | 100%     |
+| Table 6.3  |               12 |         12 | 100%     |
+| Table 6.4  |              114 |        114 | 100%     |
+| Table A.1  |              108 |          0 | 0%       |
+| Table A.10 |              144 |        144 | 100%     |
+| Table A.12 |              132 |        132 | 100%     |
+| Table A.14 |               44 |         44 | 100%     |
+| Table A.16 |               44 |         44 | 100%     |
+| Table A.18 |               32 |         32 | 100%     |
+| Table A.19 |               44 |         44 | 100%     |
+| Table A.2  |               24 |         24 | 100%     |
+| Table A.4  |               48 |         48 | 100%     |
+| Table A.5  |              120 |        120 | 100%     |
+| Table A.6  |               72 |         72 | 100%     |
+| Table A.7  |               48 |         48 | 100%     |
+| Table A.8  |              192 |          0 | 0%       |
+| Table A.9  |              120 |        120 | 100%     |
 
 Published values reproduced, by float
 
@@ -322,10 +323,10 @@ tested:
 
 | Float | Published values | Reason |
 |:---|---:|:---|
-| table_4.2 | 23 | Sample sizes for the 23 experiments. The deposit computes none of them and neither does the rewrite. |
-| table_6.1 | 12 | Panel sample sizes for the 12 persistence experiments, on the same footing as table 4.2. |
-| table_a.1 | 108 | The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates. |
-| table_a.8 | 192 | The deposit contains no code for the Hiscox treatment effect estimates. |
+| Table 4.2 | 23 | Sample sizes for the 23 experiments. The deposit computes none of them and neither does the rewrite. |
+| Table 6.1 | 12 | Panel sample sizes for the 12 persistence experiments, on the same footing as table 4.2. |
+| Table A.1 | 108 | The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates. |
+| Table A.8 | 192 | The deposit contains no code for the Hiscox treatment effect estimates. |
 
 Published floats with no coverage
 
@@ -578,15 +579,15 @@ comparison could have seen it.
 
 ## R environment
 
-| Component | Version    |
-|:----------|:-----------|
-| R         | 4.6.1      |
-| tidyverse | 2.0.0      |
-| estimatr  | 2.0.1.9000 |
-| metafor   | 5.0.1      |
-| vayr      | 1.1.0      |
-| ggplot2   | 4.0.3      |
-| rsample   | 1.3.2      |
+| Component | Version |
+|:----------|:--------|
+| R         | 4.6.2   |
+| tidyverse | 2.0.0   |
+| estimatr  | 2.0.1   |
+| metafor   | 5.2.1   |
+| vayr      | 1.1.0   |
+| ggplot2   | 4.0.3   |
+| rsample   | 1.3.2   |
 
 Environment the committed output was produced under
 

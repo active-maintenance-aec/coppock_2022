@@ -1,5 +1,5 @@
 # coppock_2022/ground_truth/run_archive.R
-# Output: ground_truth/archive_run_status.csv
+# Output: ground_truth/archive_run_status.csv, ground_truth/archive_overwrites.csv
 # Depends on: original_extracted/ (rebuilt by download_original.R)
 # Description: Run every deposited script twice, once against the deposit as shipped and
 #   once against a copy stripped to data plus code, and record where each one stopped.
@@ -103,8 +103,9 @@ run_one <- function(script, run_dir) {
 
   tibble(
     script = script,
-    status = if (timed_out) "timeout" else if (exit_code == 0) "ok" else "error",
-    message = if (timed_out) {
+    exit_status = as.integer(exit_code),
+    outcome = if (timed_out) "timeout" else if (exit_code == 0) "clean" else "error",
+    stopped_at = if (timed_out) {
       str_glue("killed at the {timeout_seconds}s limit")
     } else if (exit_code == 0) {
       NA_character_
@@ -149,14 +150,29 @@ run_pass <- function(pass, keep_kinds) {
   files_after <- list.files(run_dir, recursive = TRUE, all.files = TRUE, no.. = TRUE)
   strays <- setdiff(files_after, c(files_before, paste0("run_logs/", basename(scripts), ".log")))
   strays <- strays[!str_detect(strays, "^run_logs/")]
+  deleted <- setdiff(keep$relative, files_after)
 
-  print(str_glue("[{pass}] {sum(results$status == 'ok')} of {nrow(results)} scripts ran clean; ",
-                 "{sum(after$touched)} deposited files overwritten, ",
-                 "{sum(after$changed)} of those with different contents; ",
-                 "{length(strays)} stray files created."))
+  print(str_glue("[{pass}] {sum(results$outcome == 'clean')} of {nrow(results)} scripts ran clean; ",
+                 "{sum(after$touched, na.rm = TRUE)} deposited files overwritten, ",
+                 "{sum(after$changed, na.rm = TRUE)} of those with different contents; ",
+                 "{length(strays)} stray files created; {length(deleted)} deleted."))
   if (length(strays) > 0) print(strays)
 
-  results |> mutate(pass = pass, .before = 1)
+  # What the pass did to the files in its copy, one row per file touched: a deposited file
+  # written over (matches_deposit says whether its contents survived), a file the deposit
+  # does not ship that a script left behind, and a deposited file a script removed.
+  overwrites <- bind_rows(
+    after |>
+      filter(touched, !relative %in% deleted) |>
+      transmute(file = relative, effect = "overwritten", matches_deposit = !changed),
+    tibble(file = strays, effect = rep("added", length(strays)), matches_deposit = NA),
+    tibble(file = deleted, effect = rep("deleted", length(deleted)), matches_deposit = NA)
+  )
+
+  list(
+    status = results |> mutate(pass = pass, .before = 1),
+    overwrites = overwrites |> mutate(pass = pass, .before = 1)
+  )
 }
 
 # As shipped, then stripped ----
@@ -166,16 +182,26 @@ stripped <- run_pass("stripped", c("code", "data"))
 # Record ----
 # Only properties of the deposit are committed. Timings are a property of the machine on
 # the day, and a committed file carrying them is dirty after every run, so they are
-# printed and discarded.
-run_status <- bind_rows(as_shipped, stripped) |>
-  select(pass, script, status, message) |>
+# printed and discarded. Every deposited script is a figure or table script, so every row
+# has the role analysis; helpers.R and tidiers.R are only ever sourced and get no row.
+runs <- bind_rows(as_shipped$status, stripped$status)
+
+run_status <- runs |>
+  transmute(pass, script, role = "analysis", exit_status, outcome, stopped_at) |>
   arrange(pass, script, .locale = "en")
 
+overwrites <- bind_rows(as_shipped$overwrites, stripped$overwrites) |>
+  select(pass, file, effect, matches_deposit) |>
+  arrange(pass, file, .locale = "en")
+
 write_csv(run_status, here::here("ground_truth", "archive_run_status.csv"))
+write_csv(overwrites, here::here("ground_truth", "archive_overwrites.csv"))
 
-print(bind_rows(as_shipped, stripped) |>
-        select(pass, script, status, seconds) |>
+print(runs |>
+        select(pass, script, outcome, seconds) |>
         arrange(pass, desc(seconds)), n = Inf)
+print(overwrites)
 
-print(str_glue("Wrote ground_truth/archive_run_status.csv ({nrow(run_status)} rows)."))
+print(str_glue("Wrote ground_truth/archive_run_status.csv ({nrow(run_status)} rows) and ",
+               "ground_truth/archive_overwrites.csv ({nrow(overwrites)} rows)."))
 print(str_glue("Logs under {archive_run_dir}."))

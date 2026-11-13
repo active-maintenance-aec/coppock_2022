@@ -439,6 +439,13 @@ if (!all(value_placed)) {
   stop("An entry's corrected_values are not in the spans of its corrected sentence.")
 }
 
+# The placement is written to the spine as values_in_spans, one logical per entry: TRUE when
+# every corrected value is the token its sentence prints, NA for an entry with no values. The
+# gate above stops on FALSE, because no entry here stores a value on the claim's scale rather
+# than the sentence's.
+entries <- entries |>
+  left_join(transmute(quantified, entry, values_in_spans = value_placed), by = "entry")
+
 # A quantity entry that corrects something has to say which quantity, and an entry that
 # corrects none (any other class, or a note) may not carry a value. The class is the
 # declaration and this is where it binds. An empty claim_ids counts as missing.

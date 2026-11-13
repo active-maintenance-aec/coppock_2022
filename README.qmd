@@ -45,9 +45,10 @@ ground_truth <- read_csv(
     value_paper = col_character(),
     value_rewrite = col_character(),
     value_script = col_character(),
-    match = col_integer(),
-    match_rewrite = col_integer(),
-    holds = col_integer(),
+    digits = col_integer(),
+    match = col_logical(),
+    match_rewrite = col_logical(),
+    holds = col_logical(),
     .default = col_character()
   )
 )
@@ -62,6 +63,8 @@ float_coverage <- read_csv(here::here("ground_truth", "float_coverage.csv"),
                            show_col_types = FALSE)
 archive_status <- read_csv(here::here("ground_truth", "archive_run_status.csv"),
                            show_col_types = FALSE)
+archive_overwrites <- read_csv(here::here("ground_truth", "archive_overwrites.csv"),
+                               show_col_types = FALSE)
 appendix_values <- read_csv(here::here("ground_truth", "published_appendix_values.csv"),
                             col_types = cols(.default = col_character()))
 published_maintext <- read_csv(here::here("ground_truth", "published_maintext_tables.csv"),
@@ -143,8 +146,8 @@ supports the persistence analysis of chapter 6.
 #| include: false
 inventory <- float_coverage |>
   count(kind = case_when(
-    str_starts(float, "figure_") ~ "figures",
-    str_starts(float, "table_a") ~ "appendix tables",
+    str_starts(float, "Figure ") ~ "figures",
+    str_starts(float, "Table A.") ~ "appendix tables",
     TRUE ~ "main text tables"
   ))
 kind_n <- function(label) inventory$n[inventory$kind == label]
@@ -197,20 +200,24 @@ so a hash taken after a run can never recur.
 #| label: archive-summary
 archive_summary <-
   archive_status |>
-  count(pass, status) |>
-  pivot_wider(names_from = status, values_from = n, values_fill = 0)
+  count(pass, outcome) |>
+  pivot_wider(names_from = outcome, values_from = n, values_fill = 0)
 show_table(archive_summary, "Deposited scripts by outcome, as shipped and stripped to data plus code")
 ```
 
 ```{r}
 #| label: archive-cause
 #| include: false
-sunflower_failures <- sum(str_detect(archive_status$message, "unused arguments") &
+sunflower_failures <- sum(str_detect(archive_status$stopped_at, "unused arguments") &
                             archive_status$pass == "as_shipped", na.rm = TRUE)
 n_scripts <- nrow(archive_status) / 2
+stray_files <- archive_overwrites |> filter(pass == "as_shipped", effect == "added")
+overwritten_files <- archive_overwrites |> filter(effect == "overwritten")
+# The paragraph below states these two counts in words, so they are checked here.
+stopifnot(nrow(overwritten_files) == 0, identical(stray_files$file, "Rplots.pdf"))
 ```
 
-No. `r n_scripts - sum(archive_status$status == "ok" & archive_status$pass == "as_shipped")`
+No. `r n_scripts - sum(archive_status$outcome == "clean" & archive_status$pass == "as_shipped")`
 of the `r n_scripts` deposited analysis scripts fail, and
 `r sunflower_failures` of them fail on one line for one reason: `vayr::sunflower()`
 replaced its `width` and `height` arguments with `density` and `aspect_ratio`, so every
@@ -279,7 +286,8 @@ outputs:
 - `ground_truth/build_ground_truth.R` joins each published value to what
   `maintained/output/` contains and writes `coppock_2022_ground_truth.csv`.
 - `maintained/in_text_claims.R` carries the book's sentence verbatim beside code that
-  recomputes the number, and prints `CLAIM <id> = <value> || <label>`.
+  recomputes the number, and prints `CLAIM <id> = <value> || [verdict] <label>`, scored by
+  `excheckr` against the extraction and the errata spine.
 
 Where a second derivation exists the claims file takes it: the chapter 1 treatment effects
 are recovered there by differencing the two condition means the figure plots, and the
@@ -349,9 +357,9 @@ show_table(adverse, "Every row that does not agree")
 
 ```{r}
 #| label: coverage
-covered_values <- sum(float_coverage$covered[float_coverage$published > 0])
-published_values <- sum(float_coverage$published)
-zero_coverage <- float_coverage |> filter(published > 0, covered == 0)
+covered_values <- sum(float_coverage$reproduced_by_rewrite[float_coverage$published_numbers > 0])
+published_values <- sum(float_coverage$published_numbers)
+zero_coverage <- float_coverage |> filter(published_numbers > 0, reproduced_by_rewrite == 0)
 ```
 
 Across the book's `r nrow(float_coverage)` floats the pipeline reproduces
@@ -363,9 +371,10 @@ prints one, because an aggregate hides a float covered by a single row:
 #| label: coverage-per-float
 show_table(
   float_coverage |>
-    filter(published > 0) |>
-    transmute(Float = float, `Published values` = published, Reproduced = covered,
-              Fraction = sprintf("%.0f%%", 100 * covered / published)),
+    filter(published_numbers > 0) |>
+    transmute(Float = float, `Published values` = published_numbers,
+              Reproduced = reproduced_by_rewrite,
+              Fraction = sprintf("%.0f%%", 100 * reproduced_by_rewrite / published_numbers)),
   "Published values reproduced, by float"
 )
 ```
@@ -379,12 +388,12 @@ show_table(
   zero_coverage |>
     transmute(
       Float = float,
-      `Published values` = published,
+      `Published values` = published_numbers,
       Reason = c(
-        "table_4.2" = "Sample sizes for the 23 experiments. The deposit computes none of them and neither does the rewrite.",
-        "table_6.1" = "Panel sample sizes for the 12 persistence experiments, on the same footing as table 4.2.",
-        "table_a.1" = "The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates.",
-        "table_a.8" = "The deposit contains no code for the Hiscox treatment effect estimates."
+        "Table 4.2" = "Sample sizes for the 23 experiments. The deposit computes none of them and neither does the rewrite.",
+        "Table 6.1" = "Panel sample sizes for the 12 persistence experiments, on the same footing as table 4.2.",
+        "Table A.1" = "The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates.",
+        "Table A.8" = "The deposit contains no code for the Hiscox treatment effect estimates."
       )[float]
     ),
   "Published floats with no coverage"
@@ -401,9 +410,9 @@ at.
 ```{r}
 #| label: figure-coverage
 #| include: false
-figure_rows <- float_coverage |> filter(str_starts(float, "figure_"))
-plotted_estimates <- sum(figure_rows$covered)
-drawn_figures <- sum(figure_rows$covered > 0)
+figure_rows <- float_coverage |> filter(str_starts(float, "Figure "))
+plotted_estimates <- sum(figure_rows$plotted)
+drawn_figures <- sum(figure_rows$plotted > 0)
 ```
 
 The `r kind_n("figures")` figures print no estimates on their faces, so they contribute

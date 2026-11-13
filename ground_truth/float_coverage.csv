@@ -1,68 +1,68 @@
-float,published,covered
-figure_1.1,0,0
-figure_1.2,0,22
-figure_1.3,0,8
-figure_1.4,0,53
-figure_1.5,0,416
-figure_2.1,0,0
-figure_2.2,0,12
-figure_2.3,0,25
-figure_3.1,0,41
-figure_3.2,0,21
-figure_3.3,0,16
-figure_3.4,0,0
-figure_4.1,0,0
-figure_4.2,0,0
-figure_5.1,0,16
-figure_5.10,0,60
-figure_5.11,0,20
-figure_5.12,0,20
-figure_5.13,0,14
-figure_5.14,0,0
-figure_5.15,0,20
-figure_5.16,0,278
-figure_5.17,0,54
-figure_5.18,0,8
-figure_5.19,0,16
-figure_5.2,0,6
-figure_5.3,0,28
-figure_5.4,0,12
-figure_5.5,0,12
-figure_5.6,0,16
-figure_5.7,0,24
-figure_5.8,0,40
-figure_5.9,0,48
-figure_6.1,0,76
-figure_6.2,0,38
-figure_6.3,0,15
-figure_7.1,0,0
-table_2.1,12,12
-table_2.2,12,12
-table_2.3,24,23
-table_3.1,0,0
-table_3.2,0,0
-table_4.1,0,0
-table_4.2,23,0
-table_6.1,12,0
-table_6.2,9,9
-table_6.3,12,12
-table_6.4,114,114
-table_a.1,108,0
-table_a.10,144,144
-table_a.11,0,0
-table_a.12,132,132
-table_a.13,0,0
-table_a.14,44,44
-table_a.15,0,0
-table_a.16,44,44
-table_a.17,0,0
-table_a.18,32,32
-table_a.19,44,44
-table_a.2,24,24
-table_a.3,0,0
-table_a.4,48,48
-table_a.5,120,120
-table_a.6,72,72
-table_a.7,48,48
-table_a.8,192,0
-table_a.9,120,120
+float,published_numbers,covered,reproduced_by_rewrite,reproduced_by_archive,plotted,plotted_reproduced,note
+Figure 1.1,0,0,0,NA,0,0,A schematic or simulation with no data behind it.
+Figure 1.2,0,0,0,NA,22,22,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 1.3,0,0,0,NA,8,8,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 1.4,0,0,0,NA,53,53,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 1.5,0,0,0,NA,416,416,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 2.1,0,0,0,NA,0,0,Reproduces the two graphics used as experimental stimuli; carries no data.
+Figure 2.2,0,0,0,NA,12,12,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 2.3,0,0,0,NA,25,25,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 3.1,0,0,0,NA,41,41,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 3.2,0,0,0,NA,21,21,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 3.3,0,0,0,NA,16,16,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 3.4,0,0,0,NA,0,0,A diagram; carries no data.
+Figure 4.1,0,0,0,NA,0,0,A schematic or simulation with no data behind it.
+Figure 4.2,0,0,0,NA,0,0,A schematic or simulation with no data behind it.
+Figure 5.1,0,0,0,NA,16,16,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.10,0,0,0,NA,60,60,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.11,0,0,0,NA,20,20,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.12,0,0,0,NA,20,20,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.13,0,0,0,NA,14,14,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.14,0,0,0,NA,0,0,Reproduces the two income-inequality plots that are the Trump and White treatment; carries no data.
+Figure 5.15,0,0,0,NA,20,20,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.16,0,0,0,NA,278,278,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.17,0,0,0,NA,54,54,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.18,0,0,0,NA,8,8,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.19,0,0,0,NA,16,16,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.2,0,0,0,NA,6,6,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.3,0,0,0,NA,28,28,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.4,0,0,0,NA,12,12,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.5,0,0,0,NA,12,12,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.6,0,0,0,NA,16,16,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.7,0,0,0,NA,24,24,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.8,0,0,0,NA,40,40,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 5.9,0,0,0,NA,48,48,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 6.1,0,0,0,NA,76,76,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 6.2,0,0,0,NA,38,38,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 6.3,0,0,0,NA,15,15,Prints no numbers on its face; plotted counts the estimates the figure script writes.
+Figure 7.1,0,0,0,NA,0,0,A schematic or simulation with no data behind it.
+Table 2.1,12,12,12,NA,NA,NA,"Transcribed from table 3 of Lord, Ross, and Lepper (1979) and checked once against that article."
+Table 2.2,12,12,12,NA,NA,NA,NA
+Table 2.3,24,24,23,NA,NA,NA,"The upper half is transcribed from table 1 of Lord, Ross, and Lepper (1979)."
+Table 3.1,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table 3.2,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table 4.1,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table 4.2,23,0,0,NA,NA,NA,Sample sizes for the 23 experiments; neither the deposit nor the rewrite computes them.
+Table 6.1,12,0,0,NA,NA,NA,Panel sample sizes for the 12 persistence experiments; neither the deposit nor the rewrite computes them.
+Table 6.2,9,9,9,NA,NA,NA,Unseeded bootstrap: a cell counts as reproduced when it lies inside the range its quantity takes across seeds.
+Table 6.3,12,12,12,NA,NA,NA,Unseeded bootstrap: a cell counts as reproduced when it lies inside the range its quantity takes across seeds.
+Table 6.4,114,114,114,NA,NA,NA,Unseeded bootstrap: a cell counts as reproduced when it lies inside the range its quantity takes across seeds.
+Table A.1,108,0,0,NA,NA,NA,"The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates."
+Table A.10,144,144,144,NA,NA,NA,NA
+Table A.11,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table A.12,132,132,132,NA,NA,NA,NA
+Table A.13,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table A.14,44,44,44,NA,NA,NA,NA
+Table A.15,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table A.16,44,44,44,NA,NA,NA,NA
+Table A.17,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table A.18,32,32,32,NA,NA,NA,NA
+Table A.19,44,44,44,NA,NA,NA,NA
+Table A.2,24,24,24,NA,NA,NA,NA
+Table A.3,0,0,0,NA,NA,NA,Prints no numbers; the table is set out in words.
+Table A.4,48,48,48,NA,NA,NA,NA
+Table A.5,120,120,120,NA,NA,NA,NA
+Table A.6,72,72,72,NA,NA,NA,NA
+Table A.7,48,48,48,NA,NA,NA,NA
+Table A.8,192,0,0,NA,NA,NA,The deposit contains no code for the Hiscox treatment effect estimates.
+Table A.9,120,120,120,NA,NA,NA,NA

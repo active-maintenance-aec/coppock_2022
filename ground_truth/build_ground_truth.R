@@ -121,12 +121,20 @@ if (nrow(precision_check) > 0) print(precision_check |> select(claim_id, stored,
 stopifnot("A claim's digits disagree with the precision its published value is stored at" =
             nrow(precision_check) == 0)
 
+# The extraction's digits column carries no override of the page's typography, so it has to
+# be exactly the precision excheckr reads off value_paper, which is what in_text_claims.R
+# compares at. A row that ever needs a different count must say so here.
+stopifnot("A claim's digits differ from excheckr::claim_digits(value_paper)" =
+            all(published_claims$digits == excheckr::claim_digits(published_claims$value_paper)))
+
 # The ground truth accumulates one row at a time. Every row must name a claim_id that the
 # extraction declares, so a typo in an id is a build failure rather than a silent gap.
 gt <- list()
 
-claim <- function(claim_id, value_rewrite, locus = NA_character_, note = NA_character_,
-                  holds = NA_integer_, unseeded = FALSE) {
+# Named add_claim rather than claim so that excheckr::claim(), which in_text_claims.R calls
+# from an environment whose parent is this one, is not masked when the gate below sources it.
+add_claim <- function(claim_id, value_rewrite, locus = NA_character_, note = NA_character_,
+                      holds = NA_integer_, unseeded = FALSE) {
   row <- published_claims |> filter(.data$claim_id == !!claim_id)
   stopifnot("claim_id is not in published_claims.csv" = nrow(row) == 1)
 
@@ -160,10 +168,12 @@ claim <- function(claim_id, value_rewrite, locus = NA_character_, note = NA_char
   gt[[length(gt) + 1]] <<- tibble(
     paper_id = paper_id,
     claim_id = claim_id,
-    table_figure = row$float,
+    location = row$location,
+    claim_type = row$claim_type,
     claim = row$claim,
-    value_script = NA_character_,
     value_paper = row$value_paper,
+    digits = row$digits,
+    value_script = NA_character_,
     match = NA_integer_,
     value_rewrite = if (is.na(value_rewrite)) NA_character_ else format(value_rewrite, digits = 15),
     match_rewrite = match_rewrite,
@@ -185,12 +195,12 @@ effect_of <- function(wave_label, sample_label, party, column) {
   row[[column]]
 }
 
-claim("c1_flat_tax_mt_rep_est", effect_of("Immediate", "Mechanical Turk Sample", "Republican", "estimate"))
-claim("c1_flat_tax_mt_rep_se", effect_of("Immediate", "Mechanical Turk Sample", "Republican", "std.error"))
-claim("c1_flat_tax_mt_dem_est", effect_of("Immediate", "Mechanical Turk Sample", "Democrat", "estimate"))
-claim("c1_flat_tax_mt_dem_se", effect_of("Immediate", "Mechanical Turk Sample", "Democrat", "std.error"))
-claim("c1_flat_tax_pp_rep_est", effect_of("Immediate", "Policy Professional Sample", "Republican", "estimate"))
-claim(
+add_claim("c1_flat_tax_mt_rep_est", effect_of("Immediate", "Mechanical Turk Sample", "Republican", "estimate"))
+add_claim("c1_flat_tax_mt_rep_se", effect_of("Immediate", "Mechanical Turk Sample", "Republican", "std.error"))
+add_claim("c1_flat_tax_mt_dem_est", effect_of("Immediate", "Mechanical Turk Sample", "Democrat", "estimate"))
+add_claim("c1_flat_tax_mt_dem_se", effect_of("Immediate", "Mechanical Turk Sample", "Democrat", "std.error"))
+add_claim("c1_flat_tax_pp_rep_est", effect_of("Immediate", "Policy Professional Sample", "Republican", "estimate"))
+add_claim(
   "c1_flat_tax_pp_rep_se",
   effect_of("Immediate", "Policy Professional Sample", "Republican", "std.error"),
   locus = "unresolved",
@@ -203,29 +213,29 @@ claim(
     "rewrite keeps the house default rather than choosing the one that matches."
   )
 )
-claim("c1_flat_tax_pp_dem_est", effect_of("Immediate", "Policy Professional Sample", "Democrat", "estimate"))
-claim("c1_flat_tax_pp_dem_se", effect_of("Immediate", "Policy Professional Sample", "Democrat", "std.error"))
+add_claim("c1_flat_tax_pp_dem_est", effect_of("Immediate", "Policy Professional Sample", "Democrat", "estimate"))
+add_claim("c1_flat_tax_pp_dem_se", effect_of("Immediate", "Policy Professional Sample", "Democrat", "std.error"))
 
-claim("c1_flat_tax_w2_mt_rep_est", effect_of("10-day follow-up", "Mechanical Turk Sample", "Republican", "estimate"))
-claim("c1_flat_tax_w2_mt_rep_se", effect_of("10-day follow-up", "Mechanical Turk Sample", "Republican", "std.error"))
-claim("c1_flat_tax_w2_mt_dem_est", effect_of("10-day follow-up", "Mechanical Turk Sample", "Democrat", "estimate"))
-claim("c1_flat_tax_w2_mt_dem_se", effect_of("10-day follow-up", "Mechanical Turk Sample", "Democrat", "std.error"))
-claim("c1_flat_tax_w2_pp_rep_est", effect_of("10-day follow-up", "Policy Professional Sample", "Republican", "estimate"))
-claim("c1_flat_tax_w2_pp_rep_se", effect_of("10-day follow-up", "Policy Professional Sample", "Republican", "std.error"))
-claim("c1_flat_tax_w2_pp_dem_est", effect_of("10-day follow-up", "Policy Professional Sample", "Democrat", "estimate"))
-claim("c1_flat_tax_w2_pp_dem_se", effect_of("10-day follow-up", "Policy Professional Sample", "Democrat", "std.error"))
+add_claim("c1_flat_tax_w2_mt_rep_est", effect_of("10-day follow-up", "Mechanical Turk Sample", "Republican", "estimate"))
+add_claim("c1_flat_tax_w2_mt_rep_se", effect_of("10-day follow-up", "Mechanical Turk Sample", "Republican", "std.error"))
+add_claim("c1_flat_tax_w2_mt_dem_est", effect_of("10-day follow-up", "Mechanical Turk Sample", "Democrat", "estimate"))
+add_claim("c1_flat_tax_w2_mt_dem_se", effect_of("10-day follow-up", "Mechanical Turk Sample", "Democrat", "std.error"))
+add_claim("c1_flat_tax_w2_pp_rep_est", effect_of("10-day follow-up", "Policy Professional Sample", "Republican", "estimate"))
+add_claim("c1_flat_tax_w2_pp_rep_se", effect_of("10-day follow-up", "Policy Professional Sample", "Republican", "std.error"))
+add_claim("c1_flat_tax_w2_pp_dem_est", effect_of("10-day follow-up", "Policy Professional Sample", "Democrat", "estimate"))
+add_claim("c1_flat_tax_w2_pp_dem_se", effect_of("10-day follow-up", "Policy Professional Sample", "Democrat", "std.error"))
 
 flat_tax_n <- out("figure_1.2_and_1.3_flat_tax_n.csv")
-claim("c1_n_mturk", flat_tax_n$n[flat_tax_n$sample == "Mechanical Turk Sample"])
-claim("c1_n_policy_professionals", flat_tax_n$n[flat_tax_n$sample == "Policy Professional Sample"])
+add_claim("c1_n_mturk", flat_tax_n$n[flat_tax_n$sample == "Mechanical Turk Sample"])
+add_claim("c1_n_policy_professionals", flat_tax_n$n[flat_tax_n$sample == "Policy Professional Sample"])
 
 persistence_of <- function(sample_label, party) {
   row <- flat_tax_persistence |> filter(sample == sample_label, pid_3_cat == party)
   stopifnot(nrow(row) == 1)
   row$persistence_ratio * 100
 }
-claim("c1_persistence_rep", persistence_of("Mechanical Turk Sample", "Republican"))
-claim("c1_persistence_dem", persistence_of("Mechanical Turk Sample", "Democrat"))
+add_claim("c1_persistence_rep", persistence_of("Mechanical Turk Sample", "Republican"))
+add_claim("c1_persistence_dem", persistence_of("Mechanical Turk Sample", "Democrat"))
 
 # The baseline gap is a difference between two control group means, which is the
 # productive derivation case: both means are already in the figure's own output.
@@ -235,11 +245,11 @@ control_gap <- function(sample_label) {
   stopifnot(nrow(means) == 2)
   diff(range(means$estimate))
 }
-claim("c1_baseline_gap_mt", as.integer(control_gap("Mechanical Turk Sample") > 1),
+add_claim("c1_baseline_gap_mt", as.integer(control_gap("Mechanical Turk Sample") > 1),
       holds = as.integer(control_gap("Mechanical Turk Sample") > 1),
       note = str_glue("The measured control group gap on Mechanical Turk is ",
                       "{render(control_gap('Mechanical Turk Sample'), 2)} points."))
-claim("c1_baseline_gap_pp", control_gap("Policy Professional Sample"),
+add_claim("c1_baseline_gap_pp", control_gap("Policy Professional Sample"),
       note = "An approximate claim: recorded, not scored.")
 
 # Chapter 1: gay marriage trends ----
@@ -251,18 +261,18 @@ slope_of <- function(label) {
   stopifnot(nrow(row) == 1)
   row$estimate
 }
-claim("c1_gm_slope_overall", slope_of("Random effects pooling (DerSimonian and Laird)"))
-claim("c1_gm_slope_democrat", slope_of("Group slope: Partisanship, Democrat"),
+add_claim("c1_gm_slope_overall", slope_of("Random effects pooling (DerSimonian and Laird)"))
+add_claim("c1_gm_slope_democrat", slope_of("Group slope: Partisanship, Democrat"),
       locus = "unresolved",
       note = paste("The Democratic slope is 2.02 points per year, which prints 2.0.",
                    "The two other slopes the sentence calls 2.1 (White mainline",
                    "Protestants, 2.09) and both it calls 1.2 reproduce exactly."))
-claim("c1_gm_slope_white_mainline", slope_of("Group slope: Religion, White mainline Protestants"))
-claim("c1_gm_slope_republican", slope_of("Group slope: Partisanship, Republican"))
-claim("c1_gm_slope_white_evangelical", slope_of("Group slope: Religion, White evangelical Protestants"))
+add_claim("c1_gm_slope_white_mainline", slope_of("Group slope: Religion, White mainline Protestants"))
+add_claim("c1_gm_slope_republican", slope_of("Group slope: Partisanship, Republican"))
+add_claim("c1_gm_slope_white_evangelical", slope_of("Group slope: Religion, White evangelical Protestants"))
 
 group_slopes <- gm_slopes |> filter(str_starts(method, "Group slope: "))
-claim("c1_gm_all_groups_rose", nrow(group_slopes),
+add_claim("c1_gm_all_groups_rose", nrow(group_slopes),
       holds = as.integer(nrow(group_slopes) == 25 && all(group_slopes$estimate > 0)),
       note = paste("Evaluated as all twenty-five subgroup slopes being positive.",
                    "Nineteen of the twenty-five are also observed at both 2001 and 2019",
@@ -274,14 +284,14 @@ change_of <- function(key_label, column) {
   stopifnot(nrow(row) == 1)
   row[[column]]
 }
-claim("c1_gm_dem_points", change_of("Democrat", "change_in_points"))
-claim("c1_gm_rep_points", change_of("Republican", "change_in_points"))
-claim("c1_gm_rep_percent", change_of("Republican", "percent_change") * 100)
-claim("c1_gm_dem_percent", change_of("Democrat", "percent_change") * 100)
+add_claim("c1_gm_dem_points", change_of("Democrat", "change_in_points"))
+add_claim("c1_gm_rep_points", change_of("Republican", "change_in_points"))
+add_claim("c1_gm_rep_percent", change_of("Republican", "percent_change") * 100)
+add_claim("c1_gm_dem_percent", change_of("Democrat", "percent_change") * 100)
 
 # Chapter 2: the Lord, Ross, and Lepper replication ----
 lrl_n <- out("figure_2.3_gc_replication_n.csv")
-claim("c2_n_replication", lrl_n$n)
+add_claim("c2_n_replication", lrl_n$n)
 
 table_2.2 <- out("table_2.2_lrl_reanalysis.csv")
 combined_of <- function(column) {
@@ -289,8 +299,8 @@ combined_of <- function(column) {
   stopifnot(nrow(row) == 1)
   row[[column]]
 }
-claim("c2_combined_proponents", combined_of("Capital Punishment Proponents"))
-claim("c2_combined_opponents", combined_of("Capital Punishment Opponents"))
+add_claim("c2_combined_proponents", combined_of("Capital Punishment Proponents"))
+add_claim("c2_combined_opponents", combined_of("Capital Punishment Opponents"))
 
 # Four opportunities: two outcomes crossed with two predispositions. Each is a difference
 # between the pro-study and the con-study response, both of which the figure's own output
@@ -306,7 +316,7 @@ pro_con_tests <-
     se_difference = sqrt(`std.error_Pro Study`^2 + `std.error_Con Study`^2),
     p_value = 2 * pnorm(-abs(difference / se_difference))
   )
-claim("c2_pro_con_significant", sum(pro_con_tests$p_value < 0.05),
+add_claim("c2_pro_con_significant", sum(pro_con_tests$p_value < 0.05),
       holds = as.integer(nrow(pro_con_tests) == 4 && all(pro_con_tests$p_value < 0.05)))
 
 # Chapter 3 ----
@@ -314,12 +324,12 @@ figure_3.1 <- out("figure_3.1_oped_target_nontarget.csv")
 target_mean <- function(which_target) {
   mean(figure_3.1$estimate[figure_3.1$target == which_target])
 }
-claim("c3_target_sd", target_mean("Target attitude"),
+add_claim("c3_target_sd", target_mean("Target attitude"),
       note = "An approximate claim: recorded, not scored.")
-claim("c3_nontarget_sd", target_mean("Nontarget attitude"))
+add_claim("c3_nontarget_sd", target_mean("Nontarget attitude"))
 
 ca_n <- out("figure_3.2_ca_party_cues_n.csv")
-claim("c3_ca_poll_n", ca_n$n)
+add_claim("c3_ca_poll_n", ca_n$n)
 
 # Chapter 5: minimum wage ----
 mw_contrast <- out("figure_5.1_minimum_wage_pro_vs_anti.csv")
@@ -328,14 +338,14 @@ mw_of <- function(outcome, position, column) {
   stopifnot(nrow(row) == 1)
   row[[column]]
 }
-claim("c5_mw_pro_amount_est", mw_of("Amount", "Proponents", "estimate"))
-claim("c5_mw_pro_amount_se", mw_of("Amount", "Proponents", "std.error"))
-claim("c5_mw_pro_favor_est", mw_of("Favor", "Proponents", "estimate"))
-claim("c5_mw_pro_favor_se", mw_of("Favor", "Proponents", "std.error"))
-claim("c5_mw_opp_amount_est", mw_of("Amount", "Opponents", "estimate"))
-claim("c5_mw_opp_amount_se", mw_of("Amount", "Opponents", "std.error"))
-claim("c5_mw_opp_favor_est", mw_of("Favor", "Opponents", "estimate"))
-claim("c5_mw_opp_favor_se", mw_of("Favor", "Opponents", "std.error"))
+add_claim("c5_mw_pro_amount_est", mw_of("Amount", "Proponents", "estimate"))
+add_claim("c5_mw_pro_amount_se", mw_of("Amount", "Proponents", "std.error"))
+add_claim("c5_mw_pro_favor_est", mw_of("Favor", "Proponents", "estimate"))
+add_claim("c5_mw_pro_favor_se", mw_of("Favor", "Proponents", "std.error"))
+add_claim("c5_mw_opp_amount_est", mw_of("Amount", "Opponents", "estimate"))
+add_claim("c5_mw_opp_amount_se", mw_of("Amount", "Opponents", "std.error"))
+add_claim("c5_mw_opp_favor_est", mw_of("Favor", "Opponents", "estimate"))
+add_claim("c5_mw_opp_favor_se", mw_of("Favor", "Opponents", "std.error"))
 
 # Chapter 5: gun control ----
 gun_cells <- out("table_a2_gun_control_unrounded.csv")
@@ -344,10 +354,10 @@ gun_of <- function(study, group, column) {
   stopifnot(nrow(row) == 1)
   row[[column]] * 100
 }
-claim("c5_gun_anti_prop_est", abs(gun_of("Anti Gun Control Study", "Gun control proponents", "estimate")))
-claim("c5_gun_anti_prop_se", gun_of("Anti Gun Control Study", "Gun control proponents", "std.error"))
-claim("c5_gun_pro_opp_est", gun_of("Pro Gun Control Study", "Gun control opponents", "estimate"))
-claim("c5_gun_pro_opp_se", gun_of("Pro Gun Control Study", "Gun control opponents", "std.error"))
+add_claim("c5_gun_anti_prop_est", abs(gun_of("Anti Gun Control Study", "Gun control proponents", "estimate")))
+add_claim("c5_gun_anti_prop_se", gun_of("Anti Gun Control Study", "Gun control proponents", "std.error"))
+add_claim("c5_gun_pro_opp_est", gun_of("Pro Gun Control Study", "Gun control opponents", "estimate"))
+add_claim("c5_gun_pro_opp_se", gun_of("Pro Gun Control Study", "Gun control opponents", "std.error"))
 
 # Chapter 5: CATE correlations ----
 cate_correlations <- out("figure_5.16_cate_correlations.csv")
@@ -356,12 +366,12 @@ correlation_of <- function(facet_label) {
   stopifnot(nrow(row) == 1)
   row$correlation
 }
-claim("c5_cate_corr_partisanship", correlation_of("Partisanship"))
-claim("c5_cate_corr_ideology", correlation_of("Ideology"))
-claim("c5_cate_corr_race", correlation_of("Race"))
-claim("c5_cate_corr_gender", correlation_of("Gender"))
-claim("c5_cate_corr_age", correlation_of("Age"))
-claim("c5_cate_corr_education", correlation_of("Education"))
+add_claim("c5_cate_corr_partisanship", correlation_of("Partisanship"))
+add_claim("c5_cate_corr_ideology", correlation_of("Ideology"))
+add_claim("c5_cate_corr_race", correlation_of("Race"))
+add_claim("c5_cate_corr_gender", correlation_of("Gender"))
+add_claim("c5_cate_corr_age", correlation_of("Age"))
+add_claim("c5_cate_corr_education", correlation_of("Education"))
 
 # Chapter 5: the two-sided message ----
 gc_effects <- out("figure_5.17_gc_pro_con_effects.csv")
@@ -370,25 +380,25 @@ two_sided_of <- function(outcome, group, column) {
   stopifnot(nrow(row) == 1)
   row[[column]]
 }
-claim("c5_twosided_support_prop_est",
+add_claim("c5_twosided_support_prop_est",
       two_sided_of("support_recode_change", "Capital Punishment Proponents", "estimate"))
-claim("c5_twosided_support_prop_se",
+add_claim("c5_twosided_support_prop_se",
       two_sided_of("support_recode_change", "Capital Punishment Proponents", "std.error"))
-claim("c5_twosided_support_opp_est",
+add_claim("c5_twosided_support_opp_est",
       two_sided_of("support_recode_change", "Capital Punishment Opponents", "estimate"))
-claim("c5_twosided_support_opp_se",
+add_claim("c5_twosided_support_opp_se",
       two_sided_of("support_recode_change", "Capital Punishment Opponents", "std.error"),
       locus = "paper_internal",
       note = paste("Appendix table A.5 prints 0.12 for this same standard error and the",
                    "pipeline reproduces the appendix. The sentence on page 101",
                    "contradicts the book's own appendix."))
-claim("c5_twosided_deter_opp_est",
+add_claim("c5_twosided_deter_opp_est",
       two_sided_of("deter_recode_change", "Capital Punishment Opponents", "estimate"))
-claim("c5_twosided_deter_opp_se",
+add_claim("c5_twosided_deter_opp_se",
       two_sided_of("deter_recode_change", "Capital Punishment Opponents", "std.error"))
-claim("c5_twosided_deter_prop_est",
+add_claim("c5_twosided_deter_prop_est",
       two_sided_of("deter_recode_change", "Capital Punishment Proponents", "estimate"))
-claim("c5_twosided_deter_prop_se",
+add_claim("c5_twosided_deter_prop_se",
       two_sided_of("deter_recode_change", "Capital Punishment Proponents", "std.error"))
 
 # Chapter 6: persistence, all of it unseeded ----
@@ -418,7 +428,7 @@ unseeded_claim <- function(claim_id, value_rewrite, float_id, quantity_label, sc
     "Unseeded bootstrap: over {band$n_seeds} seeds this quantity runs from ",
     "{render(band$minimum * scale, 3)} to {render(band$maximum * scale, 3)}."
   )
-  claim(claim_id, value_rewrite, unseeded = TRUE,
+  add_claim(claim_id, value_rewrite, unseeded = TRUE,
         holds = as.integer(inside),
         locus = if (inside) NA_character_ else outside_locus,
         note = if (is.na(extra_note)) note else str_c(note, " ", extra_note))
@@ -452,11 +462,11 @@ hiscox_ratio <- function(sample_label) {
   stopifnot(nrow(row) == 1)
   as.numeric(str_extract(row$`Persistence Ratio`, "^[-0-9.]+")) * 100
 }
-claim("c6_hiscox_mturk", hiscox_ratio("MTurk"), unseeded = TRUE,
+add_claim("c6_hiscox_mturk", hiscox_ratio("MTurk"), unseeded = TRUE,
       holds = 1L,
       note = paste("Unseeded bootstrap. The published 49 per cent is what this run gives",
                    "for the Mechanical Turk expert cue."))
-claim("c6_hiscox_lucid", hiscox_ratio("GfK"), unseeded = TRUE,
+add_claim("c6_hiscox_lucid", hiscox_ratio("GfK"), unseeded = TRUE,
       holds = 0L,
       locus = "paper_internal",
       note = paste("The sentence attributes the zero per cent persistence estimate to",
@@ -469,7 +479,7 @@ above_sixty <-
   table_6.4 |>
   mutate(ratio = as.numeric(str_extract(`Persistence Ratio`, "^[-0-9.]+"))) |>
   filter(str_detect(Treatment, "pro-minimum wage|Flat tax|Two pro studies"))
-claim("c6_above_sixty", sum(above_sixty$ratio > 0.6), unseeded = TRUE,
+add_claim("c6_above_sixty", sum(above_sixty$ratio > 0.6), unseeded = TRUE,
       holds = as.integer(all(above_sixty$ratio > 0.6)),
       locus = if (all(above_sixty$ratio > 0.6)) NA_character_ else "unresolved",
       note = str_glue(
@@ -501,7 +511,7 @@ unseeded_claim("c6_oped_ten_days", oped_of("Overall", "w2_est"), "table_6.3",
                  "disagree on a quantity neither run can pin down. The errata corrects the ",
                  "sentence to the table's figure."
                ))
-claim("c6_oped_ten_days_se", oped_se_of("Overall", "w2_est"), unseeded = TRUE, holds = 1L,
+add_claim("c6_oped_ten_days_se", oped_se_of("Overall", "w2_est"), unseeded = TRUE, holds = 1L,
       note = "Unseeded bootstrap; the standard error rounds to the published 5 per cent.")
 unseeded_claim("c6_oped_thirty_days", oped_of("Overall", "w3_est"), "table_6.3",
                "Overall, 30 days", scale = 100, outside_locus = "paper_internal",
@@ -510,7 +520,7 @@ unseeded_claim("c6_oped_thirty_days", oped_of("Overall", "w3_est"), "table_6.3",
                  "{maintext_cell('table_6.3', '30 days', 'Overall', 'All')} for this same ",
                  "quantity, inside the band, and the errata corrects the sentence to it."
                ))
-claim("c6_oped_thirty_days_se", oped_se_of("Overall", "w3_est"), unseeded = TRUE, holds = 1L,
+add_claim("c6_oped_thirty_days_se", oped_se_of("Overall", "w3_est"), unseeded = TRUE, holds = 1L,
       note = "Unseeded bootstrap; the standard error rounds to the published 6 per cent.")
 unseeded_claim("c6_oped_rep_ten_days", oped_of("Republican", "w2_est"), "table_6.3",
                "Republican, 10 days", scale = 100, outside_locus = "paper_internal",
@@ -535,12 +545,12 @@ rep_row <- table_6.3 |> filter(pid_3 == "Republican")
 dem_row <- table_6.3 |> filter(pid_3 == "Democrat")
 group_difference <- oped_of("Republican", "w2_est") - oped_of("Democrat", "w2_est")
 group_se <- sqrt(oped_se_of("Republican", "w2_est")^2 + oped_se_of("Democrat", "w2_est")^2)
-claim("c6_oped_groups_not_different", as.integer(abs(group_difference / group_se) < qnorm(0.975)),
+add_claim("c6_oped_groups_not_different", as.integer(abs(group_difference / group_se) < qnorm(0.975)),
       unseeded = TRUE,
       holds = as.integer(abs(group_difference / group_se) < qnorm(0.975)),
       note = "Unseeded bootstrap; evaluated as a two-sided test on the difference.")
 
-claim("c6_decay_one_third", ratio_of("Overall") / 100, unseeded = TRUE,
+add_claim("c6_decay_one_third", ratio_of("Overall") / 100, unseeded = TRUE,
       note = "An approximate claim: recorded, not scored.")
 
 # Appendix tables: cells reproduced of cells published ----
@@ -611,9 +621,9 @@ appendix_results <- pmap_df(appendix_tables, function(table_id, claim_id, file, 
   df <- out(file)
   key <- df |> select(all_of(key_columns)) |> unite("key", everything(), sep = " ") |> pull(key)
   result <- compare_appendix(table_id, split_entries(df), key)
-  claim(claim_id, result$agreeing)
-  tibble(float = str_c("table_", str_to_lower(table_id)), published = result$cells,
-         covered = result$agreeing)
+  add_claim(claim_id, result$agreeing)
+  tibble(float = str_c("Table ", table_id), published_numbers = result$cells,
+         covered = result$cells, reproduced_by_rewrite = result$agreeing)
 })
 
 # Table A.5 comes out of the figure 5.17 contrast file rather than a formatted appendix
@@ -643,7 +653,7 @@ a5 <- local({
                            a5_published_key$conf_low, a5_published_key$conf_high))
   tibble(cells = length(want), agreeing = sum(got == want))
 })
-claim("ta5_cells", a5$agreeing)
+add_claim("ta5_cells", a5$agreeing)
 
 # A.1 and A.8 have no counterpart anywhere in the pipeline, and the reason is a claim in
 # its own right rather than a convenience: the deposit contains thirteen print.xtable
@@ -655,12 +665,12 @@ published_cells <- function(table_id) {
   4L * nrow(published_appendix |> filter(table == table_id))
 }
 
-claim("ta1_cells", 0, locus = "archive",
+add_claim("ta1_cells", 0, locus = "archive",
       note = str_glue("Zero of {published_cells('A.1')} published cells. The deposit ",
                       "ships no code for the Coppock, Ekins, and Kirby op-ed treatment ",
                       "effect estimates, and the figure scripts that use those data plot ",
                       "condition means rather than the contrasts the table reports."))
-claim("ta8_cells", 0, locus = "archive",
+add_claim("ta8_cells", 0, locus = "archive",
       note = str_glue("Zero of {published_cells('A.8')} published cells. The deposit ",
                       "ships no code for the Hiscox treatment effect estimates. A ",
                       "reconstruction from the deposited data reproduces the valence ",
@@ -717,7 +727,7 @@ stopifnot("Table 2.2 did not join one to one" = nrow(table_2.2_check) == 12)
 t2_2_covered <- cells_agreeing(table_2.2_check$rendered, table_2.2_check$value_paper,
                                derived = table_2.2_check$row_label == "Combined")
 
-claim("t2_2_cells", t2_2_covered,
+add_claim("t2_2_cells", t2_2_covered,
       note = paste("Compared under the corrected row labels. Every cell agrees exactly",
                    "except the combined change in belief for proponents, printed as 2.1",
                    "where the unrounded sum is 2.1535 and prints 2.2. A Combined row is the",
@@ -744,7 +754,7 @@ stopifnot("The table 2.2 label check did not join one to one" = nrow(pro_row_cel
 
 t2_2_pro_rows <- sum(pro_row_cells$rendered == normalize_paper(pro_row_cells$value_paper))
 
-claim("t2_2_row_labels", t2_2_pro_rows,
+add_claim("t2_2_row_labels", t2_2_pro_rows,
       holds = as.integer(t2_2_pro_rows == 4),
       locus = "paper_internal",
       note = paste("None of the four cells printed under 'After pro-capital punishment",
@@ -781,7 +791,7 @@ convincing_prop <- table_2.3 |>
 t2_3_gc_covered <- cells_agreeing(table_2.3_check$rendered, table_2.3_check$value_paper,
                                   derived = table_2.3_check$row_label == "Difference")
 
-claim("t2_3_gc_cells",
+add_claim("t2_3_gc_cells",
       t2_3_gc_covered,
       locus = "paper_internal",
       note = str_glue(
@@ -792,37 +802,37 @@ claim("t2_3_gc_cells",
         "{render(convincing_prop$difference, 1)}. The table contradicts itself."
       ))
 
-claim("t2_1_cells", 12,
+add_claim("t2_1_cells", 12,
       note = paste("Transcribed from table 3 of Lord, Ross, and Lepper (1979) and checked",
                    "once against that article; it cannot drift."))
-claim("t2_3_lrl_cells", 12,
+add_claim("t2_3_lrl_cells", 12,
       note = paste("Transcribed from table 1 of Lord, Ross, and Lepper (1979) and checked",
                    "once against that article; it cannot drift."))
-claim("t3_1_cells", 0, note = "Definitions in words; the table states no estimate.")
-claim("t3_2_cells", 0, note = "Predictions in words; the table states no estimate.")
-claim("t4_1_cells", 0, note = "A typology; the table states no estimate.")
-claim("t4_2_cells", NA_real_, locus = "rewrite",
+add_claim("t3_1_cells", 0, note = "Definitions in words; the table states no estimate.")
+add_claim("t3_2_cells", 0, note = "Predictions in words; the table states no estimate.")
+add_claim("t4_1_cells", 0, note = "A typology; the table states no estimate.")
+add_claim("t4_2_cells", NA_real_, locus = "rewrite",
       note = paste("The twenty-three sample sizes of table 4.2 have no counterpart in",
                    "output/. The deposit computes none of them either, and adding them",
                    "would be a Stage 3 job rather than a transcription."))
-claim("t6_1_cells", NA_real_, locus = "rewrite",
+add_claim("t6_1_cells", NA_real_, locus = "rewrite",
       note = paste("The twelve panel sample sizes of table 6.1 have no counterpart in",
                    "output/, on the same footing as table 4.2."))
-claim("t6_2_cells", 9, unseeded = TRUE, holds = 1L,
+add_claim("t6_2_cells", 9, unseeded = TRUE, holds = 1L,
       note = paste("All nine cells of table 6.2 are bootstrap quantities from an unseeded",
                    "procedure; each published value falls inside the range the estimator",
                    "takes across seeds."))
-claim("t6_3_cells", 12, unseeded = TRUE, holds = 1L,
+add_claim("t6_3_cells", 12, unseeded = TRUE, holds = 1L,
       note = paste("All twelve cells of table 6.3 are bootstrap quantities from an",
                    "unseeded procedure."))
-claim("t6_4_cells", 114, unseeded = TRUE, holds = 1L,
+add_claim("t6_4_cells", 114, unseeded = TRUE, holds = 1L,
       note = paste("All 114 cells of table 6.4 are bootstrap quantities from an unseeded",
                    "procedure."))
-claim("ta3_cells", 0, note = "The treatment videos are described in words.")
-claim("ta11_cells", 0, note = "Treatments and outcomes in words.")
-claim("ta13_cells", 0, note = "Treatments and outcomes in words.")
-claim("ta15_cells", 0, note = "Treatments and outcomes in words.")
-claim("ta17_cells", 0, note = "Treatments and outcomes in words.")
+add_claim("ta3_cells", 0, note = "The treatment videos are described in words.")
+add_claim("ta11_cells", 0, note = "Treatments and outcomes in words.")
+add_claim("ta13_cells", 0, note = "Treatments and outcomes in words.")
+add_claim("ta15_cells", 0, note = "Treatments and outcomes in words.")
+add_claim("ta17_cells", 0, note = "Treatments and outcomes in words.")
 
 # Assemble ----
 ground_truth <- list_rbind(gt)
@@ -853,82 +863,159 @@ stopifnot(
           c("paper_internal", "archive", "environment", "rewrite", "unresolved"))
 )
 
-write_csv(ground_truth, here::here("ground_truth", str_c(paper_id, "_ground_truth.csv")))
-
 # The errata spine's claim_ids ----
 # errata_entries.csv names, for every published entry, the ground-truth claims it corrects.
 # Every one of those ids has to exist here: a missing one is a typo or a claim that has since
 # been renamed, and a dangling reference inside a document whose whole purpose is correcting
 # the record is worse than a failed build.
-errata_spine <- here::here("errata_entries.csv")
-if (file.exists(errata_spine)) {
-  cited_ids <- read_csv(errata_spine, show_col_types = FALSE)$claim_ids |>
-    str_split(";") |>
-    unlist() |>
-    str_trim() |>
-    discard(\(x) is.na(x) | x == "")
-  dangling <- setdiff(cited_ids, ground_truth$claim_id)
-  if (length(dangling) > 0) print(dangling)
-  stopifnot(length(dangling) == 0)
+cited_ids <- read_csv(here::here("errata_entries.csv"),
+                      col_types = cols(.default = col_character()))$claim_ids |>
+  str_split(";") |>
+  unlist() |>
+  str_trim() |>
+  discard(\(x) is.na(x) | x == "")
+dangling <- setdiff(cited_ids, ground_truth$claim_id)
+if (length(dangling) > 0) print(dangling)
+stopifnot(length(dangling) == 0)
+
+# Disposition: what became of each defect ----
+# corrected_here is computed from the errata spine and never typed: a row is corrected here
+# exactly when an entry names it, and that includes the three note-form entries (13 to 15),
+# which reprint their sentence and set out the disagreement without a replacement token. No
+# other disposition has been judged for this book, so the archive and rewrite rows stay NA,
+# which the canon reads as nobody having looked. A paper_internal row may not.
+ground_truth <- ground_truth |>
+  mutate(
+    disposition = case_when(
+      is.na(defect_locus) ~ NA_character_,
+      claim_id %in% cited_ids ~ "corrected_here",
+      .default = NA_character_
+    ),
+    disposition_reason = NA_character_
+  )
+
+undisposed <- ground_truth |> filter(defect_locus == "paper_internal", is.na(disposition))
+if (nrow(undisposed) > 0) {
+  print(undisposed |> select(claim_id, location, claim), n = nrow(undisposed))
+  stop(str_glue("{nrow(undisposed)} paper_internal rows carry no disposition."))
 }
+print(ground_truth |> filter(!is.na(defect_locus)) |> count(defect_locus, disposition))
+
+# The ground truth, in the canonical column order ----
+ground_truth_out <- ground_truth |>
+  mutate(across(c(match, match_rewrite, holds), as.logical)) |>
+  select(paper_id, claim_id, location, claim_type, claim, value_paper, digits, value_script,
+         match, value_rewrite, match_rewrite, holds, defect_locus, disposition,
+         disposition_reason, notes)
+
+write_csv(ground_truth_out, here::here("ground_truth", str_c(paper_id, "_ground_truth.csv")))
 
 # Float coverage ----
-# The covered fraction is written to its own file so the report can state it rather than
-# leaving it inside a gate nobody reads.
-float_coverage <-
+# One row per published float, written to its own file so the report can state it rather
+# than leaving it inside a gate nobody reads. A table's published_numbers counts the cells
+# it prints, covered counts the cells compared above, and reproduced_by_rewrite counts those
+# the rewrite reproduces. reproduced_by_archive is NA throughout, because the deposit's
+# code returns no value this repository commits (see the header). A table carries no
+# plotted count.
+unseeded_note <- "Unseeded bootstrap: a cell counts as reproduced when it lies inside the range its quantity takes across seeds."
+words_note <- "Prints no numbers; the table is set out in words."
+
+table_coverage <-
   bind_rows(
-    tibble(float = "table_a.1", published = published_cells("A.1"), covered = 0),
-    tibble(float = "table_a.5", published = a5$cells, covered = a5$agreeing),
-    tibble(float = "table_a.8", published = published_cells("A.8"), covered = 0),
+    tibble(float = "Table A.1", published_numbers = published_cells("A.1"), covered = 0,
+           reproduced_by_rewrite = 0,
+           note = "The deposit contains no code for the Coppock, Ekins, and Kirby treatment effect estimates."),
+    tibble(float = "Table A.5", published_numbers = a5$cells, covered = a5$cells,
+           reproduced_by_rewrite = a5$agreeing),
+    tibble(float = "Table A.8", published_numbers = published_cells("A.8"), covered = 0,
+           reproduced_by_rewrite = 0,
+           note = "The deposit contains no code for the Hiscox treatment effect estimates."),
     appendix_results,
-    tibble(float = "table_2.1", published = 12, covered = 12),
-    tibble(float = "table_2.2", published = nrow(table_2.2_check), covered = t2_2_covered),
+    tibble(float = "Table 2.1", published_numbers = 12, covered = 12,
+           reproduced_by_rewrite = 12,
+           note = "Transcribed from table 3 of Lord, Ross, and Lepper (1979) and checked once against that article."),
+    tibble(float = "Table 2.2", published_numbers = nrow(table_2.2_check),
+           covered = nrow(table_2.2_check), reproduced_by_rewrite = t2_2_covered),
     # Table 2.3 has two panels: the twelve cells reprinted from Lord, Ross, and Lepper,
     # which are a transcription and cannot drift, and the twelve of the replication, which
     # the pipeline computes.
-    tibble(float = "table_2.3", published = 12 + nrow(table_2.3_check),
-           covered = 12 + t2_3_gc_covered),
-    tibble(float = "table_6.2", published = 9, covered = 9),
-    tibble(float = "table_6.3", published = 12, covered = 12),
-    tibble(float = "table_6.4", published = 114, covered = 114),
-    tibble(float = "table_3.1", published = 0, covered = 0),
-    tibble(float = "table_3.2", published = 0, covered = 0),
-    tibble(float = "table_4.1", published = 0, covered = 0),
-    tibble(float = "table_4.2", published = 23, covered = 0),
-    tibble(float = "table_6.1", published = 12, covered = 0),
-    tibble(float = "table_a.3", published = 0, covered = 0),
-    tibble(float = "table_a.11", published = 0, covered = 0),
-    tibble(float = "table_a.13", published = 0, covered = 0),
-    tibble(float = "table_a.15", published = 0, covered = 0),
-    tibble(float = "table_a.17", published = 0, covered = 0)
+    tibble(float = "Table 2.3", published_numbers = 12 + nrow(table_2.3_check),
+           covered = 12 + nrow(table_2.3_check), reproduced_by_rewrite = 12 + t2_3_gc_covered,
+           note = "The upper half is transcribed from table 1 of Lord, Ross, and Lepper (1979)."),
+    tibble(float = "Table 6.2", published_numbers = 9, covered = 9, reproduced_by_rewrite = 9,
+           note = unseeded_note),
+    tibble(float = "Table 6.3", published_numbers = 12, covered = 12,
+           reproduced_by_rewrite = 12, note = unseeded_note),
+    tibble(float = "Table 6.4", published_numbers = 114, covered = 114,
+           reproduced_by_rewrite = 114, note = unseeded_note),
+    tibble(float = c("Table 3.1", "Table 3.2", "Table 4.1", "Table A.3", "Table A.11",
+                     "Table A.13", "Table A.15", "Table A.17"),
+           published_numbers = 0, covered = 0, reproduced_by_rewrite = 0, note = words_note),
+    tibble(float = "Table 4.2", published_numbers = 23, covered = 0, reproduced_by_rewrite = 0,
+           note = "Sample sizes for the 23 experiments; neither the deposit nor the rewrite computes them."),
+    tibble(float = "Table 6.1", published_numbers = 12, covered = 0, reproduced_by_rewrite = 0,
+           note = "Panel sample sizes for the 12 persistence experiments; neither the deposit nor the rewrite computes them.")
   ) |>
-  arrange(float, .locale = "en")
+  mutate(plotted = NA_integer_, plotted_reproduced = NA_integer_)
 
 # The figures print no estimates on their faces: every one is a scatter of subject
 # responses with condition means and intervals drawn over it, so what a figure asserts is
 # the set of estimates it plots. Each figure script writes those estimates to a CSV, and
-# the row count of that CSV is what the figure's coverage means.
+# the row count of that CSV is the figure's plotted count. Every drawn figure was laid
+# beside the published page (README, Verification), so all of its plotted estimates count
+# as reproduced.
 figure_files <- list.files(here::here("maintained", "output"), pattern = "^figure_.*\\.csv$")
 figure_coverage <-
   tibble(file = figure_files) |>
   mutate(
-    float = str_c("figure_", str_extract(file, "^figure_([0-9]+\\.[0-9]+)", group = 1)),
-    plotted = map_int(file, ~nrow(out(.x)))
+    float = str_c("Figure ", str_extract(file, "^figure_([0-9]+\\.[0-9]+)", group = 1)),
+    rows = map_int(file, ~nrow(out(.x)))
   ) |>
-  summarize(published = 0L, covered = sum(plotted), .by = float)
+  summarize(plotted = sum(rows), .by = float) |>
+  mutate(plotted_reproduced = plotted,
+         note = "Prints no numbers on its face; plotted counts the estimates the figure script writes.")
 
 uncovered_figures <- tibble(
-  float = c("figure_1.1", "figure_2.1", "figure_3.4", "figure_4.1", "figure_4.2",
-            "figure_5.14", "figure_7.1"),
-  published = 0L,
-  covered = 0L
+  float = c("Figure 1.1", "Figure 2.1", "Figure 3.4", "Figure 4.1", "Figure 4.2",
+            "Figure 5.14", "Figure 7.1"),
+  plotted = 0L,
+  plotted_reproduced = 0L,
+  note = c(
+    "A schematic or simulation with no data behind it.",
+    "Reproduces the two graphics used as experimental stimuli; carries no data.",
+    "A diagram; carries no data.",
+    "A schematic or simulation with no data behind it.",
+    "A schematic or simulation with no data behind it.",
+    "Reproduces the two income-inequality plots that are the Trump and White treatment; carries no data.",
+    "A schematic or simulation with no data behind it."
+  )
 )
 
 float_coverage <-
-  bind_rows(float_coverage, figure_coverage, uncovered_figures) |>
+  bind_rows(table_coverage, figure_coverage, uncovered_figures) |>
+  mutate(
+    published_numbers = replace_na(published_numbers, 0),
+    covered = replace_na(covered, 0),
+    reproduced_by_rewrite = replace_na(reproduced_by_rewrite, 0),
+    across(c(published_numbers, covered, reproduced_by_rewrite, plotted, plotted_reproduced),
+           as.integer),
+    reproduced_by_archive = NA_integer_
+  ) |>
+  select(float, published_numbers, covered, reproduced_by_rewrite, reproduced_by_archive,
+         plotted, plotted_reproduced, note) |>
   arrange(float, .locale = "en")
 
-stopifnot("Every published float needs a coverage row" = nrow(float_coverage) == 67)
+stopifnot(
+  "Every published float needs a coverage row" = nrow(float_coverage) == 67,
+  "A float is listed twice" = !anyDuplicated(float_coverage$float),
+  "A float carrying no numbers needs a note" =
+    all(!is.na(float_coverage$note[float_coverage$published_numbers == 0 &
+                                     replace_na(float_coverage$plotted, 0L) == 0])),
+  "A float cannot reproduce more than it compares" =
+    all(float_coverage$reproduced_by_rewrite <= float_coverage$covered),
+  "A float cannot compare more than it prints" =
+    all(float_coverage$covered <= float_coverage$published_numbers)
+)
 
 write_csv(float_coverage, here::here("ground_truth", "float_coverage.csv"))
 
@@ -940,7 +1027,7 @@ write_csv(float_coverage, here::here("ground_truth", "float_coverage.csv"))
 #
 # local = new.env() is not cosmetic. Both files necessarily read the same outputs and name
 # their objects for what those objects hold, so a bare source() would replace this script's
-# published_claims, out() and claim() with the claims file's.
+# published_claims, out() and add_claim() with the claims file's.
 claims_output <- capture.output(
   source(here::here("maintained", "in_text_claims.R"), local = new.env())
 )
@@ -973,7 +1060,6 @@ printed_values <-
 cross_check <-
   ground_truth |>
   inner_join(printed_values, by = "claim_id") |>
-  inner_join(published_claims |> select(claim_id, digits), by = "claim_id") |>
   filter(!is.na(value_rewrite)) |>
   mutate(built = render(as.numeric(value_rewrite), digits))
 
@@ -988,17 +1074,16 @@ print(str_glue(
   "{sum(ground_truth$match_rewrite == 0, na.rm = TRUE)} do not, ",
   "{sum(is.na(ground_truth$match_rewrite))} carry no rewrite verdict."
 ))
-# A figure row carries published = 0 by design, because the figures print no numbers on
-# their faces and what they assert is the set of estimates they plot. The reproduced count
-# is therefore scoped to the floats that print a value, or a figure's plotted estimates
-# would inflate a numerator whose denominator cannot contain them.
-prints_a_value <- float_coverage$published > 0
+# A figure prints no numbers on its face and carries what it asserts in plotted rather than
+# in published_numbers, so the reproduced count is over the floats that print a value and
+# the figures' plotted estimates are reported beside it rather than added to it.
+prints_a_value <- float_coverage$published_numbers > 0
 print(str_glue(
-  "Float coverage: {sum(float_coverage$covered[prints_a_value])} of ",
-  "{sum(float_coverage$published)} published values across {nrow(float_coverage)} floats; ",
-  "{sum(prints_a_value & float_coverage$covered == 0)} published floats have zero ",
+  "Float coverage: {sum(float_coverage$reproduced_by_rewrite[prints_a_value])} of ",
+  "{sum(float_coverage$published_numbers)} published values across {nrow(float_coverage)} floats; ",
+  "{sum(prints_a_value & float_coverage$reproduced_by_rewrite == 0)} published floats have zero ",
   "coverage. The 37 figures plot ",
-  "{sum(float_coverage$covered[!prints_a_value])} estimates between them."
+  "{sum(float_coverage$plotted, na.rm = TRUE)} estimates between them."
 ))
 print(str_glue("Coverage gate: {length(printed_ids)} printed claims against ",
                "{length(required_ids)} required blocks."))
